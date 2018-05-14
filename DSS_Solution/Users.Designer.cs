@@ -33,12 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Etc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonEditUser = new System.Windows.Forms.Button();
             this.buttonDeleteUser = new System.Windows.Forms.Button();
@@ -46,6 +40,13 @@
             this.buttonSaveAndExit = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.sQLiteConnectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Post = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Etc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sQLiteConnectionBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +76,7 @@
             this.dataGridViewUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Fullname,
+            this.Post,
             this.Login,
             this.Password,
             this.Role,
@@ -105,50 +107,6 @@
             this.dataGridViewUsers.Size = new System.Drawing.Size(582, 297);
             this.dataGridViewUsers.TabIndex = 0;
             this.dataGridViewUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellClick);
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ID.Visible = false;
-            this.ID.Width = 5;
-            // 
-            // Fullname
-            // 
-            this.Fullname.FillWeight = 3F;
-            this.Fullname.HeaderText = "ФИО";
-            this.Fullname.MinimumWidth = 150;
-            this.Fullname.Name = "Fullname";
-            this.Fullname.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Fullname.Width = 150;
-            // 
-            // Login
-            // 
-            this.Login.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Login.HeaderText = "Логин";
-            this.Login.MinimumWidth = 100;
-            this.Login.Name = "Login";
-            // 
-            // Password
-            // 
-            this.Password.HeaderText = "Пароль";
-            this.Password.MinimumWidth = 100;
-            this.Password.Name = "Password";
-            // 
-            // Role
-            // 
-            this.Role.HeaderText = "Роль";
-            this.Role.MinimumWidth = 100;
-            this.Role.Name = "Role";
-            // 
-            // Etc
-            // 
-            this.Etc.HeaderText = "Прочее";
-            this.Etc.MinimumWidth = 100;
-            this.Etc.Name = "Etc";
             // 
             // buttonAddUser
             // 
@@ -218,6 +176,57 @@
             // 
             this.sQLiteConnectionBindingSource.DataSource = typeof(System.Data.SQLite.SQLiteConnection);
             // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ID.Visible = false;
+            this.ID.Width = 5;
+            // 
+            // Fullname
+            // 
+            this.Fullname.FillWeight = 3F;
+            this.Fullname.HeaderText = "ФИО";
+            this.Fullname.MinimumWidth = 150;
+            this.Fullname.Name = "Fullname";
+            this.Fullname.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Fullname.Width = 150;
+            // 
+            // Post
+            // 
+            this.Post.HeaderText = "Должность";
+            this.Post.MinimumWidth = 100;
+            this.Post.Name = "Post";
+            this.Post.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Login
+            // 
+            this.Login.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Login.HeaderText = "Логин";
+            this.Login.MinimumWidth = 100;
+            this.Login.Name = "Login";
+            // 
+            // Password
+            // 
+            this.Password.HeaderText = "Пароль";
+            this.Password.MinimumWidth = 100;
+            this.Password.Name = "Password";
+            // 
+            // Role
+            // 
+            this.Role.HeaderText = "Роль";
+            this.Role.MinimumWidth = 100;
+            this.Role.Name = "Role";
+            // 
+            // Etc
+            // 
+            this.Etc.HeaderText = "Прочее";
+            this.Etc.MinimumWidth = 100;
+            this.Etc.Name = "Etc";
+            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,13 +262,14 @@
         private System.Windows.Forms.Button buttonToFormAdminMode;
         private System.Windows.Forms.Button buttonSaveAndExit;
         private System.Windows.Forms.Button buttonSave;
+        public System.Windows.Forms.DataGridView dataGridViewUsers;
+        private System.Windows.Forms.BindingSource sQLiteConnectionBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fullname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Post;
         private System.Windows.Forms.DataGridViewTextBoxColumn Login;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn Role;
         private System.Windows.Forms.DataGridViewTextBoxColumn Etc;
-        public System.Windows.Forms.DataGridView dataGridViewUsers;
-        private System.Windows.Forms.BindingSource sQLiteConnectionBindingSource;
     }
 }

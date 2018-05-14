@@ -62,7 +62,6 @@ namespace DSS
                 if (main != null)
                 {
                     //Обновление таблицы с информацией о пользователях
-                    main.dataGridViewUsers.UpdateCellValue(0,0);
                     try
                     {
                         dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
@@ -74,7 +73,7 @@ namespace DSS
 
                         while (sql.Read())
                         {
-                            main.dataGridViewUsers.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString());
+                            main.dataGridViewUsers.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString(), sql[6].ToString());
                         }
                         sql.Close();
                         dbConnection.Close();
@@ -96,7 +95,6 @@ namespace DSS
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-
         }
     }
 }

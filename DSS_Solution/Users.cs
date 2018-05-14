@@ -28,7 +28,7 @@ namespace DSS
 
                 while (sql.Read())
                 {
-                    dataGridViewUsers.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString());
+                    dataGridViewUsers.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString(), sql[6].ToString());
                 }
                 sql.Close();
                 dbConnection.Close();
@@ -66,11 +66,6 @@ namespace DSS
 
         private void buttonDeleteUser_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewCell cell in dataGridViewUsers.SelectedCells)
-            {
-                dataGridViewUsers.Rows.RemoveAt(cell.RowIndex);
-            }
-
             SQLiteCommand cmd = dbConnection.CreateCommand();
             cmd.CommandText = "Delete from Users where ID=@id";
             cmd.Parameters.Add("@id", DbType.UInt16).Value = dataGridViewUsers.CurrentRow.Cells[0].Value;
@@ -79,6 +74,11 @@ namespace DSS
                 dbConnection.Open();
                 cmd.ExecuteNonQuery();
                 dbConnection.Close();
+
+                foreach (DataGridViewCell cell in dataGridViewUsers.SelectedCells)
+                {
+                    dataGridViewUsers.Rows.RemoveAt(cell.RowIndex);
+                }
             }
             catch (SQLiteException ex)
             {
