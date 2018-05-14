@@ -70,11 +70,15 @@ namespace DSS
             {
                 dataGridViewUsers.Rows.RemoveAt(cell.RowIndex);
             }
+
+            SQLiteCommand cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "Delete from Users where ID=@id";
+            cmd.Parameters.Add("@id", DbType.UInt16).Value = dataGridViewUsers.CurrentRow.Cells[0].Value;
             try
             {
-                SQLiteCommand cmd = dbConnection.CreateCommand();
-                cmd.CommandText = "Delete from Users where ID=@id";
-                cmd.Parameters.Add("@id", DbType.String).Value = dataGridViewUsers.CurrentRow.Cells[0].Value.ToString();
+                dbConnection.Open();
+                cmd.ExecuteNonQuery();
+                dbConnection.Close();
             }
             catch (SQLiteException ex)
             {

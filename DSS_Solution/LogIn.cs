@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Text;
 using System.Security.Cryptography;
-
+using System.Drawing;
 
 namespace DSS
 {
@@ -25,12 +25,12 @@ namespace DSS
             if (dbConnection.State == ConnectionState.Open)
             {
                 toolStripConnectionStatusLabel.Text = "Подключено к БД";
-                toolStripConnectionStatusLabel.ForeColor = System.Drawing.Color.Green;
+                toolStripConnectionStatusLabel.ForeColor = Color.Green;
             }
             else
             {
                 toolStripConnectionStatusLabel.Text = "Нет подключения к БД";
-                toolStripConnectionStatusLabel.ForeColor = System.Drawing.Color.Red;
+                toolStripConnectionStatusLabel.ForeColor = Color.Red;
             }
         }
 
@@ -65,10 +65,9 @@ namespace DSS
                     {
                         while (dataReader.Read())
                         {
-                            if (textBoxLogInUsername.Text.Equals("" + dataReader["Login"]) && textBoxLogInPassword.Text.Equals("" + dataReader["Password"]))
+                            if (textBoxLogInUsername.Text.Equals(dataReader["Login"]) && textBoxLogInPassword.Text.Equals(dataReader["Password"]))
                             {
 
-                                //MessageBox.Show("Добро пожаловать: " + textBoxLogInUsername.Text + "!");
                                 textBoxLogInUsername.Clear();
                                 textBoxLogInPassword.Clear();
 
@@ -76,16 +75,16 @@ namespace DSS
                                 {
                                     case "1":
                                         {
-                                            FormAdminMode AdminForm = new FormAdminMode();
-                                            AdminForm.Show();
+                                            FormAdminMode AdminMode = new FormAdminMode();
+                                            AdminMode.Show();
                                             this.Hide();
 
                                             break;
                                         }
                                     case "2":
                                         {
-                                            FormOperatorMode OperatorForm = new FormOperatorMode();
-                                            OperatorForm.Show();
+                                            FormOperatorMode OperatorMode = new FormOperatorMode();
+                                            OperatorMode.Show();
                                             this.Hide();
 
                                             break;
@@ -95,23 +94,23 @@ namespace DSS
                             else
                             {
                                 labelUsernamePassword.Text = "Неверное имя пользователя и/или пароль";
+
                                 break;                                                                
                             }
                         }
+                        dataReader.Close();
                     }
-                    dataReader.Close();
                 }
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("Нет подключение к БД!" + ex.Message);
+                MessageBox.Show("Нет подключения к БД!" + ex.Message);
             }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
             dbConnection.Close();
-            //this.Close();
             Application.Exit();            
         }
 
