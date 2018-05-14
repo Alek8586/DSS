@@ -158,6 +158,7 @@
             // 
             // buttonSaveAndClose
             // 
+            this.buttonSaveAndClose.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSaveAndClose.Location = new System.Drawing.Point(325, 47);
             this.buttonSaveAndClose.Name = "buttonSaveAndClose";
             this.buttonSaveAndClose.Size = new System.Drawing.Size(106, 49);
@@ -177,7 +178,7 @@
             this.buttonBackToUsersForm.UseVisualStyleBackColor = true;
             this.buttonBackToUsersForm.Click += new System.EventHandler(this.buttonBackToUsersForm_Click);
             // 
-            // AddUser
+            // EditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -201,7 +202,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "AddUser";
+            this.Name = "EditUser";
             this.Padding = new System.Windows.Forms.Padding(15);
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
