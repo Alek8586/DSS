@@ -44,6 +44,7 @@ namespace DSS
         {
             try
             {
+                dataGridViewUsers.Rows.Clear();
                 dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
                 dbConnection.Open();
 
