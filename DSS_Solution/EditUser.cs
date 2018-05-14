@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DSS
@@ -15,15 +11,20 @@ namespace DSS
     {
         private SQLiteConnection dbConnection;
 
-        public EditUser()
+
+        public EditUser(string data)
         {
             InitializeComponent();
+            labelUserEtc.Text = data;
         }
 
         private void AddUser_Load(object sender, EventArgs e)
         {
             dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
             dbConnection.Open();
+
+
+            
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -44,57 +45,76 @@ namespace DSS
 
         private void setUser()
         {
-            Users main = this.Owner as Users;
-            try
+            
+            if (textBoxUserLogin.Text != "" && comboBoxUserRole.SelectedItem.ToString() != "")
             {
-                //Запись входных данных нового пользователя
-                SQLiteCommand setUser = dbConnection.CreateCommand();
-                setUser.CommandText = "Insert into Users(Fullname, Post, Login, Password, Role, Etc) values (@Fullname, @Post, @Login, @Password, @Role, @Etc)";
-                setUser.Parameters.Add("@Fullname", DbType.String).Value = textBoxUserFullname.Text;
-                setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
-                setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
-                setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
-                setUser.Parameters.Add("@Role", DbType.UInt16).Value = Convert.ToUInt16(comboBoxUserRole.SelectedText);
-                setUser.Parameters.Add("@Etc", DbType.String).Value = textBoxUserEtc.Text;
-
-                setUser.ExecuteNonQuery();
-
-                if (main != null)
+                try
                 {
-                    //Обновление таблицы с информацией о пользователях
-                    try
+                    if (textBoxUserPassword.Text == "")
                     {
-                        dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
-                        dbConnection.Open();
+                        string defaultPassword = "Password1";
+                        textBoxUserPassword.Text = GetHashStirng(defaultPassword);
+                    }
+                    else textBoxUserPassword.Text = GetHashStirng(textBoxUserPassword.Text);
+                    
+                    //Запись входных данных нового пользователя
+                    SQLiteCommand setUser = dbConnection.CreateCommand();
+                    setUser.CommandText = "Insert into Users(Fullname, Post, Login, Password, Role, Etc) values (@Fullname, @Post, @Login, @Password, @Role, @Etc)";
+                    setUser.Parameters.Add("@Fullname", DbType.String).Value = textBoxUserFullname.Text;
+                    setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
+                    setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
+                    setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
+                    setUser.Parameters.Add("@Role", DbType.UInt16).Value = comboBoxUserRole.SelectedItem;
+                    setUser.Parameters.Add("@Etc", DbType.String).Value = textBoxUserEtc.Text;
 
-                        SQLiteCommand listUsers = dbConnection.CreateCommand();
-                        listUsers.CommandText = "Select * from Users";
-                        SQLiteDataReader sql = listUsers.ExecuteReader();
+                    setUser.ExecuteNonQuery();
 
-                        while (sql.Read())
+                    Users main = this.Owner as Users;
+                    if (main != null)
+                    {
+                        //Обновление таблицы с информацией о пользователях
+                        try
                         {
-                            main.dataGridViewUsers.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString(), sql[6].ToString());
+                            main.dataGridViewUsers.Rows.Clear();
+                            main.ListOfUsers();
                         }
-                        sql.Close();
-                        dbConnection.Close();
+                        catch (SQLiteException ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
                     }
-                    catch (SQLiteException ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
-                    }
+
+                    textBoxUserFullname.Clear();
+                    textBoxUserPost.Clear();
+                    textBoxUserLogin.Clear();
+                    textBoxUserPassword.Clear();
+                    comboBoxUserRole.ResetText();
+                    textBoxUserEtc.Clear();
+                }
+                catch (SQLiteException ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
                 }
 
-                textBoxUserFullname.Clear();
-                textBoxUserPost.Clear();
-                textBoxUserLogin.Clear();
-                textBoxUserPassword.Clear();
-                comboBoxUserRole.ResetText();
-                textBoxUserEtc.Clear();
             }
-            catch (SQLiteException ex)
+        }
+
+        private string GetHashStirng(string defaultPassword)
+        {
+            //Хеширование вводимого пароля через MD5
+            //Переводим строку пароля в байт-массив
+            byte[] bytes = Encoding.Unicode.GetBytes(textBoxUserPassword.Text);
+            //создаем обеъкт для получения средств шифрования
+            MD5CryptoServiceProvider cryptoServiceProvider = new MD5CryptoServiceProvider();
+            //высчитываем хеш-представление в байтах
+            byte[] byteHash = cryptoServiceProvider.ComputeHash(bytes);
+            string MD5Hash = string.Empty;
+            //формируем одну цельную строку из массива
+            foreach (byte b in byteHash)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MD5Hash += string.Format("{0:x2}", b);
             }
+            return MD5Hash;
         }
     }
 }
