@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Text;
 using System.Security.Cryptography;
-using System.Drawing;
+
 
 namespace DSS
 {
@@ -67,13 +68,9 @@ namespace DSS
                         {
                             if (textBoxLogInUsername.Text.Equals(dataReader["Login"]) && textBoxLogInPassword.Text.Equals(dataReader["Password"]))
                             {
-
-                                textBoxLogInUsername.Clear();
-                                textBoxLogInPassword.Clear();
-
-                                switch ("" + dataReader["Role"])
+                                switch (Convert.ToUInt16(dataReader["Role"]))
                                 {
-                                    case "1":
+                                    case 1:
                                         {
                                             FormAdminMode AdminMode = new FormAdminMode();
                                             AdminMode.Show();
@@ -81,7 +78,7 @@ namespace DSS
 
                                             break;
                                         }
-                                    case "2":
+                                    case 2:
                                         {
                                             FormOperatorMode OperatorMode = new FormOperatorMode();
                                             OperatorMode.Show();
@@ -90,6 +87,8 @@ namespace DSS
                                             break;
                                         }
                                 }
+                                textBoxLogInUsername.Clear();
+                                textBoxLogInPassword.Clear();
                             }
                             else
                             {
@@ -144,7 +143,7 @@ namespace DSS
 
                     MessageBox.Show("Пароль '" + textBoxLogInPassword.Text + "' для пользователя '" + textBoxLogInUsername.Text + "' задан");
                 }
-                else MessageBox.Show("Введи имя и пароль, имбицил!");
+                else MessageBox.Show("Введите пароль!");
             }
             catch (SQLiteException ex)
             {

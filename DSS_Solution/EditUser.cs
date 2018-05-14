@@ -54,7 +54,7 @@ namespace DSS
                 setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
                 setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
                 setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
-                setUser.Parameters.Add("@Role", DbType.String).Value = comboBoxUserRole.SelectedText;
+                setUser.Parameters.Add("@Role", DbType.UInt16).Value = Convert.ToUInt16(comboBoxUserRole.SelectedText);
                 setUser.Parameters.Add("@Etc", DbType.String).Value = textBoxUserEtc.Text;
 
                 setUser.ExecuteNonQuery();
@@ -62,15 +62,35 @@ namespace DSS
                 if (main != null)
                 {
                     //Обновление таблицы с информацией о пользователях
+                    main.dataGridViewUsers.UpdateCellValue(0,0);
                     try
                     {
-                        main.dataGridViewUsers.Refresh();
+                        dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
+                        dbConnection.Open();
+
+                        SQLiteCommand listUsers = dbConnection.CreateCommand();
+                        listUsers.CommandText = "Select * from Users";
+                        SQLiteDataReader sql = listUsers.ExecuteReader();
+
+                        while (sql.Read())
+                        {
+                            main.dataGridViewUsers.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString());
+                        }
+                        sql.Close();
+                        dbConnection.Close();
                     }
                     catch (SQLiteException ex)
                     {
                         MessageBox.Show("Error: " + ex.Message);
                     }
                 }
+
+                textBoxUserFullname.Clear();
+                textBoxUserPost.Clear();
+                textBoxUserLogin.Clear();
+                textBoxUserPassword.Clear();
+                comboBoxUserRole.ResetText();
+                textBoxUserEtc.Clear();
             }
             catch (SQLiteException ex)
             {
