@@ -12,19 +12,17 @@ namespace DSS
         private SQLiteConnection dbConnection;
 
 
-        public EditUser(string data)
+        public EditUser(string[] data)
         {
             InitializeComponent();
-            labelUserEtc.Text = data;
+
+            textBoxUserFullname.Text = data[0];
         }
 
         private void AddUser_Load(object sender, EventArgs e)
         {
             dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
-            dbConnection.Open();
-
-
-            
+            dbConnection.Open();            
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

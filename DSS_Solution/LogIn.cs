@@ -27,6 +27,9 @@ namespace DSS
             {
                 toolStripConnectionStatusLabel.Text = "Подключено к БД";
                 toolStripConnectionStatusLabel.ForeColor = Color.Green;
+
+                //Временно для тестирования. По окончанию - удалить.
+                textBoxLogInUsername.Text = "Admin";
             }
             else
             {

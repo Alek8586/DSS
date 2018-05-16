@@ -85,7 +85,7 @@ namespace DSS
         {
             FormLogIn formLogIn = new FormLogIn();
             formLogIn.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void FormAdminMode_FormClosed(object sender, FormClosedEventArgs e)

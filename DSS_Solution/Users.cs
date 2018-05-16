@@ -24,22 +24,22 @@ namespace DSS
             EditUser AddUserForm = new EditUser(null);
             AddUserForm.Owner = this;
             AddUserForm.ShowDialog();
-            //if (AddUserForm.ShowDialog(this) == DialogResult.OK)
-            //{
-            //    RefreshUsersList();
-            //}
         }
 
         private void buttonEditUser_Click(object sender, EventArgs e)
         {
-            string sample = "!";
-            EditUser EditUserForm = new EditUser(sample);
-            EditUserForm.Owner = this;
             /*
              * Передаем данные строки в поля формы
             */
 
+            string[] sample = new string[dataGridViewUsers.CurrentRow.Cells.Count];
+            for (int i = 0; i <= dataGridViewUsers.CurrentRow.Cells.Count; i++)
+            {
+                sample[0] = dataGridViewUsers.CurrentRow.Cells[i+1].Value.ToString();
+            }
 
+            EditUser EditUserForm = new EditUser(sample);
+            EditUserForm.Owner = this;
             EditUserForm.ShowDialog();
         }
 
@@ -69,12 +69,6 @@ namespace DSS
         {
             this.Close();
         }
-
-        ////ДЛЯ ТЕСТА
-        //private void dataGridViewUsers_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    buttonEditUser.Text = dataGridViewUsers.CurrentRow.Cells[0].Value.ToString();
-        //}
 
         public void ListOfUsers()
         {
