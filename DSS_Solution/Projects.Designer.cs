@@ -28,25 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewProjects = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Post = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Etc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAddProject = new System.Windows.Forms.Button();
             this.buttonEditProject = new System.Windows.Forms.Button();
             this.buttonDeleteProject = new System.Windows.Forms.Button();
             this.buttonToFormAdminMode = new System.Windows.Forms.Button();
-            this.sQLiteConnectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Class = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaterialQuality = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeOfDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reliability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sQLiteConnectionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewProjects
@@ -73,12 +70,12 @@
             this.dataGridViewProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.Fullname,
-            this.Post,
-            this.Login,
-            this.Password,
-            this.Role,
-            this.Etc});
+            this.SupplierName,
+            this.Class,
+            this.MaterialQuality,
+            this.Price,
+            this.TimeOfDelivery,
+            this.Reliability});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -102,67 +99,8 @@
             this.dataGridViewProjects.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewProjects.RowTemplate.ReadOnly = true;
             this.dataGridViewProjects.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProjects.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewProjects.Size = new System.Drawing.Size(582, 297);
             this.dataGridViewProjects.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ID.Visible = false;
-            this.ID.Width = 5;
-            // 
-            // Fullname
-            // 
-            this.Fullname.FillWeight = 3F;
-            this.Fullname.HeaderText = "ФИО";
-            this.Fullname.MinimumWidth = 150;
-            this.Fullname.Name = "Fullname";
-            this.Fullname.ReadOnly = true;
-            this.Fullname.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Fullname.Width = 150;
-            // 
-            // Post
-            // 
-            this.Post.HeaderText = "Должность";
-            this.Post.MinimumWidth = 100;
-            this.Post.Name = "Post";
-            this.Post.ReadOnly = true;
-            this.Post.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Login
-            // 
-            this.Login.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Login.HeaderText = "Логин";
-            this.Login.MinimumWidth = 100;
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            // 
-            // Password
-            // 
-            this.Password.HeaderText = "Пароль";
-            this.Password.MinimumWidth = 100;
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
-            // 
-            // Role
-            // 
-            this.Role.HeaderText = "Роль";
-            this.Role.MinimumWidth = 100;
-            this.Role.Name = "Role";
-            this.Role.ReadOnly = true;
-            // 
-            // Etc
-            // 
-            this.Etc.HeaderText = "Прочее";
-            this.Etc.MinimumWidth = 100;
-            this.Etc.Name = "Etc";
-            this.Etc.ReadOnly = true;
             // 
             // buttonAddProject
             // 
@@ -208,9 +146,69 @@
             this.buttonToFormAdminMode.UseVisualStyleBackColor = true;
             this.buttonToFormAdminMode.Click += new System.EventHandler(this.buttonToFormAdminMode_Click);
             // 
-            // sQLiteConnectionBindingSource
+            // ID
             // 
-            this.sQLiteConnectionBindingSource.DataSource = typeof(System.Data.SQLite.SQLiteConnection);
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ID.Visible = false;
+            this.ID.Width = 44;
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SupplierName.FillWeight = 3F;
+            this.SupplierName.Frozen = true;
+            this.SupplierName.HeaderText = "Наименование";
+            this.SupplierName.MinimumWidth = 150;
+            this.SupplierName.Name = "SupplierName";
+            this.SupplierName.ReadOnly = true;
+            this.SupplierName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.SupplierName.Width = 150;
+            // 
+            // Class
+            // 
+            this.Class.HeaderText = "Утвержденный";
+            this.Class.MinimumWidth = 100;
+            this.Class.Name = "Class";
+            this.Class.ReadOnly = true;
+            this.Class.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Class.Width = 121;
+            // 
+            // MaterialQuality
+            // 
+            this.MaterialQuality.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaterialQuality.HeaderText = "Качество материала";
+            this.MaterialQuality.MinimumWidth = 100;
+            this.MaterialQuality.Name = "MaterialQuality";
+            this.MaterialQuality.ReadOnly = true;
+            this.MaterialQuality.Width = 155;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Цена";
+            this.Price.MinimumWidth = 100;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // TimeOfDelivery
+            // 
+            this.TimeOfDelivery.HeaderText = "Сроки поставки";
+            this.TimeOfDelivery.MinimumWidth = 100;
+            this.TimeOfDelivery.Name = "TimeOfDelivery";
+            this.TimeOfDelivery.ReadOnly = true;
+            this.TimeOfDelivery.Width = 124;
+            // 
+            // Reliability
+            // 
+            this.Reliability.HeaderText = "Надежность";
+            this.Reliability.MinimumWidth = 100;
+            this.Reliability.Name = "Reliability";
+            this.Reliability.ReadOnly = true;
+            this.Reliability.Width = 105;
             // 
             // Projects
             // 
@@ -230,10 +228,9 @@
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Пользователи";
+            this.Text = "Проекты";
             this.Load += new System.EventHandler(this.Projects_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sQLiteConnectionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -243,14 +240,13 @@
         private System.Windows.Forms.Button buttonDeleteProject;
         private System.Windows.Forms.Button buttonToFormAdminMode;
         public System.Windows.Forms.DataGridView dataGridViewProjects;
-        private System.Windows.Forms.BindingSource sQLiteConnectionBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fullname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Post;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Login;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Role;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Etc;
         public System.Windows.Forms.Button buttonEditProject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Class;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaterialQuality;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeOfDelivery;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reliability;
     }
 }

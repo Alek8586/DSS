@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.labelProjectLogin = new System.Windows.Forms.Label();
-            this.textBoxProjectLogin = new System.Windows.Forms.TextBox();
+            this.textBoxProjectName = new System.Windows.Forms.TextBox();
             this.labelProjectPassword = new System.Windows.Forms.Label();
-            this.textBoxProjectPassword = new System.Windows.Forms.TextBox();
+            this.textBoxProjectMainContract = new System.Windows.Forms.TextBox();
             this.labelProjectRole = new System.Windows.Forms.Label();
-            this.comboBoxProjectRole = new System.Windows.Forms.ComboBox();
             this.labelProjectPost = new System.Windows.Forms.Label();
-            this.textBoxProjectPost = new System.Windows.Forms.TextBox();
+            this.textBoxProjectChiefDesigner = new System.Windows.Forms.TextBox();
             this.labelProjectFullname = new System.Windows.Forms.Label();
-            this.textBoxProjectFullname = new System.Windows.Forms.TextBox();
+            this.textBoxProjectSupplierName = new System.Windows.Forms.TextBox();
             this.labelProjectEtc = new System.Windows.Forms.Label();
-            this.textBoxProjectEtc = new System.Windows.Forms.TextBox();
+            this.textBoxProjectDeliveryTime = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonSaveAndClose = new System.Windows.Forms.Button();
             this.buttonBackToProjectsForm = new System.Windows.Forms.Button();
             this.buttonSelectSupplier = new System.Windows.Forms.Button();
+            this.textBoxProjectManager = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelProjectLogin
@@ -55,13 +55,13 @@
             this.labelProjectLogin.TabIndex = 0;
             this.labelProjectLogin.Text = "Имя пользователя";
             // 
-            // textBoxProjectLogin
+            // textBoxProjectName
             // 
-            this.textBoxProjectLogin.Location = new System.Drawing.Point(21, 33);
-            this.textBoxProjectLogin.Name = "textBoxProjectLogin";
-            this.textBoxProjectLogin.Size = new System.Drawing.Size(100, 21);
-            this.textBoxProjectLogin.TabIndex = 1;
-            this.textBoxProjectLogin.WordWrap = false;
+            this.textBoxProjectName.Location = new System.Drawing.Point(21, 33);
+            this.textBoxProjectName.Name = "textBoxProjectName";
+            this.textBoxProjectName.Size = new System.Drawing.Size(100, 21);
+            this.textBoxProjectName.TabIndex = 1;
+            this.textBoxProjectName.WordWrap = false;
             // 
             // labelProjectPassword
             // 
@@ -72,12 +72,12 @@
             this.labelProjectPassword.TabIndex = 2;
             this.labelProjectPassword.Text = "Пароль для пользователя";
             // 
-            // textBoxProjectPassword
+            // textBoxProjectMainContract
             // 
-            this.textBoxProjectPassword.Location = new System.Drawing.Point(21, 75);
-            this.textBoxProjectPassword.Name = "textBoxProjectPassword";
-            this.textBoxProjectPassword.Size = new System.Drawing.Size(100, 21);
-            this.textBoxProjectPassword.TabIndex = 3;
+            this.textBoxProjectMainContract.Location = new System.Drawing.Point(21, 75);
+            this.textBoxProjectMainContract.Name = "textBoxProjectMainContract";
+            this.textBoxProjectMainContract.Size = new System.Drawing.Size(100, 21);
+            this.textBoxProjectMainContract.TabIndex = 3;
             // 
             // labelProjectRole
             // 
@@ -88,17 +88,6 @@
             this.labelProjectRole.TabIndex = 4;
             this.labelProjectRole.Text = "Права доступа";
             // 
-            // comboBoxProjectRole
-            // 
-            this.comboBoxProjectRole.FormattingEnabled = true;
-            this.comboBoxProjectRole.Items.AddRange(new object[] {
-            "1",
-            "2"});
-            this.comboBoxProjectRole.Location = new System.Drawing.Point(21, 117);
-            this.comboBoxProjectRole.Name = "comboBoxProjectRole";
-            this.comboBoxProjectRole.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxProjectRole.TabIndex = 5;
-            // 
             // labelProjectPost
             // 
             this.labelProjectPost.AutoSize = true;
@@ -108,12 +97,12 @@
             this.labelProjectPost.TabIndex = 6;
             this.labelProjectPost.Text = "Должность";
             // 
-            // textBoxProjectPost
+            // textBoxProjectChiefDesigner
             // 
-            this.textBoxProjectPost.Location = new System.Drawing.Point(21, 161);
-            this.textBoxProjectPost.Name = "textBoxProjectPost";
-            this.textBoxProjectPost.Size = new System.Drawing.Size(100, 21);
-            this.textBoxProjectPost.TabIndex = 7;
+            this.textBoxProjectChiefDesigner.Location = new System.Drawing.Point(21, 161);
+            this.textBoxProjectChiefDesigner.Name = "textBoxProjectChiefDesigner";
+            this.textBoxProjectChiefDesigner.Size = new System.Drawing.Size(100, 21);
+            this.textBoxProjectChiefDesigner.TabIndex = 7;
             // 
             // labelProjectFullname
             // 
@@ -124,12 +113,12 @@
             this.labelProjectFullname.TabIndex = 8;
             this.labelProjectFullname.Text = "Полное имя пользователя";
             // 
-            // textBoxProjectFullname
+            // textBoxProjectSupplierName
             // 
-            this.textBoxProjectFullname.Location = new System.Drawing.Point(21, 203);
-            this.textBoxProjectFullname.Name = "textBoxProjectFullname";
-            this.textBoxProjectFullname.Size = new System.Drawing.Size(100, 21);
-            this.textBoxProjectFullname.TabIndex = 9;
+            this.textBoxProjectSupplierName.Location = new System.Drawing.Point(21, 203);
+            this.textBoxProjectSupplierName.Name = "textBoxProjectSupplierName";
+            this.textBoxProjectSupplierName.Size = new System.Drawing.Size(100, 21);
+            this.textBoxProjectSupplierName.TabIndex = 9;
             // 
             // labelProjectEtc
             // 
@@ -140,12 +129,12 @@
             this.labelProjectEtc.TabIndex = 10;
             this.labelProjectEtc.Text = "Прочее";
             // 
-            // textBoxProjectEtc
+            // textBoxProjectDeliveryTime
             // 
-            this.textBoxProjectEtc.Location = new System.Drawing.Point(21, 245);
-            this.textBoxProjectEtc.Name = "textBoxProjectEtc";
-            this.textBoxProjectEtc.Size = new System.Drawing.Size(100, 21);
-            this.textBoxProjectEtc.TabIndex = 11;
+            this.textBoxProjectDeliveryTime.Location = new System.Drawing.Point(21, 245);
+            this.textBoxProjectDeliveryTime.Name = "textBoxProjectDeliveryTime";
+            this.textBoxProjectDeliveryTime.Size = new System.Drawing.Size(100, 21);
+            this.textBoxProjectDeliveryTime.TabIndex = 11;
             // 
             // buttonSave
             // 
@@ -189,6 +178,13 @@
             this.buttonSelectSupplier.UseVisualStyleBackColor = true;
             this.buttonSelectSupplier.Click += new System.EventHandler(this.buttonSelectSupplier_Click);
             // 
+            // textBoxProjectManager
+            // 
+            this.textBoxProjectManager.Location = new System.Drawing.Point(21, 117);
+            this.textBoxProjectManager.Name = "textBoxProjectManager";
+            this.textBoxProjectManager.Size = new System.Drawing.Size(100, 21);
+            this.textBoxProjectManager.TabIndex = 5;
+            // 
             // EditProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -199,17 +195,17 @@
             this.Controls.Add(this.buttonBackToProjectsForm);
             this.Controls.Add(this.buttonSaveAndClose);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBoxProjectEtc);
+            this.Controls.Add(this.textBoxProjectDeliveryTime);
             this.Controls.Add(this.labelProjectEtc);
-            this.Controls.Add(this.textBoxProjectFullname);
+            this.Controls.Add(this.textBoxProjectSupplierName);
             this.Controls.Add(this.labelProjectFullname);
-            this.Controls.Add(this.textBoxProjectPost);
+            this.Controls.Add(this.textBoxProjectManager);
+            this.Controls.Add(this.textBoxProjectChiefDesigner);
             this.Controls.Add(this.labelProjectPost);
-            this.Controls.Add(this.comboBoxProjectRole);
             this.Controls.Add(this.labelProjectRole);
-            this.Controls.Add(this.textBoxProjectPassword);
+            this.Controls.Add(this.textBoxProjectMainContract);
             this.Controls.Add(this.labelProjectPassword);
-            this.Controls.Add(this.textBoxProjectLogin);
+            this.Controls.Add(this.textBoxProjectName);
             this.Controls.Add(this.labelProjectLogin);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -228,20 +224,20 @@
         #endregion
 
         private System.Windows.Forms.Label labelProjectLogin;
-        private System.Windows.Forms.TextBox textBoxProjectLogin;
+        private System.Windows.Forms.TextBox textBoxProjectName;
         private System.Windows.Forms.Label labelProjectPassword;
-        private System.Windows.Forms.TextBox textBoxProjectPassword;
+        private System.Windows.Forms.TextBox textBoxProjectMainContract;
         private System.Windows.Forms.Label labelProjectRole;
-        private System.Windows.Forms.ComboBox comboBoxProjectRole;
         private System.Windows.Forms.Label labelProjectPost;
-        private System.Windows.Forms.TextBox textBoxProjectPost;
+        private System.Windows.Forms.TextBox textBoxProjectChiefDesigner;
         private System.Windows.Forms.Label labelProjectFullname;
-        private System.Windows.Forms.TextBox textBoxProjectFullname;
+        private System.Windows.Forms.TextBox textBoxProjectSupplierName;
         private System.Windows.Forms.Label labelProjectEtc;
-        private System.Windows.Forms.TextBox textBoxProjectEtc;
+        private System.Windows.Forms.TextBox textBoxProjectDeliveryTime;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonSaveAndClose;
         private System.Windows.Forms.Button buttonBackToProjectsForm;
         private System.Windows.Forms.Button buttonSelectSupplier;
+        private System.Windows.Forms.TextBox textBoxProjectManager;
     }
 }

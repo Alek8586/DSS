@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SQLite;
-//using System.Security.Cryptography;
-//using System.Text;
 using System.Windows.Forms;
 
 namespace DSS
@@ -15,13 +13,13 @@ namespace DSS
         {
             InitializeComponent();
 
-            //Заполняем поля при изменении данных пользователя
-            //textBoxProjectFullname.Text = data[1];
-            //textBoxProjectPost.Text = data[2];
-            //textBoxProjectLogin.Text = data[3];
-            //textBoxProjectPassword.Text = data[4];
-            //comboBoxProjectRole.SelectedItem = data[5];
-            //textBoxProjectEtc.Text = data[6];
+            //Заполняем поля при изменении данных проекта
+            textBoxProjectName.Text = data[1];
+            textBoxProjectMainContract.Text = data[2];
+            textBoxProjectManager.Text = data[3];
+            textBoxProjectChiefDesigner.Text = data[4];
+            textBoxProjectSupplierName.Text = data[5];
+            textBoxProjectDeliveryTime.Text = data[6];
         }
 
         private void AddProject_Load(object sender, EventArgs e)
@@ -55,30 +53,30 @@ namespace DSS
         private void setProject()
         {
             
-            if (textBoxProjectLogin.Text != "" && comboBoxProjectRole.SelectedItem.ToString() != "")
+            if (textBoxProjectName.Text != ""/* && comboBoxProjectRole.SelectedItem.ToString() != ""*/)
             {
                 try
                 {
                     SQLiteCommand setProject = dbConnection.CreateCommand();
-                    if (textBoxProjectPost.Text != "" && textBoxProjectFullname.Text != "")
+                    if (textBoxProjectChiefDesigner.Text != "" && textBoxProjectSupplierName.Text != "")
                     {
-                        setProject.CommandText = "Update Projects set Fullname = @Fullname, Post = @Post, Password = @Password, Role = @Role, Etc = @Etc where Login = @Login";
-                        setProject.Parameters.Add("@Fullname", DbType.String).Value = textBoxProjectFullname.Text;
-                        setProject.Parameters.Add("@Post", DbType.String).Value = textBoxProjectPost.Text;
-                        setProject.Parameters.Add("@Login", DbType.String).Value = textBoxProjectLogin.Text;
-                        setProject.Parameters.Add("@Password", DbType.String).Value = textBoxProjectPassword.Text;
-                        setProject.Parameters.Add("@Role", DbType.UInt16).Value = comboBoxProjectRole.SelectedItem;
-                        setProject.Parameters.Add("@Etc", DbType.String).Value = textBoxProjectEtc.Text;
+                        setProject.CommandText = "Update Projects set MainContract = @MainContract, ProjectManager = @ProjectManager, ChiefDesigner = @ChiefDesigner, SupplierName = @SupplierName, DeliveryTime = @DeliveryTime where ProjectName = @ProjectName";
+                        setProject.Parameters.Add("@ProjectName", DbType.String).Value = textBoxProjectName.Text;
+                        setProject.Parameters.Add("@MainContract", DbType.String).Value = textBoxProjectMainContract.Text;
+                        setProject.Parameters.Add("@ProjectManager", DbType.String).Value = textBoxProjectManager.Text;
+                        setProject.Parameters.Add("@ChiefDesigner", DbType.String).Value = textBoxProjectChiefDesigner.Text;
+                        setProject.Parameters.Add("@SupplierName", DbType.String).Value = textBoxProjectSupplierName.Text;
+                        setProject.Parameters.Add("@DeliveryTime", DbType.String).Value = textBoxProjectDeliveryTime.Text;
                     }
                     else
                     {
-                        setProject.CommandText = "Insert into Projects(Fullname, Post, Login, Password, Role, Etc) values (@Fullname, @Post, @Login, @Password, @Role, @Etc)";
-                        setProject.Parameters.Add("@Fullname", DbType.String).Value = textBoxProjectFullname.Text;
-                        setProject.Parameters.Add("@Post", DbType.String).Value = textBoxProjectPost.Text;
-                        setProject.Parameters.Add("@Login", DbType.String).Value = textBoxProjectLogin.Text;
-                        setProject.Parameters.Add("@Password", DbType.String).Value = textBoxProjectPassword.Text;
-                        setProject.Parameters.Add("@Role", DbType.UInt16).Value = comboBoxProjectRole.SelectedItem;
-                        setProject.Parameters.Add("@Etc", DbType.String).Value = textBoxProjectEtc.Text;
+                        setProject.CommandText = "Insert into Projects(ProjectName, MainContract, ProjectManager, ChiefDesigner, SupplierName, DeliveryTime) values (@ProjectName, @MainContract, @ProjectManager, @ChiefDesigner, @SupplierName, @DeliveryTime)";
+                        setProject.Parameters.Add("@ProjectName", DbType.String).Value = textBoxProjectName.Text;
+                        setProject.Parameters.Add("@MainContract", DbType.String).Value = textBoxProjectMainContract.Text;
+                        setProject.Parameters.Add("@ProjectManager", DbType.String).Value = textBoxProjectManager.Text;
+                        setProject.Parameters.Add("@ChiefDesigner", DbType.String).Value = textBoxProjectChiefDesigner.Text;
+                        setProject.Parameters.Add("@SupplierName", DbType.String).Value = textBoxProjectSupplierName.Text;
+                        setProject.Parameters.Add("@DeliveryTime", DbType.String).Value = textBoxProjectDeliveryTime.Text;
                     }
                     setProject.ExecuteNonQuery();
 
@@ -97,12 +95,12 @@ namespace DSS
                         }
                     }
 
-                    textBoxProjectFullname.Clear();
-                    textBoxProjectPost.Clear();
-                    textBoxProjectLogin.Clear();
-                    textBoxProjectPassword.Clear();
-                    comboBoxProjectRole.ResetText();
-                    textBoxProjectEtc.Clear();
+                    textBoxProjectName.Clear();
+                    textBoxProjectMainContract.Clear();
+                    textBoxProjectManager.Clear();
+                    textBoxProjectChiefDesigner.Clear();
+                    textBoxProjectSupplierName.Clear();
+                    textBoxProjectDeliveryTime.Clear();
                 }
                 catch (SQLiteException ex)
                 {
@@ -115,7 +113,9 @@ namespace DSS
         //Подбор поставщика
         private void SelectSupplier()
         {
-
+            SelectSupplier selectSupplierForm = new SelectSupplier();
+            selectSupplierForm.Owner = this;
+            selectSupplierForm.ShowDialog();
         }
     }
 }

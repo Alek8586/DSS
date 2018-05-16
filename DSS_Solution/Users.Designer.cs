@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.buttonAddUser = new System.Windows.Forms.Button();
+            this.buttonEditUser = new System.Windows.Forms.Button();
+            this.buttonDeleteUser = new System.Windows.Forms.Button();
+            this.buttonToFormAdminMode = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Post = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,13 +43,7 @@
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Etc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonAddUser = new System.Windows.Forms.Button();
-            this.buttonEditUser = new System.Windows.Forms.Button();
-            this.buttonDeleteUser = new System.Windows.Forms.Button();
-            this.buttonToFormAdminMode = new System.Windows.Forms.Button();
-            this.sQLiteConnectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sQLiteConnectionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewUsers
@@ -106,6 +103,50 @@
             this.dataGridViewUsers.Size = new System.Drawing.Size(582, 297);
             this.dataGridViewUsers.TabIndex = 0;
             // 
+            // buttonAddUser
+            // 
+            this.buttonAddUser.Location = new System.Drawing.Point(615, 15);
+            this.buttonAddUser.Margin = new System.Windows.Forms.Padding(25);
+            this.buttonAddUser.Name = "buttonAddUser";
+            this.buttonAddUser.Size = new System.Drawing.Size(150, 30);
+            this.buttonAddUser.TabIndex = 1;
+            this.buttonAddUser.Text = "Добавить пользователя";
+            this.buttonAddUser.UseVisualStyleBackColor = true;
+            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
+            // 
+            // buttonEditUser
+            // 
+            this.buttonEditUser.Location = new System.Drawing.Point(615, 87);
+            this.buttonEditUser.Margin = new System.Windows.Forms.Padding(15);
+            this.buttonEditUser.Name = "buttonEditUser";
+            this.buttonEditUser.Size = new System.Drawing.Size(150, 30);
+            this.buttonEditUser.TabIndex = 3;
+            this.buttonEditUser.Text = "Изменить данные";
+            this.buttonEditUser.UseVisualStyleBackColor = true;
+            this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
+            // 
+            // buttonDeleteUser
+            // 
+            this.buttonDeleteUser.Location = new System.Drawing.Point(615, 51);
+            this.buttonDeleteUser.Margin = new System.Windows.Forms.Padding(15);
+            this.buttonDeleteUser.Name = "buttonDeleteUser";
+            this.buttonDeleteUser.Size = new System.Drawing.Size(150, 30);
+            this.buttonDeleteUser.TabIndex = 2;
+            this.buttonDeleteUser.Text = "Удалить пользователя";
+            this.buttonDeleteUser.UseVisualStyleBackColor = true;
+            this.buttonDeleteUser.Click += new System.EventHandler(this.buttonDeleteUser_Click);
+            // 
+            // buttonToFormAdminMode
+            // 
+            this.buttonToFormAdminMode.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonToFormAdminMode.Location = new System.Drawing.Point(625, 287);
+            this.buttonToFormAdminMode.Name = "buttonToFormAdminMode";
+            this.buttonToFormAdminMode.Size = new System.Drawing.Size(140, 25);
+            this.buttonToFormAdminMode.TabIndex = 6;
+            this.buttonToFormAdminMode.Text = "Назад";
+            this.buttonToFormAdminMode.UseVisualStyleBackColor = true;
+            this.buttonToFormAdminMode.Click += new System.EventHandler(this.buttonToFormAdminMode_Click);
+            // 
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -164,54 +205,6 @@
             this.Etc.Name = "Etc";
             this.Etc.ReadOnly = true;
             // 
-            // buttonAddUser
-            // 
-            this.buttonAddUser.Location = new System.Drawing.Point(615, 15);
-            this.buttonAddUser.Margin = new System.Windows.Forms.Padding(25);
-            this.buttonAddUser.Name = "buttonAddUser";
-            this.buttonAddUser.Size = new System.Drawing.Size(150, 30);
-            this.buttonAddUser.TabIndex = 1;
-            this.buttonAddUser.Text = "Добавить пользователя";
-            this.buttonAddUser.UseVisualStyleBackColor = true;
-            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
-            // 
-            // buttonEditUser
-            // 
-            this.buttonEditUser.Location = new System.Drawing.Point(615, 87);
-            this.buttonEditUser.Margin = new System.Windows.Forms.Padding(15);
-            this.buttonEditUser.Name = "buttonEditUser";
-            this.buttonEditUser.Size = new System.Drawing.Size(150, 30);
-            this.buttonEditUser.TabIndex = 3;
-            this.buttonEditUser.Text = "Изменить данные";
-            this.buttonEditUser.UseVisualStyleBackColor = true;
-            this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
-            // 
-            // buttonDeleteUser
-            // 
-            this.buttonDeleteUser.Location = new System.Drawing.Point(615, 51);
-            this.buttonDeleteUser.Margin = new System.Windows.Forms.Padding(15);
-            this.buttonDeleteUser.Name = "buttonDeleteUser";
-            this.buttonDeleteUser.Size = new System.Drawing.Size(150, 30);
-            this.buttonDeleteUser.TabIndex = 2;
-            this.buttonDeleteUser.Text = "Удалить пользователя";
-            this.buttonDeleteUser.UseVisualStyleBackColor = true;
-            this.buttonDeleteUser.Click += new System.EventHandler(this.buttonDeleteUser_Click);
-            // 
-            // buttonToFormAdminMode
-            // 
-            this.buttonToFormAdminMode.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonToFormAdminMode.Location = new System.Drawing.Point(625, 287);
-            this.buttonToFormAdminMode.Name = "buttonToFormAdminMode";
-            this.buttonToFormAdminMode.Size = new System.Drawing.Size(140, 25);
-            this.buttonToFormAdminMode.TabIndex = 6;
-            this.buttonToFormAdminMode.Text = "Назад";
-            this.buttonToFormAdminMode.UseVisualStyleBackColor = true;
-            this.buttonToFormAdminMode.Click += new System.EventHandler(this.buttonToFormAdminMode_Click);
-            // 
-            // sQLiteConnectionBindingSource
-            // 
-            this.sQLiteConnectionBindingSource.DataSource = typeof(System.Data.SQLite.SQLiteConnection);
-            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,7 +226,6 @@
             this.Text = "Пользователи";
             this.Load += new System.EventHandler(this.Users_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sQLiteConnectionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -243,7 +235,7 @@
         private System.Windows.Forms.Button buttonDeleteUser;
         private System.Windows.Forms.Button buttonToFormAdminMode;
         public System.Windows.Forms.DataGridView dataGridViewUsers;
-        private System.Windows.Forms.BindingSource sQLiteConnectionBindingSource;
+        public System.Windows.Forms.Button buttonEditUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fullname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Post;
@@ -251,6 +243,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn Role;
         private System.Windows.Forms.DataGridViewTextBoxColumn Etc;
-        public System.Windows.Forms.Button buttonEditUser;
     }
 }

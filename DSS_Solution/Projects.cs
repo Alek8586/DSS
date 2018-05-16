@@ -21,9 +21,9 @@ namespace DSS
 
         private void buttonAddProject_Click(object sender, EventArgs e)
         {
-            EditProject EditProjectForm = new EditProject(null);
-            EditProjectForm.Owner = this;
-            EditProjectForm.ShowDialog();
+            EditProject AddProjectForm = new EditProject(null);
+            AddProjectForm.Owner = this;
+            AddProjectForm.ShowDialog();
         }
 
         private void buttonEditProject_Click(object sender, EventArgs e)

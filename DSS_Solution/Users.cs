@@ -21,7 +21,7 @@ namespace DSS
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-            EditProject AddUserForm = new EditProject(null);
+            EditUser AddUserForm = new EditUser(null);
             AddUserForm.Owner = this;
             AddUserForm.ShowDialog();
         }
@@ -29,13 +29,13 @@ namespace DSS
         private void buttonEditUser_Click(object sender, EventArgs e)
         {
             //Передаем данные строки в поля формы
-            string[] sample = new string[dataGridViewUsers.CurrentRow.Cells.Count];
+            string[] userData = new string[dataGridViewUsers.CurrentRow.Cells.Count];
             for (int i = 0; i < dataGridViewUsers.CurrentRow.Cells.Count; i++)
             {
-                sample[i] = dataGridViewUsers.CurrentRow.Cells[i].Value.ToString();
+                userData[i] = dataGridViewUsers.CurrentRow.Cells[i].Value.ToString();
             }
 
-            EditProject EditUserForm = new EditProject(sample);
+            EditUser EditUserForm = new EditUser(userData);
             EditUserForm.Owner = this;
             EditUserForm.ShowDialog();
         }
