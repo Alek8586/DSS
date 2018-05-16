@@ -16,6 +16,7 @@ namespace DSS
             InitializeComponent();
 
             //Заполняем поля при изменении данных пользователя
+            //А вот хуй!
             textBoxUserFullname.Text = data[1];
             textBoxUserPost.Text = data[2];
             textBoxUserLogin.Text = data[3];
