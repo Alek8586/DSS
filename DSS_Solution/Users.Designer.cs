@@ -93,6 +93,7 @@
             this.dataGridViewUsers.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.dataGridViewUsers.MultiSelect = false;
             this.dataGridViewUsers.Name = "dataGridViewUsers";
+            this.dataGridViewUsers.ReadOnly = true;
             this.dataGridViewUsers.RowHeadersWidth = 30;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -111,6 +112,7 @@
             this.ID.Frozen = true;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ID.Visible = false;
             this.ID.Width = 5;
@@ -121,6 +123,7 @@
             this.Fullname.HeaderText = "ФИО";
             this.Fullname.MinimumWidth = 150;
             this.Fullname.Name = "Fullname";
+            this.Fullname.ReadOnly = true;
             this.Fullname.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Fullname.Width = 150;
             // 
@@ -129,6 +132,7 @@
             this.Post.HeaderText = "Должность";
             this.Post.MinimumWidth = 100;
             this.Post.Name = "Post";
+            this.Post.ReadOnly = true;
             this.Post.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Login
@@ -137,24 +141,28 @@
             this.Login.HeaderText = "Логин";
             this.Login.MinimumWidth = 100;
             this.Login.Name = "Login";
+            this.Login.ReadOnly = true;
             // 
             // Password
             // 
             this.Password.HeaderText = "Пароль";
             this.Password.MinimumWidth = 100;
             this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
             // 
             // Role
             // 
             this.Role.HeaderText = "Роль";
             this.Role.MinimumWidth = 100;
             this.Role.Name = "Role";
+            this.Role.ReadOnly = true;
             // 
             // Etc
             // 
             this.Etc.HeaderText = "Прочее";
             this.Etc.MinimumWidth = 100;
             this.Etc.Name = "Etc";
+            this.Etc.ReadOnly = true;
             // 
             // buttonAddUser
             // 

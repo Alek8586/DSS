@@ -21,48 +21,28 @@ namespace DSS
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-            EditUser AddUserForm = new EditUser(null);
+            EditProject AddUserForm = new EditProject(null);
             AddUserForm.Owner = this;
             AddUserForm.ShowDialog();
         }
 
         private void buttonEditUser_Click(object sender, EventArgs e)
         {
-            /*
-             * Передаем данные строки в поля формы
-            */
-
+            //Передаем данные строки в поля формы
             string[] sample = new string[dataGridViewUsers.CurrentRow.Cells.Count];
-            for (int i = 0; i <= dataGridViewUsers.CurrentRow.Cells.Count; i++)
+            for (int i = 0; i < dataGridViewUsers.CurrentRow.Cells.Count; i++)
             {
-                sample[0] = dataGridViewUsers.CurrentRow.Cells[i+1].Value.ToString();
+                sample[i] = dataGridViewUsers.CurrentRow.Cells[i].Value.ToString();
             }
 
-            EditUser EditUserForm = new EditUser(sample);
+            EditProject EditUserForm = new EditProject(sample);
             EditUserForm.Owner = this;
             EditUserForm.ShowDialog();
         }
 
         private void buttonDeleteUser_Click(object sender, EventArgs e)
         {
-            SQLiteCommand cmd = dbConnection.CreateCommand();
-            cmd.CommandText = "Delete from Users where ID=@id";
-            cmd.Parameters.Add("@id", DbType.UInt16).Value = dataGridViewUsers.CurrentRow.Cells[0].Value;
-            try
-            {
-                dbConnection.Open();
-                cmd.ExecuteNonQuery();
-                dbConnection.Close();
-
-                foreach (DataGridViewCell cell in dataGridViewUsers.SelectedCells)
-                {
-                    dataGridViewUsers.Rows.RemoveAt(cell.RowIndex);
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            DeleteUser();
         }
 
         private void buttonToFormAdminMode_Click(object sender, EventArgs e)
@@ -95,5 +75,28 @@ namespace DSS
             }
         }
 
+        private void DeleteUser()
+        {
+            SQLiteCommand cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "Delete from Users where ID=@id";
+            cmd.Parameters.Add("@id", DbType.UInt16).Value = dataGridViewUsers.CurrentRow.Cells[0].Value;
+            try
+            {
+                //Удаление записи из таблицы в ДБ
+                dbConnection.Open();
+                cmd.ExecuteNonQuery();
+                dbConnection.Close();
+
+                //Удаление строки в DGV при выбранной ячейке
+                foreach (DataGridViewCell cell in dataGridViewUsers.SelectedCells)
+                {
+                    dataGridViewUsers.Rows.RemoveAt(cell.RowIndex);
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
     }
 }

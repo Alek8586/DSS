@@ -28,187 +28,229 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelProject = new System.Windows.Forms.Label();
-            this.comboBoxSelectProject = new System.Windows.Forms.ComboBox();
-            this.labelMailContract = new System.Windows.Forms.Label();
-            this.labelProjectManager = new System.Windows.Forms.Label();
-            this.labelChiefDesigner = new System.Windows.Forms.Label();
-            this.labelSupplier = new System.Windows.Forms.Label();
-            this.labelDeliveryTime = new System.Windows.Forms.Label();
-            this.textBoxMainContract = new System.Windows.Forms.TextBox();
-            this.textBoxProjectManager = new System.Windows.Forms.TextBox();
-            this.textBoxChiefDesigner = new System.Windows.Forms.TextBox();
-            this.textBoxSupplier = new System.Windows.Forms.TextBox();
-            this.textBoxDeliveryTime = new System.Windows.Forms.TextBox();
-            this.buttonSelectSupplier = new System.Windows.Forms.Button();
-            this.buttonToFormLogIn = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dataGridViewProjects = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Post = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Etc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonAddProject = new System.Windows.Forms.Button();
+            this.buttonEditProject = new System.Windows.Forms.Button();
+            this.buttonDeleteProject = new System.Windows.Forms.Button();
+            this.buttonToFormAdminMode = new System.Windows.Forms.Button();
+            this.sQLiteConnectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sQLiteConnectionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelProject
+            // dataGridViewProjects
             // 
-            this.labelProject.AutoSize = true;
-            this.labelProject.Location = new System.Drawing.Point(13, 13);
-            this.labelProject.Name = "labelProject";
-            this.labelProject.Size = new System.Drawing.Size(44, 13);
-            this.labelProject.TabIndex = 0;
-            this.labelProject.Text = "Проект";
+            this.dataGridViewProjects.AllowUserToAddRows = false;
+            this.dataGridViewProjects.AllowUserToDeleteRows = false;
+            this.dataGridViewProjects.AllowUserToResizeColumns = false;
+            this.dataGridViewProjects.AllowUserToResizeRows = false;
+            this.dataGridViewProjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewProjects.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewProjects.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewProjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewProjects.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewProjects.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProjects.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewProjects.ColumnHeadersHeight = 30;
+            this.dataGridViewProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Fullname,
+            this.Post,
+            this.Login,
+            this.Password,
+            this.Role,
+            this.Etc});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProjects.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewProjects.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataGridViewProjects.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
+            this.dataGridViewProjects.Location = new System.Drawing.Point(15, 15);
+            this.dataGridViewProjects.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.dataGridViewProjects.MultiSelect = false;
+            this.dataGridViewProjects.Name = "dataGridViewProjects";
+            this.dataGridViewProjects.ReadOnly = true;
+            this.dataGridViewProjects.RowHeadersWidth = 30;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProjects.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewProjects.RowTemplate.ReadOnly = true;
+            this.dataGridViewProjects.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProjects.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewProjects.Size = new System.Drawing.Size(582, 297);
+            this.dataGridViewProjects.TabIndex = 0;
             // 
-            // comboBoxSelectProject
+            // ID
             // 
-            this.comboBoxSelectProject.FormattingEnabled = true;
-            this.comboBoxSelectProject.Location = new System.Drawing.Point(16, 30);
-            this.comboBoxSelectProject.Name = "comboBoxSelectProject";
-            this.comboBoxSelectProject.Size = new System.Drawing.Size(250, 21);
-            this.comboBoxSelectProject.TabIndex = 1;
-            this.comboBoxSelectProject.SelectionChangeCommitted += new System.EventHandler(this.comboBoxSelectProject_SelectionChangeCommitted);
-            this.comboBoxSelectProject.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboBoxSelectProject_MouseClick);
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ID.Visible = false;
+            this.ID.Width = 5;
             // 
-            // labelMailContract
+            // Fullname
             // 
-            this.labelMailContract.AutoSize = true;
-            this.labelMailContract.Location = new System.Drawing.Point(13, 59);
-            this.labelMailContract.Name = "labelMailContract";
-            this.labelMailContract.Size = new System.Drawing.Size(104, 13);
-            this.labelMailContract.TabIndex = 2;
-            this.labelMailContract.Text = "Головной контракт";
+            this.Fullname.FillWeight = 3F;
+            this.Fullname.HeaderText = "ФИО";
+            this.Fullname.MinimumWidth = 150;
+            this.Fullname.Name = "Fullname";
+            this.Fullname.ReadOnly = true;
+            this.Fullname.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Fullname.Width = 150;
             // 
-            // labelProjectManager
+            // Post
             // 
-            this.labelProjectManager.AutoSize = true;
-            this.labelProjectManager.Location = new System.Drawing.Point(13, 98);
-            this.labelProjectManager.Name = "labelProjectManager";
-            this.labelProjectManager.Size = new System.Drawing.Size(122, 13);
-            this.labelProjectManager.TabIndex = 3;
-            this.labelProjectManager.Text = "Руководитель проекта";
+            this.Post.HeaderText = "Должность";
+            this.Post.MinimumWidth = 100;
+            this.Post.Name = "Post";
+            this.Post.ReadOnly = true;
+            this.Post.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // labelChiefDesigner
+            // Login
             // 
-            this.labelChiefDesigner.AutoSize = true;
-            this.labelChiefDesigner.Location = new System.Drawing.Point(13, 137);
-            this.labelChiefDesigner.Name = "labelChiefDesigner";
-            this.labelChiefDesigner.Size = new System.Drawing.Size(98, 13);
-            this.labelChiefDesigner.TabIndex = 4;
-            this.labelChiefDesigner.Text = "Главный инженер";
+            this.Login.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Login.HeaderText = "Логин";
+            this.Login.MinimumWidth = 100;
+            this.Login.Name = "Login";
+            this.Login.ReadOnly = true;
             // 
-            // labelSupplier
+            // Password
             // 
-            this.labelSupplier.AutoSize = true;
-            this.labelSupplier.Location = new System.Drawing.Point(13, 176);
-            this.labelSupplier.Name = "labelSupplier";
-            this.labelSupplier.Size = new System.Drawing.Size(65, 13);
-            this.labelSupplier.TabIndex = 5;
-            this.labelSupplier.Text = "Поставщик";
+            this.Password.HeaderText = "Пароль";
+            this.Password.MinimumWidth = 100;
+            this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
             // 
-            // labelDeliveryTime
+            // Role
             // 
-            this.labelDeliveryTime.AutoSize = true;
-            this.labelDeliveryTime.Location = new System.Drawing.Point(13, 215);
-            this.labelDeliveryTime.Name = "labelDeliveryTime";
-            this.labelDeliveryTime.Size = new System.Drawing.Size(88, 13);
-            this.labelDeliveryTime.TabIndex = 6;
-            this.labelDeliveryTime.Text = "Сроки поставки";
+            this.Role.HeaderText = "Роль";
+            this.Role.MinimumWidth = 100;
+            this.Role.Name = "Role";
+            this.Role.ReadOnly = true;
             // 
-            // textBoxMainContract
+            // Etc
             // 
-            this.textBoxMainContract.Location = new System.Drawing.Point(16, 75);
-            this.textBoxMainContract.Name = "textBoxMainContract";
-            this.textBoxMainContract.Size = new System.Drawing.Size(250, 20);
-            this.textBoxMainContract.TabIndex = 9;
+            this.Etc.HeaderText = "Прочее";
+            this.Etc.MinimumWidth = 100;
+            this.Etc.Name = "Etc";
+            this.Etc.ReadOnly = true;
             // 
-            // textBoxProjectManager
+            // buttonAddProject
             // 
-            this.textBoxProjectManager.Location = new System.Drawing.Point(16, 114);
-            this.textBoxProjectManager.Name = "textBoxProjectManager";
-            this.textBoxProjectManager.Size = new System.Drawing.Size(250, 20);
-            this.textBoxProjectManager.TabIndex = 10;
+            this.buttonAddProject.Location = new System.Drawing.Point(615, 15);
+            this.buttonAddProject.Margin = new System.Windows.Forms.Padding(25);
+            this.buttonAddProject.Name = "buttonAddProject";
+            this.buttonAddProject.Size = new System.Drawing.Size(150, 30);
+            this.buttonAddProject.TabIndex = 1;
+            this.buttonAddProject.Text = "Новый проект";
+            this.buttonAddProject.UseVisualStyleBackColor = true;
+            this.buttonAddProject.Click += new System.EventHandler(this.buttonAddProject_Click);
             // 
-            // textBoxChiefDesigner
+            // buttonEditProject
             // 
-            this.textBoxChiefDesigner.Location = new System.Drawing.Point(16, 153);
-            this.textBoxChiefDesigner.Name = "textBoxChiefDesigner";
-            this.textBoxChiefDesigner.Size = new System.Drawing.Size(250, 20);
-            this.textBoxChiefDesigner.TabIndex = 11;
+            this.buttonEditProject.Location = new System.Drawing.Point(615, 87);
+            this.buttonEditProject.Margin = new System.Windows.Forms.Padding(15);
+            this.buttonEditProject.Name = "buttonEditProject";
+            this.buttonEditProject.Size = new System.Drawing.Size(150, 30);
+            this.buttonEditProject.TabIndex = 3;
+            this.buttonEditProject.Text = "Изменить данные";
+            this.buttonEditProject.UseVisualStyleBackColor = true;
+            this.buttonEditProject.Click += new System.EventHandler(this.buttonEditProject_Click);
             // 
-            // textBoxSupplier
+            // buttonDeleteProject
             // 
-            this.textBoxSupplier.Location = new System.Drawing.Point(16, 192);
-            this.textBoxSupplier.Name = "textBoxSupplier";
-            this.textBoxSupplier.Size = new System.Drawing.Size(250, 20);
-            this.textBoxSupplier.TabIndex = 12;
+            this.buttonDeleteProject.Location = new System.Drawing.Point(615, 51);
+            this.buttonDeleteProject.Margin = new System.Windows.Forms.Padding(15);
+            this.buttonDeleteProject.Name = "buttonDeleteProject";
+            this.buttonDeleteProject.Size = new System.Drawing.Size(150, 30);
+            this.buttonDeleteProject.TabIndex = 2;
+            this.buttonDeleteProject.Text = "Удалить проект";
+            this.buttonDeleteProject.UseVisualStyleBackColor = true;
+            this.buttonDeleteProject.Click += new System.EventHandler(this.buttonDeleteProject_Click);
             // 
-            // textBoxDeliveryTime
+            // buttonToFormAdminMode
             // 
-            this.textBoxDeliveryTime.Location = new System.Drawing.Point(16, 231);
-            this.textBoxDeliveryTime.Name = "textBoxDeliveryTime";
-            this.textBoxDeliveryTime.Size = new System.Drawing.Size(250, 20);
-            this.textBoxDeliveryTime.TabIndex = 13;
+            this.buttonToFormAdminMode.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonToFormAdminMode.Location = new System.Drawing.Point(625, 287);
+            this.buttonToFormAdminMode.Name = "buttonToFormAdminMode";
+            this.buttonToFormAdminMode.Size = new System.Drawing.Size(140, 25);
+            this.buttonToFormAdminMode.TabIndex = 6;
+            this.buttonToFormAdminMode.Text = "Назад";
+            this.buttonToFormAdminMode.UseVisualStyleBackColor = true;
+            this.buttonToFormAdminMode.Click += new System.EventHandler(this.buttonToFormAdminMode_Click);
             // 
-            // buttonSelectSupplier
+            // sQLiteConnectionBindingSource
             // 
-            this.buttonSelectSupplier.Location = new System.Drawing.Point(292, 199);
-            this.buttonSelectSupplier.Name = "buttonSelectSupplier";
-            this.buttonSelectSupplier.Size = new System.Drawing.Size(150, 25);
-            this.buttonSelectSupplier.TabIndex = 14;
-            this.buttonSelectSupplier.Text = "Выбрать поставщика";
-            this.buttonSelectSupplier.UseVisualStyleBackColor = true;
-            this.buttonSelectSupplier.Click += new System.EventHandler(this.buttonSelectSupplier_Click);
-            // 
-            // buttonToFormLogIn
-            // 
-            this.buttonToFormLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonToFormLogIn.Location = new System.Drawing.Point(292, 230);
-            this.buttonToFormLogIn.Name = "buttonToFormLogIn";
-            this.buttonToFormLogIn.Size = new System.Drawing.Size(150, 25);
-            this.buttonToFormLogIn.TabIndex = 15;
-            this.buttonToFormLogIn.Text = "Назад";
-            this.buttonToFormLogIn.UseVisualStyleBackColor = true;
-            this.buttonToFormLogIn.Click += new System.EventHandler(this.buttonToFormLogIn_Click);
+            this.sQLiteConnectionBindingSource.DataSource = typeof(System.Data.SQLite.SQLiteConnection);
             // 
             // Projects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 267);
-            this.Controls.Add(this.buttonToFormLogIn);
-            this.Controls.Add(this.buttonSelectSupplier);
-            this.Controls.Add(this.textBoxDeliveryTime);
-            this.Controls.Add(this.textBoxSupplier);
-            this.Controls.Add(this.textBoxChiefDesigner);
-            this.Controls.Add(this.textBoxProjectManager);
-            this.Controls.Add(this.textBoxMainContract);
-            this.Controls.Add(this.labelDeliveryTime);
-            this.Controls.Add(this.labelSupplier);
-            this.Controls.Add(this.labelChiefDesigner);
-            this.Controls.Add(this.labelProjectManager);
-            this.Controls.Add(this.labelMailContract);
-            this.Controls.Add(this.comboBoxSelectProject);
-            this.Controls.Add(this.labelProject);
+            this.CancelButton = this.buttonToFormAdminMode;
+            this.ClientSize = new System.Drawing.Size(780, 327);
+            this.Controls.Add(this.buttonEditProject);
+            this.Controls.Add(this.buttonDeleteProject);
+            this.Controls.Add(this.buttonAddProject);
+            this.Controls.Add(this.buttonToFormAdminMode);
+            this.Controls.Add(this.dataGridViewProjects);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Projects";
+            this.Padding = new System.Windows.Forms.Padding(15);
             this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Проекты";
+            this.Text = "Пользователи";
             this.Load += new System.EventHandler(this.Projects_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sQLiteConnectionBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelProject;
-        private System.Windows.Forms.ComboBox comboBoxSelectProject;
-        private System.Windows.Forms.Label labelMailContract;
-        private System.Windows.Forms.Label labelProjectManager;
-        private System.Windows.Forms.Label labelChiefDesigner;
-        private System.Windows.Forms.Label labelSupplier;
-        private System.Windows.Forms.Label labelDeliveryTime;
-        private System.Windows.Forms.TextBox textBoxMainContract;
-        private System.Windows.Forms.TextBox textBoxProjectManager;
-        private System.Windows.Forms.TextBox textBoxChiefDesigner;
-        private System.Windows.Forms.TextBox textBoxSupplier;
-        private System.Windows.Forms.TextBox textBoxDeliveryTime;
-        private System.Windows.Forms.Button buttonSelectSupplier;
-        private System.Windows.Forms.Button buttonToFormLogIn;
+        private System.Windows.Forms.Button buttonAddProject;
+        private System.Windows.Forms.Button buttonDeleteProject;
+        private System.Windows.Forms.Button buttonToFormAdminMode;
+        public System.Windows.Forms.DataGridView dataGridViewProjects;
+        private System.Windows.Forms.BindingSource sQLiteConnectionBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fullname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Post;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Login;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Role;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Etc;
+        public System.Windows.Forms.Button buttonEditProject;
     }
 }

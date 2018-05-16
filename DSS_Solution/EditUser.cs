@@ -11,12 +11,21 @@ namespace DSS
     {
         private SQLiteConnection dbConnection;
 
-
         public EditUser(string[] data)
         {
             InitializeComponent();
 
-            textBoxUserFullname.Text = data[0];
+            //Заполняем поля при изменении данных пользователя
+            textBoxUserFullname.Text = data[1];
+            textBoxUserPost.Text = data[2];
+            textBoxUserLogin.Text = data[3];
+            textBoxUserPassword.Text = data[4];
+            comboBoxUserRole.SelectedItem = data[5];
+            textBoxUserEtc.Text = data[6];
+        }
+
+        public EditUser()
+        {
         }
 
         private void AddUser_Load(object sender, EventArgs e)
@@ -48,23 +57,35 @@ namespace DSS
             {
                 try
                 {
+                    //Задаем стандартный пароль 
                     if (textBoxUserPassword.Text == "")
                     {
                         string defaultPassword = "Password1";
                         textBoxUserPassword.Text = GetHashStirng(defaultPassword);
                     }
-                    else textBoxUserPassword.Text = GetHashStirng(textBoxUserPassword.Text);
+                    else textBoxUserPassword.Text = GetHashStirng(textBoxUserPassword.Text);                    
                     
-                    //Запись входных данных нового пользователя
                     SQLiteCommand setUser = dbConnection.CreateCommand();
-                    setUser.CommandText = "Insert into Users(Fullname, Post, Login, Password, Role, Etc) values (@Fullname, @Post, @Login, @Password, @Role, @Etc)";
-                    setUser.Parameters.Add("@Fullname", DbType.String).Value = textBoxUserFullname.Text;
-                    setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
-                    setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
-                    setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
-                    setUser.Parameters.Add("@Role", DbType.UInt16).Value = comboBoxUserRole.SelectedItem;
-                    setUser.Parameters.Add("@Etc", DbType.String).Value = textBoxUserEtc.Text;
-
+                    if (textBoxUserPost.Text != "" && textBoxUserFullname.Text != "")
+                    {
+                        setUser.CommandText = "Update Users set Fullname = @Fullname, Post = @Post, Password = @Password, Role = @Role, Etc = @Etc where Login = @Login";
+                        setUser.Parameters.Add("@Fullname", DbType.String).Value = textBoxUserFullname.Text;
+                        setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
+                        setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
+                        setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
+                        setUser.Parameters.Add("@Role", DbType.UInt16).Value = comboBoxUserRole.SelectedItem;
+                        setUser.Parameters.Add("@Etc", DbType.String).Value = textBoxUserEtc.Text;
+                    }
+                    else
+                    {
+                        setUser.CommandText = "Insert into Users(Fullname, Post, Login, Password, Role, Etc) values (@Fullname, @Post, @Login, @Password, @Role, @Etc)";
+                        setUser.Parameters.Add("@Fullname", DbType.String).Value = textBoxUserFullname.Text;
+                        setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
+                        setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
+                        setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
+                        setUser.Parameters.Add("@Role", DbType.UInt16).Value = comboBoxUserRole.SelectedItem;
+                        setUser.Parameters.Add("@Etc", DbType.String).Value = textBoxUserEtc.Text;
+                    }
                     setUser.ExecuteNonQuery();
 
                     Users main = this.Owner as Users;
