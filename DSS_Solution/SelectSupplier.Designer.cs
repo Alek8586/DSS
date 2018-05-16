@@ -28,47 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.buttonAddСriterion = new System.Windows.Forms.Button();
+            this.buttonRemoveCriterion = new System.Windows.Forms.Button();
+            this.listBoxAllCriterions = new System.Windows.Forms.ListBox();
+            this.listBoxSelectedCriterions = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // buttonAddСriterion
             // 
-            this.textBox1.Location = new System.Drawing.Point(19, 19);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 257);
-            this.textBox1.TabIndex = 0;
+            this.buttonAddСriterion.Location = new System.Drawing.Point(144, 20);
+            this.buttonAddСriterion.Name = "buttonAddСriterion";
+            this.buttonAddСriterion.Size = new System.Drawing.Size(120, 23);
+            this.buttonAddСriterion.TabIndex = 1;
+            this.buttonAddСriterion.Text = "Добавить >>";
+            this.buttonAddСriterion.UseVisualStyleBackColor = true;
+            this.buttonAddСriterion.Click += new System.EventHandler(this.buttonAddСriterion_Click);
             // 
-            // button1
+            // buttonRemoveCriterion
             // 
-            this.button1.Location = new System.Drawing.Point(126, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRemoveCriterion.Location = new System.Drawing.Point(144, 49);
+            this.buttonRemoveCriterion.Name = "buttonRemoveCriterion";
+            this.buttonRemoveCriterion.Size = new System.Drawing.Size(120, 23);
+            this.buttonRemoveCriterion.TabIndex = 2;
+            this.buttonRemoveCriterion.Text = "<< Удалить";
+            this.buttonRemoveCriterion.UseVisualStyleBackColor = true;
+            this.buttonRemoveCriterion.Click += new System.EventHandler(this.buttonRemoveCriterion_Click);
             // 
-            // button2
+            // listBoxAllCriterions
             // 
-            this.button2.Location = new System.Drawing.Point(126, 49);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.listBoxAllCriterions.FormattingEnabled = true;
+            this.listBoxAllCriterions.ItemHeight = 15;
+            this.listBoxAllCriterions.Location = new System.Drawing.Point(18, 19);
+            this.listBoxAllCriterions.Name = "listBoxAllCriterions";
+            this.listBoxAllCriterions.Size = new System.Drawing.Size(120, 154);
+            this.listBoxAllCriterions.Sorted = true;
+            this.listBoxAllCriterions.TabIndex = 0;
             // 
-            // textBox2
+            // listBoxSelectedCriterions
             // 
-            this.textBox2.Location = new System.Drawing.Point(208, 19);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 257);
-            this.textBox2.TabIndex = 3;
+            this.listBoxSelectedCriterions.FormattingEnabled = true;
+            this.listBoxSelectedCriterions.ItemHeight = 15;
+            this.listBoxSelectedCriterions.Location = new System.Drawing.Point(270, 19);
+            this.listBoxSelectedCriterions.Name = "listBoxSelectedCriterions";
+            this.listBoxSelectedCriterions.Size = new System.Drawing.Size(120, 154);
+            this.listBoxSelectedCriterions.TabIndex = 3;
             // 
             // SelectSupplier
             // 
@@ -77,10 +80,10 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(994, 686);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.listBoxSelectedCriterions);
+            this.Controls.Add(this.listBoxAllCriterions);
+            this.Controls.Add(this.buttonRemoveCriterion);
+            this.Controls.Add(this.buttonAddСriterion);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -92,15 +95,13 @@
             this.Text = "Выбор поставщика";
             this.Load += new System.EventHandler(this.SelectSupplier_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button buttonAddСriterion;
+        private System.Windows.Forms.Button buttonRemoveCriterion;
+        private System.Windows.Forms.ListBox listBoxAllCriterions;
+        private System.Windows.Forms.ListBox listBoxSelectedCriterions;
     }
 }
