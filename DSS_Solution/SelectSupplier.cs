@@ -136,16 +136,16 @@ namespace DSS
             //}
 
             string[,] unitWeightOfTheCriterion = new string[listBoxSelectedCriteria.Items.Count, 2];
-            for (int i = 0; i < unitWeightOfTheCriterion.GetLength(0); i++)
-            {
-                for (int k = 0; k < unitWeightOfTheCriterion.GetLength(1); k++)
-                {
-                    unitWeightOfTheCriterion[i, k] = listBoxSelectedCriteria.Items[i].ToString();
-                    unitWeightOfTheCriterion[i, k + 1] = Convert.ToString(weightOfTheCriterion[i] / summOfWeightOfAllCriteria);
+            //for (int i = 0; i < unitWeightOfTheCriterion.GetLength(0); i++)
+            //{
+            //    for (int k = 0; k < unitWeightOfTheCriterion.GetLength(1); k++)
+            //    {
+            //        unitWeightOfTheCriterion[i, k] = listBoxSelectedCriteria.Items[i].ToString();
+            //        unitWeightOfTheCriterion[i, k + 1] = Convert.ToString(weightOfTheCriterion[i] / summOfWeightOfAllCriteria);
 
-                    MessageBox.Show(unitWeightOfTheCriterion[i, k].ToString() + " = " + unitWeightOfTheCriterion[i, k + 1].ToString());
-                }
-            }
+            //        MessageBox.Show(unitWeightOfTheCriterion[i, k].ToString() + " = " + unitWeightOfTheCriterion[i, k + 1].ToString());
+            //    }
+            //}
 
             //Рассчет рейтинга каждого поставщика
             dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
@@ -153,31 +153,57 @@ namespace DSS
 
             SQLiteCommand listProjects = dbConnection.CreateCommand();
             listProjects.CommandText = "Select * from Suppliers";
-            SQLiteDataReader sql = listProjects.ExecuteReader();
+            //SQLiteDataReader sql = listProjects.ExecuteReader();
 
-            string[,] supplierslist = new string[/*sql.StepCount, sql.FieldCount*/ 10, sql.FieldCount];
 
-            for (int i = 0; i < supplierslist.GetLength(0); i++)
+            //string[,] supplierslist = new string[/*sql.StepCount, sql.FieldCount*/ 10, sql.FieldCount];
+
+            List<Suplier> supliers = new List<Suplier>();
+
+            using (var reader = listProjects.ExecuteReader())
             {
-                while (sql.Read())
+                while (reader.Read())
                 {
-                    for (int k = 0; k < supplierslist.GetLength(1); k++)
+                    Suplier suplier = new Suplier()
                     {
-                        supplierslist[i, k] = sql[k].ToString();
-                    }
+                        ID = Convert.ToInt32(reader["ID"].ToString()),
+                        Name = reader["Name"].ToString(),
+                        Class = reader["Class"].ToString(),
+                        MaterialQuality = Convert.ToInt32(reader["MaterialQuality"].ToString()),
+                        Price = Convert.ToInt32(reader["Price"].ToString()),
+                        TimeOfDelivery = Convert.ToInt32(reader["TimeOfDelivery"].ToString()),
+                        Reliability = Convert.ToInt32(reader["Reliability"].ToString())
+                    };
+                    //suplier.ID = (int)reader["ID"];
+                    var a = reader["ID"];
+                    supliers.Add(suplier);
                 }
             }
-            sql.Close();
+                
+
+            //for (int i = 0; i < supplierslist.GetLength(0); i++)
+            //{
+            //    while (sql.Read())
+            //    {
+            //        for (int k = 0; k < supplierslist.GetLength(1); k++)
+            //        {
+            //            supplierslist[i, k] = sql[k].ToString();
+            //        }
+            //    }
+            //}
+
+
+            //sql.Close();
             dbConnection.Close();
 
-            string[,] ratingOfSuppler = new string[listBoxSelectedCriteria.Items.Count, supplierslist.GetLength(0)];
+            /*string[,] ratingOfSuppler = new string[listBoxSelectedCriteria.Items.Count, supplierslist.GetLength(0)];
             for (int i = 0; i < ratingOfSuppler.GetLength(0); i++)
             {
                 for (int k = 0; k < ratingOfSuppler.GetLength(1); k++)
                 {
                     
                 }
-            }
+            }*/
 
 
 

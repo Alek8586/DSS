@@ -130,6 +130,7 @@
       <DependentUpon>SelectSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="Suplier.cs" />
     <Compile Include="Suppliers.cs">
       <SubType>Form</SubType>
     </Compile>
