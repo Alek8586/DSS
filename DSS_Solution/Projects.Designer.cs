@@ -32,10 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewProjects = new System.Windows.Forms.DataGridView();
-            this.buttonAddProject = new System.Windows.Forms.Button();
-            this.buttonEditProject = new System.Windows.Forms.Button();
-            this.buttonDeleteProject = new System.Windows.Forms.Button();
-            this.buttonToFormAdminMode = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Class = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +39,10 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeOfDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reliability = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonAddProject = new System.Windows.Forms.Button();
+            this.buttonEditProject = new System.Windows.Forms.Button();
+            this.buttonDeleteProject = new System.Windows.Forms.Button();
+            this.buttonToFormAdminMode = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,50 +101,7 @@
             this.dataGridViewProjects.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewProjects.Size = new System.Drawing.Size(582, 297);
             this.dataGridViewProjects.TabIndex = 0;
-            // 
-            // buttonAddProject
-            // 
-            this.buttonAddProject.Location = new System.Drawing.Point(615, 15);
-            this.buttonAddProject.Margin = new System.Windows.Forms.Padding(25);
-            this.buttonAddProject.Name = "buttonAddProject";
-            this.buttonAddProject.Size = new System.Drawing.Size(150, 30);
-            this.buttonAddProject.TabIndex = 1;
-            this.buttonAddProject.Text = "Новый проект";
-            this.buttonAddProject.UseVisualStyleBackColor = true;
-            this.buttonAddProject.Click += new System.EventHandler(this.buttonAddProject_Click);
-            // 
-            // buttonEditProject
-            // 
-            this.buttonEditProject.Location = new System.Drawing.Point(615, 87);
-            this.buttonEditProject.Margin = new System.Windows.Forms.Padding(15);
-            this.buttonEditProject.Name = "buttonEditProject";
-            this.buttonEditProject.Size = new System.Drawing.Size(150, 30);
-            this.buttonEditProject.TabIndex = 3;
-            this.buttonEditProject.Text = "Изменить данные";
-            this.buttonEditProject.UseVisualStyleBackColor = true;
-            this.buttonEditProject.Click += new System.EventHandler(this.buttonEditProject_Click);
-            // 
-            // buttonDeleteProject
-            // 
-            this.buttonDeleteProject.Location = new System.Drawing.Point(615, 51);
-            this.buttonDeleteProject.Margin = new System.Windows.Forms.Padding(15);
-            this.buttonDeleteProject.Name = "buttonDeleteProject";
-            this.buttonDeleteProject.Size = new System.Drawing.Size(150, 30);
-            this.buttonDeleteProject.TabIndex = 2;
-            this.buttonDeleteProject.Text = "Удалить проект";
-            this.buttonDeleteProject.UseVisualStyleBackColor = true;
-            this.buttonDeleteProject.Click += new System.EventHandler(this.buttonDeleteProject_Click);
-            // 
-            // buttonToFormAdminMode
-            // 
-            this.buttonToFormAdminMode.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonToFormAdminMode.Location = new System.Drawing.Point(625, 287);
-            this.buttonToFormAdminMode.Name = "buttonToFormAdminMode";
-            this.buttonToFormAdminMode.Size = new System.Drawing.Size(140, 25);
-            this.buttonToFormAdminMode.TabIndex = 6;
-            this.buttonToFormAdminMode.Text = "Назад";
-            this.buttonToFormAdminMode.UseVisualStyleBackColor = true;
-            this.buttonToFormAdminMode.Click += new System.EventHandler(this.buttonToFormAdminMode_Click);
+            this.dataGridViewProjects.TabStop = false;
             // 
             // ID
             // 
@@ -209,6 +166,50 @@
             this.Reliability.Name = "Reliability";
             this.Reliability.ReadOnly = true;
             this.Reliability.Width = 105;
+            // 
+            // buttonAddProject
+            // 
+            this.buttonAddProject.Location = new System.Drawing.Point(615, 15);
+            this.buttonAddProject.Margin = new System.Windows.Forms.Padding(25);
+            this.buttonAddProject.Name = "buttonAddProject";
+            this.buttonAddProject.Size = new System.Drawing.Size(150, 30);
+            this.buttonAddProject.TabIndex = 1;
+            this.buttonAddProject.Text = "Новый проект";
+            this.buttonAddProject.UseVisualStyleBackColor = true;
+            this.buttonAddProject.Click += new System.EventHandler(this.buttonAddProject_Click);
+            // 
+            // buttonEditProject
+            // 
+            this.buttonEditProject.Location = new System.Drawing.Point(615, 87);
+            this.buttonEditProject.Margin = new System.Windows.Forms.Padding(15);
+            this.buttonEditProject.Name = "buttonEditProject";
+            this.buttonEditProject.Size = new System.Drawing.Size(150, 30);
+            this.buttonEditProject.TabIndex = 3;
+            this.buttonEditProject.Text = "Изменить данные";
+            this.buttonEditProject.UseVisualStyleBackColor = true;
+            this.buttonEditProject.Click += new System.EventHandler(this.buttonEditProject_Click);
+            // 
+            // buttonDeleteProject
+            // 
+            this.buttonDeleteProject.Location = new System.Drawing.Point(615, 51);
+            this.buttonDeleteProject.Margin = new System.Windows.Forms.Padding(15);
+            this.buttonDeleteProject.Name = "buttonDeleteProject";
+            this.buttonDeleteProject.Size = new System.Drawing.Size(150, 30);
+            this.buttonDeleteProject.TabIndex = 2;
+            this.buttonDeleteProject.Text = "Удалить проект";
+            this.buttonDeleteProject.UseVisualStyleBackColor = true;
+            this.buttonDeleteProject.Click += new System.EventHandler(this.buttonDeleteProject_Click);
+            // 
+            // buttonToFormAdminMode
+            // 
+            this.buttonToFormAdminMode.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonToFormAdminMode.Location = new System.Drawing.Point(625, 287);
+            this.buttonToFormAdminMode.Name = "buttonToFormAdminMode";
+            this.buttonToFormAdminMode.Size = new System.Drawing.Size(140, 25);
+            this.buttonToFormAdminMode.TabIndex = 6;
+            this.buttonToFormAdminMode.Text = "Назад";
+            this.buttonToFormAdminMode.UseVisualStyleBackColor = true;
+            this.buttonToFormAdminMode.Click += new System.EventHandler(this.buttonToFormAdminMode_Click);
             // 
             // Projects
             // 
