@@ -121,6 +121,8 @@ namespace DSS
                 weightOfTheCriterion[i] = countOfSelectedCriteria;
                 summOfWeightOfAllCriteria += countOfSelectedCriteria;
                 countOfSelectedCriteria--;
+
+                MessageBox.Show(weightOfTheCriterion[i].ToString());
             }
 
             /*
