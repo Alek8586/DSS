@@ -145,24 +145,24 @@ namespace DSS
             sqlSuppliersList.CommandText = "Select * from Suppliers";
 
             List<ListOfTheSuppliers> listOfTheSuppliers = new List<ListOfTheSuppliers>();
-            ListOfTheSuppliers suplliers = new ListOfTheSuppliers();
+            ListOfTheSuppliers suppliers = new ListOfTheSuppliers();
 
             using (var sqlReader = sqlSuppliersList.ExecuteReader())
             {
                 while (sqlReader.Read())
                 {
                     
-                    suplliers.ID = Convert.ToInt32(sqlReader["ID"].ToString());
-                    suplliers.Name = sqlReader["Name"].ToString();
-                    suplliers.Class = Convert.ToInt32(sqlReader["Class"].ToString());
-                    suplliers.MaterialQuality = Convert.ToInt32(sqlReader["MaterialQuality"].ToString());
-                    suplliers.Price = Convert.ToInt32(sqlReader["Price"].ToString());
-                    suplliers.TimeOfDelivery = Convert.ToInt32(sqlReader["TimeOfDelivery"].ToString());
-                    suplliers.Reliability = Convert.ToInt32(sqlReader["Reliability"].ToString());
+                    suppliers.ID = Convert.ToInt32(sqlReader["ID"].ToString());
+                    suppliers.Name = sqlReader["Name"].ToString();
+                    suppliers.Class = Convert.ToInt32(sqlReader["Class"].ToString());
+                    suppliers.MaterialQuality = Convert.ToInt32(sqlReader["MaterialQuality"].ToString());
+                    suppliers.Price = Convert.ToInt32(sqlReader["Price"].ToString());
+                    suppliers.TimeOfDelivery = Convert.ToInt32(sqlReader["TimeOfDelivery"].ToString());
+                    suppliers.Reliability = Convert.ToInt32(sqlReader["Reliability"].ToString());
 
-                    listOfTheSuppliers.Add(suplliers);
+                    listOfTheSuppliers.Add(suppliers);
 
-                    MessageBox.Show(suplliers.ID.ToString() + " - " + suplliers.Name.ToString() + " - " + suplliers.Class.ToString() + " - " + suplliers.MaterialQuality.ToString() + " - " + suplliers.Price.ToString() + " - " + suplliers.TimeOfDelivery.ToString() + " - " + suplliers.Reliability.ToString(), "ВНИМАНИЕ! Спасибо за внимание!");
+                    MessageBox.Show(suppliers.ID.ToString() + " - " + suppliers.Name.ToString() + " - " + suppliers.Class.ToString() + " - " + suppliers.MaterialQuality.ToString() + " - " + suppliers.Price.ToString() + " - " + suppliers.TimeOfDelivery.ToString() + " - " + suppliers.Reliability.ToString(), "ВНИМАНИЕ! Спасибо за внимание!");
 
                 }
             }
@@ -228,13 +228,13 @@ namespace DSS
 
             for (int i = 0; i < unitWeightOfTheCriteria.Count; i++)
             {
-                raiting.ID = suplliers.ID;
-                raiting.Name = suplliers.Name;
-                raiting.Class = suplliers.Class * unitWeight.Class;
-                raiting.MaterialQuality = suplliers.MaterialQuality * unitWeight.MaterialQuality;
-                raiting.Price = suplliers.Price * unitWeight.Price;
-                raiting.TimeOfDelivery = suplliers.TimeOfDelivery * unitWeight.TimeOfDelivery;
-                raiting.Reliability = suplliers.Reliability * unitWeight.Reliability;
+                raiting.ID = suppliers.ID;
+                raiting.Name = suppliers.Name;
+                raiting.Class = suppliers.Class * unitWeight.Class;
+                raiting.MaterialQuality = suppliers.MaterialQuality * unitWeight.MaterialQuality;
+                raiting.Price = suppliers.Price * unitWeight.Price;
+                raiting.TimeOfDelivery = suppliers.TimeOfDelivery * unitWeight.TimeOfDelivery;
+                raiting.Reliability = suppliers.Reliability * unitWeight.Reliability;
 
                 raitingOfTheSuppliers.Add(raiting);
 
