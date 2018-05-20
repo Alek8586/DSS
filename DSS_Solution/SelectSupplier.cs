@@ -145,13 +145,12 @@ namespace DSS
             sqlSuppliersList.CommandText = "Select * from Suppliers";
 
             List<ListOfTheSuppliers> listOfTheSuppliers = new List<ListOfTheSuppliers>();
-            ListOfTheSuppliers suppliers = new ListOfTheSuppliers();
 
             using (var sqlReader = sqlSuppliersList.ExecuteReader())
             {
                 while (sqlReader.Read())
                 {
-                    
+                    ListOfTheSuppliers suppliers = new ListOfTheSuppliers();
                     suppliers.ID = Convert.ToInt32(sqlReader["ID"].ToString());
                     suppliers.Name = sqlReader["Name"].ToString();
                     suppliers.Class = Convert.ToInt32(sqlReader["Class"].ToString());
@@ -162,7 +161,10 @@ namespace DSS
 
                     listOfTheSuppliers.Add(suppliers);
 
-                    MessageBox.Show(suppliers.ID.ToString() + " - " + suppliers.Name.ToString() + " - " + suppliers.Class.ToString() + " - " + suppliers.MaterialQuality.ToString() + " - " + suppliers.Price.ToString() + " - " + suppliers.TimeOfDelivery.ToString() + " - " + suppliers.Reliability.ToString(), "ВНИМАНИЕ! Спасибо за внимание!");
+                    //MessageBox.Show(suppliers.ID.ToString() + " - " + suppliers.Name.ToString() + " - " + 
+                    //    suppliers.Class.ToString() + " - " + suppliers.MaterialQuality.ToString() + " - " + 
+                    //    suppliers.Price.ToString() + " - " + suppliers.TimeOfDelivery.ToString() + " - " + 
+                    //    suppliers.Reliability.ToString(), "ВНИМАНИЕ! Спасибо за внимание!");
 
                 }
             }
@@ -172,7 +174,9 @@ namespace DSS
             //Выводит последнюю запись!
             foreach (ListOfTheSuppliers i in listOfTheSuppliers)
             {
-                MessageBox.Show(i.ID.ToString() + ", " + i.Name.ToString() + ", " + i.Class.ToString() + ", " + i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() + ", " + i.Reliability.ToString());
+                MessageBox.Show(i.ID.ToString() + ", " + i.Name.ToString() + ", " + i.Class.ToString() + ", " + 
+                    i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() +
+                    ", " + i.Reliability.ToString());
             }
 
             List<UnitWeightOfTheCriteria> unitWeightOfTheCriteria = new List<UnitWeightOfTheCriteria>();
@@ -226,21 +230,21 @@ namespace DSS
             List<RaitingOfTheSuppliers> raitingOfTheSuppliers = new List<RaitingOfTheSuppliers>();
             RaitingOfTheSuppliers raiting = new RaitingOfTheSuppliers();
 
-            for (int i = 0; i < unitWeightOfTheCriteria.Count; i++)
-            {
-                raiting.ID = suppliers.ID;
-                raiting.Name = suppliers.Name;
-                raiting.Class = suppliers.Class * unitWeight.Class;
-                raiting.MaterialQuality = suppliers.MaterialQuality * unitWeight.MaterialQuality;
-                raiting.Price = suppliers.Price * unitWeight.Price;
-                raiting.TimeOfDelivery = suppliers.TimeOfDelivery * unitWeight.TimeOfDelivery;
-                raiting.Reliability = suppliers.Reliability * unitWeight.Reliability;
+            //for (int i = 0; i < unitWeightOfTheCriteria.Count; i++)
+            //{
+            //    raiting.ID = suppliers.ID;
+            //    raiting.Name = suppliers.Name;
+            //    raiting.Class = suppliers.Class * unitWeight.Class;
+            //    raiting.MaterialQuality = suppliers.MaterialQuality * unitWeight.MaterialQuality;
+            //    raiting.Price = suppliers.Price * unitWeight.Price;
+            //    raiting.TimeOfDelivery = suppliers.TimeOfDelivery * unitWeight.TimeOfDelivery;
+            //    raiting.Reliability = suppliers.Reliability * unitWeight.Reliability;
 
-                raitingOfTheSuppliers.Add(raiting);
+            //    raitingOfTheSuppliers.Add(raiting);
 
-                raitingOfTheSuppliers.Sort(delegate (RaitingOfTheSuppliers raitingOfTheSuppliers1, RaitingOfTheSuppliers raitingOfTheSuppliers2) { return raitingOfTheSuppliers1.ID.CompareTo(raitingOfTheSuppliers2.ID); });
+            //    raitingOfTheSuppliers.Sort(delegate (RaitingOfTheSuppliers raitingOfTheSuppliers1, RaitingOfTheSuppliers raitingOfTheSuppliers2) { return raitingOfTheSuppliers1.ID.CompareTo(raitingOfTheSuppliers2.ID); });
 
-            }
+            //}
                 //MessageBox.Show("ID = " + raiting.ID.ToString() + "\nName= " + raiting.Name.ToString() + "\nClass = " + raiting.Class.ToString() + " \nMatrialQuality = " + raiting.MaterialQuality.ToString() + "\nPrice = " + raiting.Price.ToString() + "\nTimeOfDelivery = " + raiting.TimeOfDelivery.ToString() + "\nReliability = " + raiting.Reliability.ToString() + "\nСумма всех критериев = " + summOfWeightOfAllCriteria.ToString());
         }
     }
