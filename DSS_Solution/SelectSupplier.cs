@@ -134,9 +134,16 @@ namespace DSS
         {
             /*
              * Рассчет рейтинга каждого поставщика:
-             * * Рассчет удельного веса каждого критерия
+             * * Заполнение списка поставщиков с экспертными оценками
+             * * Присвоение выбранному критерию веса
+             * * Рассчет удельного значения каждого критерия
+             * * Рассчет рейтинга поставщика по каждому критерию
+             * * Сортировка по убыванию
+             * * Передача данных в форму решения по выбору поставщика
             */
 
+
+            //Заполнение списка поставщиков с экспертными оценками
             dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
             dbConnection.Open();
 
@@ -165,21 +172,21 @@ namespace DSS
             dbConnection.Close();
 
             //Проверка записи данных в экземпляр класса
-            foreach (ListOfTheSuppliers i in listOfTheSuppliers)
-            {
-                MessageBox.Show(i.ID.ToString() + ", " + i.Name.ToString() + ", " + i.Class.ToString() + ", " + 
-                    i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() +
-                    ", " + i.Reliability.ToString());
-            }
+            //foreach (ListOfTheSuppliers i in listOfTheSuppliers)
+            //{
+            //    MessageBox.Show(i.ID.ToString() + ", " + i.Name.ToString() + ", " + i.Class.ToString() + ", " + 
+            //        i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() +
+            //        ", " + i.Reliability.ToString());
+            //}
 
+            //Присвоение выбранному критерию веса
             List<UnitWeightOfTheCriteria> unitWeightOfTheCriteria = new List<UnitWeightOfTheCriteria>();
-
             int countOfSelectedCriteria = listBoxSelectedCriteria.Items.Count;
             int summOfWeightOfAllCriteria = 0;
-            UnitWeightOfTheCriteria unitWeight = new UnitWeightOfTheCriteria();
 
-            for (int i = 0; i < listOfTheSuppliers.Count; i++)
+            foreach (UnitWeightOfTheCriteria i in unitWeightOfTheCriteria)
             {
+                UnitWeightOfTheCriteria unitWeight = new UnitWeightOfTheCriteria();
 
                 if (listBoxSelectedCriteria.Items.Contains("Class"))
                 {
@@ -209,15 +216,15 @@ namespace DSS
 
                 summOfWeightOfAllCriteria = Convert.ToInt32(unitWeight.Class + unitWeight.MaterialQuality + unitWeight.Price + unitWeight.TimeOfDelivery + unitWeight.Reliability);
 
+                //Рассчет удельного значения каждого критерия
                 unitWeight.Class /= summOfWeightOfAllCriteria;
                 unitWeight.MaterialQuality /= summOfWeightOfAllCriteria;
                 unitWeight.Price /= summOfWeightOfAllCriteria;
                 unitWeight.TimeOfDelivery /= summOfWeightOfAllCriteria;
                 unitWeight.Reliability /= summOfWeightOfAllCriteria;
 
+                unitWeightOfTheCriteria.Add(unitWeight);
             }
-            unitWeightOfTheCriteria.Add(unitWeight);
-
 
             //Проверка записи данных в экземпляр класса
             foreach (UnitWeightOfTheCriteria i in unitWeightOfTheCriteria)
@@ -227,13 +234,13 @@ namespace DSS
                     ", " + i.Reliability.ToString());
             }
 
+            //Рассчет рейтинга поставщика по каждому критерию
             List<RaitingOfTheSuppliers> raitingOfTheSuppliers = new List<RaitingOfTheSuppliers>();
-            
-
             foreach (RaitingOfTheSuppliers i in raitingOfTheSuppliers)
             {
                 RaitingOfTheSuppliers raiting = new RaitingOfTheSuppliers();
                 ListOfTheSuppliers suppliers = new ListOfTheSuppliers();
+                UnitWeightOfTheCriteria unitWeight = new UnitWeightOfTheCriteria();
 
                 raiting.ID = suppliers.ID;
                 raiting.Name = suppliers.Name;
@@ -246,6 +253,9 @@ namespace DSS
                 raitingOfTheSuppliers.Add(raiting);
             }
 
+            //Сортировка по убыванию
+            raitingOfTheSuppliers.Sort(delegate (RaitingOfTheSuppliers raiting1, RaitingOfTheSuppliers raiting2) { return raiting1.ID.CompareTo(raiting2.ID); });
+
             //Проверка записи данных в экземпляр класса
             foreach (RaitingOfTheSuppliers i in raitingOfTheSuppliers)
             {
@@ -253,6 +263,9 @@ namespace DSS
                     i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() +
                     ", " + i.Reliability.ToString());
             }
+
+            //Передача данных в форму решения по выбору поставщика
+
         }
     }
 }
