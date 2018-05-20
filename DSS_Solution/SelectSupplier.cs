@@ -1,12 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DSS
@@ -22,38 +17,22 @@ namespace DSS
 
         private void SelectSupplier_Load(object sender, EventArgs e)
         {
-            dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
-            dbConnection.Open();
-
-            SQLiteCommand listUsers = dbConnection.CreateCommand();
-            listUsers.CommandText = "pragma table_info(Suppliers)";
-            SQLiteDataReader sql = listUsers.ExecuteReader();
-
-            while (sql.Read())
-            {
-                listBoxAllCriterions.Items.Add(sql[1].ToString());
-                listBoxAllCriterions.Items.Remove("ID");
-                listBoxAllCriterions.Items.Remove("Name");
-            }
-            sql.Close();
-
-            dbConnection.Close();
-
+            ListOfTheCriteria();
         }
 
         private void buttonAddСriterion_Click(object sender, EventArgs e)
         {
             try
             {
-                if (listBoxAllCriterions.SelectedItem != null)
-                {
-                    AddCriterion();
-                }
-                else
-                {
-                    listBoxAllCriterions.SetSelected(listBoxAllCriterions.TopIndex, true);
-                    AddCriterion();
-                }
+            if (listBoxAllCriteria.SelectedItem != null)
+            {
+                AddCriterion();
+            }
+            else
+            {
+                listBoxAllCriteria.SetSelected(listBoxAllCriteria.TopIndex, true);
+                AddCriterion();
+            }
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -65,13 +44,14 @@ namespace DSS
         {
             try
             {
+
                 if (listBoxSelectedCriteria.SelectedItem != null)
                 {
                     RemoveCriterion();
                 }
                 else
                 {
-                    listBoxSelectedCriteria.SetSelected(listBoxAllCriterions.TopIndex, true);
+                    listBoxSelectedCriteria.SetSelected(listBoxAllCriteria.TopIndex, true);
                     RemoveCriterion();
                 }
             }
@@ -86,9 +66,31 @@ namespace DSS
             if (listBoxSelectedCriteria.Items.Count > 0)
             {
                 SelectionOfTheSupplier();
+
+                ResultOfTheSelection ResultOfTheSelectionForm = new ResultOfTheSelection();
+                ResultOfTheSelectionForm.Owner = this;
+                ResultOfTheSelectionForm.ShowDialog();
+
             }
 
         }
+
+        private void buttonListboxSelectedCriteriaOneStepHigher_Click(object sender, EventArgs e)
+        {
+            if (listBoxSelectedCriteria.Items.Count > 0)
+            {
+                if (listBoxSelectedCriteria.TopIndex != listBoxSelectedCriteria.SelectedIndex)
+                {
+                    listBoxSelectedCriteria.TopIndex = listBoxSelectedCriteria.SelectedIndex;
+                }
+            }
+        }
+
+        private void buttonListboxSelectedCriteriaOneStepBelow_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void buttonBackToFormEditProject_Click(object sender, EventArgs e)
         {
@@ -97,156 +99,149 @@ namespace DSS
 
          private void AddCriterion()
         {
-            listBoxSelectedCriteria.Items.Add(listBoxAllCriterions.SelectedItem);
-            listBoxAllCriterions.Items.Remove(listBoxAllCriterions.SelectedItem);
+            listBoxSelectedCriteria.Items.Add(listBoxAllCriteria.SelectedItem);
+            listBoxAllCriteria.Items.Remove(listBoxAllCriteria.SelectedItem);
         }
 
         private void RemoveCriterion()
         {
-            listBoxAllCriterions.Items.Add(listBoxSelectedCriteria.SelectedItem);
+            listBoxAllCriteria.Items.Add(listBoxSelectedCriteria.SelectedItem);
             listBoxSelectedCriteria.Items.Remove(listBoxSelectedCriteria.SelectedItem);
         }
 
-       private string SelectionOfTheSupplier()
+        private void ListOfTheCriteria()
         {
-            //Заполняем массив выбранными критериями
-            int countOfSelectedCriteria = listBoxSelectedCriteria.Items.Count;
-            int[] selectedCriteria = new int[countOfSelectedCriteria];
-            double[] weightOfTheCriterion = new double[countOfSelectedCriteria];
-            int summOfWeightOfAllCriteria = 0;
-
-            for (int i = 0; i < selectedCriteria.Length; i++)
-            {
-                selectedCriteria[i] = listBoxSelectedCriteria.Items.IndexOf(listBoxSelectedCriteria.Items[i].ToString());
-                weightOfTheCriterion[i] = countOfSelectedCriteria;
-                summOfWeightOfAllCriteria += countOfSelectedCriteria;
-                countOfSelectedCriteria--;
-
-                MessageBox.Show(weightOfTheCriterion[i].ToString());
-            }
-
-            /*
-             * Рассчет удельного веса каждого критерия
-             * Оценивание веса каждого выбранного показателя в общей совокупности показателей
-            */
-            //double[] unitWeightOfTheCriterion = new double[weightOfTheCriterion.Length];            
-
-            //for (int i = 0; i < unitWeightOfTheCriterion.Length; i++)
-            //{
-            //    unitWeightOfTheCriterion[i] = weightOfTheCriterion[i] / summOfWeightOfAllCriteria;
-            //    //MessageBox.Show(Math.Round(unitWeightOfTheCriterion[i], 1).ToString(), "Внимание!");
-            //}
-
-            string[,] unitWeightOfTheCriterion = new string[listBoxSelectedCriteria.Items.Count, 2];
-            //for (int i = 0; i < unitWeightOfTheCriterion.GetLength(0); i++)
-            //{
-            //    for (int k = 0; k < unitWeightOfTheCriterion.GetLength(1); k++)
-            //    {
-            //        unitWeightOfTheCriterion[i, k] = listBoxSelectedCriteria.Items[i].ToString();
-            //        unitWeightOfTheCriterion[i, k + 1] = Convert.ToString(weightOfTheCriterion[i] / summOfWeightOfAllCriteria);
-
-            //        MessageBox.Show(unitWeightOfTheCriterion[i, k].ToString() + " = " + unitWeightOfTheCriterion[i, k + 1].ToString());
-            //    }
-            //}
-
-            //Рассчет рейтинга каждого поставщика
             dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
             dbConnection.Open();
 
-            SQLiteCommand listProjects = dbConnection.CreateCommand();
-            listProjects.CommandText = "Select * from Suppliers";
-            //SQLiteDataReader sql = listProjects.ExecuteReader();
+            SQLiteCommand listUsers = dbConnection.CreateCommand();
+            listUsers.CommandText = "pragma table_info(Suppliers)";
+            SQLiteDataReader sqlCommand = listUsers.ExecuteReader();
 
-
-            //string[,] supplierslist = new string[/*sql.StepCount, sql.FieldCount*/ 10, sql.FieldCount];
-
-            List<Suplier> supliers = new List<Suplier>();
-
-            using (var reader = listProjects.ExecuteReader())
+            using (sqlCommand)
             {
-                while (reader.Read())
+                while (sqlCommand.Read())
                 {
-                    Suplier suplier = new Suplier()
-                    {
-                        ID = Convert.ToInt32(reader["ID"].ToString()),
-                        Name = reader["Name"].ToString(),
-                        Class = reader["Class"].ToString(),
-                        MaterialQuality = Convert.ToInt32(reader["MaterialQuality"].ToString()),
-                        Price = Convert.ToInt32(reader["Price"].ToString()),
-                        TimeOfDelivery = Convert.ToInt32(reader["TimeOfDelivery"].ToString()),
-                        Reliability = Convert.ToInt32(reader["Reliability"].ToString())
-                    };
-                    //suplier.ID = (int)reader["ID"];
-                    var a = reader["ID"];
-                    supliers.Add(suplier);
+                    listBoxAllCriteria.Items.Add(sqlCommand[1].ToString());
+                    listBoxAllCriteria.Items.Remove("ID");
+                    listBoxAllCriteria.Items.Remove("Name");
                 }
+
             }
-                
-
-            //for (int i = 0; i < supplierslist.GetLength(0); i++)
-            //{
-            //    while (sql.Read())
-            //    {
-            //        for (int k = 0; k < supplierslist.GetLength(1); k++)
-            //        {
-            //            supplierslist[i, k] = sql[k].ToString();
-            //        }
-            //    }
-            //}
-
-
-            //sql.Close();
             dbConnection.Close();
-
-            /*string[,] ratingOfSuppler = new string[listBoxSelectedCriteria.Items.Count, supplierslist.GetLength(0)];
-            for (int i = 0; i < ratingOfSuppler.GetLength(0); i++)
-            {
-                for (int k = 0; k < ratingOfSuppler.GetLength(1); k++)
-                {
-                    
-                }
-            }*/
-
-
-
-            //Сравнение полученных результатов
-
-
-            return null;
         }
 
-        private string listOfSupplier()
+        private void SelectionOfTheSupplier()
         {
-            try
+            /*
+             * Рассчет рейтинга каждого поставщика:
+             * * Рассчет удельного веса каждого критерия
+            */
+
+            dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
+            dbConnection.Open();
+
+            SQLiteCommand sqlSuppliersList = dbConnection.CreateCommand();
+            sqlSuppliersList.CommandText = "Select * from Suppliers";
+
+            List<ListOfTheSuppliers> listOfTheSuppliers = new List<ListOfTheSuppliers>();
+            ListOfTheSuppliers suplliers = new ListOfTheSuppliers();
+
+            using (var sqlReader = sqlSuppliersList.ExecuteReader())
             {
-            //    dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
-            //    dbConnection.Open();
+                while (sqlReader.Read())
+                {
+                    
+                    suplliers.ID = Convert.ToInt32(sqlReader["ID"].ToString());
+                    suplliers.Name = sqlReader["Name"].ToString();
+                    suplliers.Class = Convert.ToInt32(sqlReader["Class"].ToString());
+                    suplliers.MaterialQuality = Convert.ToInt32(sqlReader["MaterialQuality"].ToString());
+                    suplliers.Price = Convert.ToInt32(sqlReader["Price"].ToString());
+                    suplliers.TimeOfDelivery = Convert.ToInt32(sqlReader["TimeOfDelivery"].ToString());
+                    suplliers.Reliability = Convert.ToInt32(sqlReader["Reliability"].ToString());
 
-            //    SQLiteCommand listProjects = dbConnection.CreateCommand();
-            //    listProjects.CommandText = "Select * from Suppliers";
-            //    SQLiteDataReader sql = listProjects.ExecuteReader();
+                    listOfTheSuppliers.Add(suplliers);
 
-            //    string[,] supplierslist = new string[/*sql.StepCount, sql.FieldCount*/ 10, sql.FieldCount];
+                    MessageBox.Show(suplliers.ID.ToString() + " - " + suplliers.Name.ToString() + " - " + suplliers.Class.ToString() + " - " + suplliers.MaterialQuality.ToString() + " - " + suplliers.Price.ToString() + " - " + suplliers.TimeOfDelivery.ToString() + " - " + suplliers.Reliability.ToString(), "ВНИМАНИЕ! Спасибо за внимание!");
 
-            //    for (int i = 0; i < supplierslist.GetLength(0); i++)
-            //    {
-            //        while (sql.Read())
-            //        {
-            //            for (int k = 0; k < supplierslist.GetLength(1); k++)
-            //            {
-            //                supplierslist[i, k] = sql[k].ToString();
-            //            }
-            //        }
-            //    }
-            //    sql.Close();
-            //    dbConnection.Close(); 
+                }
             }
-            catch (SQLiteException ex)
+
+            dbConnection.Close();
+
+            //Выводит последнюю запись!
+            foreach (ListOfTheSuppliers i in listOfTheSuppliers)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(i.ID.ToString() + ", " + i.Name.ToString() + ", " + i.Class.ToString() + ", " + i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() + ", " + i.Reliability.ToString());
             }
 
-            return null;
+            List<UnitWeightOfTheCriteria> unitWeightOfTheCriteria = new List<UnitWeightOfTheCriteria>();
+            UnitWeightOfTheCriteria unitWeight = new UnitWeightOfTheCriteria();
+
+            int countOfSelectedCriteria = listBoxSelectedCriteria.Items.Count;
+            int summOfWeightOfAllCriteria = 0;
+            for (int i = 0; i < listOfTheSuppliers.Count; i++)
+            {
+                if (listBoxSelectedCriteria.Items.Contains("Class"))
+                {
+                    unitWeight.Class = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Class");
+                }
+                else unitWeight.Class = 0;
+                if (listBoxSelectedCriteria.Items.Contains("MaterialQuality"))
+                {
+                    unitWeight.MaterialQuality = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("MaterialQuality");
+                }
+                else unitWeight.MaterialQuality = 0;
+                if (listBoxSelectedCriteria.Items.Contains("Price"))
+                {
+                    unitWeight.Price = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Price");
+                }
+                else unitWeight.Price = 0;
+                if (listBoxSelectedCriteria.Items.Contains("TimeOfDelivery"))
+                {
+                    unitWeight.TimeOfDelivery = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("TimeOfDelivery");
+                }
+                else unitWeight.TimeOfDelivery = 0;
+                if (listBoxSelectedCriteria.Items.Contains("Reliability"))
+                {
+                    unitWeight.Reliability = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Reliability");
+                }
+                else unitWeight.Reliability = 0;
+
+                summOfWeightOfAllCriteria = Convert.ToInt32(unitWeight.Class + unitWeight.MaterialQuality + unitWeight.Price + unitWeight.TimeOfDelivery + unitWeight.Reliability);
+
+                unitWeight.Class /= summOfWeightOfAllCriteria;
+                unitWeight.MaterialQuality /= summOfWeightOfAllCriteria;
+                unitWeight.Price /= summOfWeightOfAllCriteria;
+                unitWeight.TimeOfDelivery /= summOfWeightOfAllCriteria;
+                unitWeight.Reliability /= summOfWeightOfAllCriteria;
+
+                unitWeightOfTheCriteria.Add(unitWeight);
+            }
+
+            //MessageBox.Show(listOfTheSuppliers.Count.ToString());
+
+            //MessageBox.Show("Class = " + unitWeight.Class.ToString() + " \nMatrialQuality = " + unitWeight.MaterialQuality.ToString() + " \nPrice = " + unitWeight.Price.ToString() + " \nTimeOfDelivery = " + unitWeight.TimeOfDelivery.ToString() + " \nReliability = " + unitWeight.Reliability.ToString() + " \nСумма всех критериев = " + summOfWeightOfAllCriteria.ToString());
+
+            List<RaitingOfTheSuppliers> raitingOfTheSuppliers = new List<RaitingOfTheSuppliers>();
+            RaitingOfTheSuppliers raiting = new RaitingOfTheSuppliers();
+
+            for (int i = 0; i < unitWeightOfTheCriteria.Count; i++)
+            {
+                raiting.ID = suplliers.ID;
+                raiting.Name = suplliers.Name;
+                raiting.Class = suplliers.Class * unitWeight.Class;
+                raiting.MaterialQuality = suplliers.MaterialQuality * unitWeight.MaterialQuality;
+                raiting.Price = suplliers.Price * unitWeight.Price;
+                raiting.TimeOfDelivery = suplliers.TimeOfDelivery * unitWeight.TimeOfDelivery;
+                raiting.Reliability = suplliers.Reliability * unitWeight.Reliability;
+
+                raitingOfTheSuppliers.Add(raiting);
+
+                raitingOfTheSuppliers.Sort(delegate (RaitingOfTheSuppliers raitingOfTheSuppliers1, RaitingOfTheSuppliers raitingOfTheSuppliers2) { return raitingOfTheSuppliers1.ID.CompareTo(raitingOfTheSuppliers2.ID); });
+
+            }
+                //MessageBox.Show("ID = " + raiting.ID.ToString() + "\nName= " + raiting.Name.ToString() + "\nClass = " + raiting.Class.ToString() + " \nMatrialQuality = " + raiting.MaterialQuality.ToString() + "\nPrice = " + raiting.Price.ToString() + "\nTimeOfDelivery = " + raiting.TimeOfDelivery.ToString() + "\nReliability = " + raiting.Reliability.ToString() + "\nСумма всех критериев = " + summOfWeightOfAllCriteria.ToString());
         }
     }
 }

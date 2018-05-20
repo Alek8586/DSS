@@ -16,17 +16,12 @@ namespace DSS
             InitializeComponent();
 
             //Заполняем поля при изменении данных пользователя
-            //А вот хуй!
             textBoxUserFullname.Text = data[1];
             textBoxUserPost.Text = data[2];
             textBoxUserLogin.Text = data[3];
             textBoxUserPassword.Text = data[4];
             comboBoxUserRole.SelectedItem = data[5];
             textBoxUserEtc.Text = data[6];
-        }
-
-        public EditUser()
-        {
         }
 
         private void AddUser_Load(object sender, EventArgs e)
