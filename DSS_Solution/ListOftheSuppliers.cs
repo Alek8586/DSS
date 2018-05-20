@@ -9,5 +9,6 @@
         public int Price { get; set; }
         public int TimeOfDelivery { get; set; }
         public int Reliability { get; set; }
+        public int ResultWeight { get; set; }
     }
 }

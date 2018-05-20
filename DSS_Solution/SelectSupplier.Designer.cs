@@ -37,7 +37,22 @@
             this.groupBoxCriteriaOfTheSelection = new System.Windows.Forms.GroupBox();
             this.buttonListboxSelectedCriteriaOneStepHigher = new System.Windows.Forms.Button();
             this.buttonListboxSelectedCriteriaOneStepBelow = new System.Windows.Forms.Button();
+            this.ClassNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.PriceNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.MaterialQualityNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.TimeOfDeliveryNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.ReliabilityNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBoxCriteriaOfTheSelection.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ClassNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterialQualityNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimeOfDeliveryNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReliabilityNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAddСriterion
@@ -138,6 +153,111 @@
             this.buttonListboxSelectedCriteriaOneStepBelow.Visible = false;
             this.buttonListboxSelectedCriteriaOneStepBelow.Click += new System.EventHandler(this.buttonListboxSelectedCriteriaOneStepBelow_Click);
             // 
+            // ClassNumericUpDown
+            // 
+            this.ClassNumericUpDown.Location = new System.Drawing.Point(138, 244);
+            this.ClassNumericUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ClassNumericUpDown.Name = "ClassNumericUpDown";
+            this.ClassNumericUpDown.Size = new System.Drawing.Size(37, 21);
+            this.ClassNumericUpDown.TabIndex = 9;
+            // 
+            // PriceNumericUpDown
+            // 
+            this.PriceNumericUpDown.Location = new System.Drawing.Point(138, 298);
+            this.PriceNumericUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.PriceNumericUpDown.Name = "PriceNumericUpDown";
+            this.PriceNumericUpDown.Size = new System.Drawing.Size(37, 21);
+            this.PriceNumericUpDown.TabIndex = 10;
+            // 
+            // MaterialQualityNumericUpDown
+            // 
+            this.MaterialQualityNumericUpDown.Location = new System.Drawing.Point(138, 271);
+            this.MaterialQualityNumericUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.MaterialQualityNumericUpDown.Name = "MaterialQualityNumericUpDown";
+            this.MaterialQualityNumericUpDown.Size = new System.Drawing.Size(37, 21);
+            this.MaterialQualityNumericUpDown.TabIndex = 11;
+            // 
+            // TimeOfDeliveryNumericUpDown
+            // 
+            this.TimeOfDeliveryNumericUpDown.Location = new System.Drawing.Point(138, 325);
+            this.TimeOfDeliveryNumericUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.TimeOfDeliveryNumericUpDown.Name = "TimeOfDeliveryNumericUpDown";
+            this.TimeOfDeliveryNumericUpDown.Size = new System.Drawing.Size(37, 21);
+            this.TimeOfDeliveryNumericUpDown.TabIndex = 12;
+            // 
+            // ReliabilityNumericUpDown
+            // 
+            this.ReliabilityNumericUpDown.Location = new System.Drawing.Point(138, 352);
+            this.ReliabilityNumericUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ReliabilityNumericUpDown.Name = "ReliabilityNumericUpDown";
+            this.ReliabilityNumericUpDown.Size = new System.Drawing.Size(37, 21);
+            this.ReliabilityNumericUpDown.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 246);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Class";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 273);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 15);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "MaterialQuality";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 300);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 15);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Price";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 327);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 15);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "TimeOfDelivery";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 354);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 15);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Reliability";
+            // 
             // SelectSupplier
             // 
             this.AcceptButton = this.buttonSelectionOfTheSupplier;
@@ -147,6 +267,16 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonBackToFormEditProject;
             this.ClientSize = new System.Drawing.Size(682, 686);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ReliabilityNumericUpDown);
+            this.Controls.Add(this.TimeOfDeliveryNumericUpDown);
+            this.Controls.Add(this.MaterialQualityNumericUpDown);
+            this.Controls.Add(this.PriceNumericUpDown);
+            this.Controls.Add(this.ClassNumericUpDown);
             this.Controls.Add(this.buttonListboxSelectedCriteriaOneStepBelow);
             this.Controls.Add(this.buttonBackToFormEditProject);
             this.Controls.Add(this.buttonListboxSelectedCriteriaOneStepHigher);
@@ -162,7 +292,13 @@
             this.Text = "Выбор поставщика";
             this.Load += new System.EventHandler(this.SelectSupplier_Load);
             this.groupBoxCriteriaOfTheSelection.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ClassNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterialQualityNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimeOfDeliveryNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReliabilityNumericUpDown)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -176,5 +312,15 @@
         private System.Windows.Forms.GroupBox groupBoxCriteriaOfTheSelection;
         private System.Windows.Forms.Button buttonListboxSelectedCriteriaOneStepBelow;
         private System.Windows.Forms.Button buttonListboxSelectedCriteriaOneStepHigher;
+        private System.Windows.Forms.NumericUpDown ClassNumericUpDown;
+        private System.Windows.Forms.NumericUpDown PriceNumericUpDown;
+        private System.Windows.Forms.NumericUpDown MaterialQualityNumericUpDown;
+        private System.Windows.Forms.NumericUpDown TimeOfDeliveryNumericUpDown;
+        private System.Windows.Forms.NumericUpDown ReliabilityNumericUpDown;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
