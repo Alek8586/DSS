@@ -67,10 +67,9 @@ namespace DSS
             {
                 SelectionOfTheSupplier();
 
-                ResultOfTheSelection ResultOfTheSelectionForm = new ResultOfTheSelection();
-                ResultOfTheSelectionForm.Owner = this;
-                ResultOfTheSelectionForm.ShowDialog();
-
+                //ResultOfTheSelection ResultOfTheSelectionForm = new ResultOfTheSelection();
+                //ResultOfTheSelectionForm.Owner = this;
+                //ResultOfTheSelectionForm.ShowDialog();
             }
 
         }
@@ -160,18 +159,12 @@ namespace DSS
                     suppliers.Reliability = Convert.ToInt32(sqlReader["Reliability"].ToString());
 
                     listOfTheSuppliers.Add(suppliers);
-
-                    //MessageBox.Show(suppliers.ID.ToString() + " - " + suppliers.Name.ToString() + " - " + 
-                    //    suppliers.Class.ToString() + " - " + suppliers.MaterialQuality.ToString() + " - " + 
-                    //    suppliers.Price.ToString() + " - " + suppliers.TimeOfDelivery.ToString() + " - " + 
-                    //    suppliers.Reliability.ToString(), "ВНИМАНИЕ! Спасибо за внимание!");
-
                 }
             }
 
             dbConnection.Close();
 
-            //Выводит последнюю запись!
+            //Проверка записи данных в экземпляр класса
             foreach (ListOfTheSuppliers i in listOfTheSuppliers)
             {
                 MessageBox.Show(i.ID.ToString() + ", " + i.Name.ToString() + ", " + i.Class.ToString() + ", " + 
@@ -180,12 +173,14 @@ namespace DSS
             }
 
             List<UnitWeightOfTheCriteria> unitWeightOfTheCriteria = new List<UnitWeightOfTheCriteria>();
-            UnitWeightOfTheCriteria unitWeight = new UnitWeightOfTheCriteria();
 
             int countOfSelectedCriteria = listBoxSelectedCriteria.Items.Count;
             int summOfWeightOfAllCriteria = 0;
+            UnitWeightOfTheCriteria unitWeight = new UnitWeightOfTheCriteria();
+
             for (int i = 0; i < listOfTheSuppliers.Count; i++)
             {
+
                 if (listBoxSelectedCriteria.Items.Contains("Class"))
                 {
                     unitWeight.Class = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Class");
@@ -220,32 +215,44 @@ namespace DSS
                 unitWeight.TimeOfDelivery /= summOfWeightOfAllCriteria;
                 unitWeight.Reliability /= summOfWeightOfAllCriteria;
 
-                unitWeightOfTheCriteria.Add(unitWeight);
+            }
+            unitWeightOfTheCriteria.Add(unitWeight);
+
+
+            //Проверка записи данных в экземпляр класса
+            foreach (UnitWeightOfTheCriteria i in unitWeightOfTheCriteria)
+            {
+                MessageBox.Show(/*i.ID.ToString() + ", " + i.Name.ToString() + ", " + */i.Class.ToString() + ", " +
+                    i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() +
+                    ", " + i.Reliability.ToString());
             }
 
-            //MessageBox.Show(listOfTheSuppliers.Count.ToString());
-
-            //MessageBox.Show("Class = " + unitWeight.Class.ToString() + " \nMatrialQuality = " + unitWeight.MaterialQuality.ToString() + " \nPrice = " + unitWeight.Price.ToString() + " \nTimeOfDelivery = " + unitWeight.TimeOfDelivery.ToString() + " \nReliability = " + unitWeight.Reliability.ToString() + " \nСумма всех критериев = " + summOfWeightOfAllCriteria.ToString());
-
             List<RaitingOfTheSuppliers> raitingOfTheSuppliers = new List<RaitingOfTheSuppliers>();
-            RaitingOfTheSuppliers raiting = new RaitingOfTheSuppliers();
+            
 
-            //for (int i = 0; i < unitWeightOfTheCriteria.Count; i++)
-            //{
-            //    raiting.ID = suppliers.ID;
-            //    raiting.Name = suppliers.Name;
-            //    raiting.Class = suppliers.Class * unitWeight.Class;
-            //    raiting.MaterialQuality = suppliers.MaterialQuality * unitWeight.MaterialQuality;
-            //    raiting.Price = suppliers.Price * unitWeight.Price;
-            //    raiting.TimeOfDelivery = suppliers.TimeOfDelivery * unitWeight.TimeOfDelivery;
-            //    raiting.Reliability = suppliers.Reliability * unitWeight.Reliability;
+            foreach (RaitingOfTheSuppliers i in raitingOfTheSuppliers)
+            {
+                RaitingOfTheSuppliers raiting = new RaitingOfTheSuppliers();
+                ListOfTheSuppliers suppliers = new ListOfTheSuppliers();
 
-            //    raitingOfTheSuppliers.Add(raiting);
+                raiting.ID = suppliers.ID;
+                raiting.Name = suppliers.Name;
+                raiting.Class = suppliers.Class * unitWeight.Class;
+                raiting.MaterialQuality = suppliers.MaterialQuality * unitWeight.MaterialQuality;
+                raiting.Price = suppliers.Price * unitWeight.Price;
+                raiting.TimeOfDelivery = suppliers.TimeOfDelivery * unitWeight.TimeOfDelivery;
+                raiting.Reliability = suppliers.Reliability * unitWeight.Reliability;
 
-            //    raitingOfTheSuppliers.Sort(delegate (RaitingOfTheSuppliers raitingOfTheSuppliers1, RaitingOfTheSuppliers raitingOfTheSuppliers2) { return raitingOfTheSuppliers1.ID.CompareTo(raitingOfTheSuppliers2.ID); });
+                raitingOfTheSuppliers.Add(raiting);
+            }
 
-            //}
-                //MessageBox.Show("ID = " + raiting.ID.ToString() + "\nName= " + raiting.Name.ToString() + "\nClass = " + raiting.Class.ToString() + " \nMatrialQuality = " + raiting.MaterialQuality.ToString() + "\nPrice = " + raiting.Price.ToString() + "\nTimeOfDelivery = " + raiting.TimeOfDelivery.ToString() + "\nReliability = " + raiting.Reliability.ToString() + "\nСумма всех критериев = " + summOfWeightOfAllCriteria.ToString());
+            //Проверка записи данных в экземпляр класса
+            foreach (RaitingOfTheSuppliers i in raitingOfTheSuppliers)
+            {
+                MessageBox.Show(i.ID.ToString() + ", " + i.Name.ToString() + ", " + i.Class.ToString() + ", " +
+                    i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() +
+                    ", " + i.Reliability.ToString());
+            }
         }
     }
 }

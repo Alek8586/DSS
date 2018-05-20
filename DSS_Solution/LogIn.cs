@@ -47,43 +47,45 @@ namespace DSS
                     SQLiteCommand command = dbConnection.CreateCommand();
                     command.CommandText = "select * from Users";
 
-                    SQLiteDataReader dataReader = command.ExecuteReader();
-                    if (dataReader.HasRows)
+                    using (var sqlReader = command.ExecuteReader())
                     {
-                        while (dataReader.Read())
+                        if (sqlReader.HasRows)
                         {
-                            if (textBoxLogInUsername.Text.Equals(dataReader["Login"]) && textBoxLogInPassword.Text.Equals(dataReader["Password"]))
+                            while (sqlReader.Read())
                             {
-                                switch (Convert.ToUInt16(dataReader["Role"]))
+                                if (textBoxLogInUsername.Text.Equals(sqlReader["Login"]) && textBoxLogInPassword.Text.Equals(sqlReader["Password"]))
                                 {
-                                    case 1:
-                                        {
-                                            FormAdminMode AdminMode = new FormAdminMode();
-                                            AdminMode.Show();
-                                            this.Hide();
+                                    switch (Convert.ToInt32(sqlReader["Role"]))
+                                    {
+                                        case 1:
+                                            {
+                                                FormAdminMode AdminMode = new FormAdminMode();
+                                                AdminMode.Show();
+                                                this.Hide();
 
-                                            break;
-                                        }
-                                    case 2:
-                                        {
-                                            FormOperatorMode OperatorMode = new FormOperatorMode();
-                                            OperatorMode.Show();
-                                            this.Hide();
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                FormOperatorMode OperatorMode = new FormOperatorMode();
+                                                OperatorMode.Show();
+                                                this.Hide();
 
-                                            break;
-                                        }
+                                                break;
+                                            }
+                                    }
+                                    textBoxLogInUsername.Clear();
+                                    textBoxLogInPassword.Clear();
                                 }
-                                textBoxLogInUsername.Clear();
-                                textBoxLogInPassword.Clear();
-                            }
-                            else
-                            {
-                                labelUsernamePassword.Text = "Неверное имя пользователя и/или пароль";
+                                else
+                                {
+                                    labelUsernamePassword.Text = "Неверное имя пользователя и/или пароль";
 
-                                break;                                                                
+                                    break;
+                                }
                             }
                         }
-                        dataReader.Close();
+
                     }
                 }
             }

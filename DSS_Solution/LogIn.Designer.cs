@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogIn));
             this.textBoxLogInUsername = new System.Windows.Forms.TextBox();
             this.textBoxLogInPassword = new System.Windows.Forms.TextBox();
             this.buttonLogIn = new System.Windows.Forms.Button();
@@ -44,29 +45,29 @@
             // textBoxLogInUsername
             // 
             this.textBoxLogInUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBoxLogInUsername.Location = new System.Drawing.Point(20, 114);
-            this.textBoxLogInUsername.Margin = new System.Windows.Forms.Padding(5);
+            this.textBoxLogInUsername.Location = new System.Drawing.Point(21, 132);
+            this.textBoxLogInUsername.Margin = new System.Windows.Forms.Padding(6);
             this.textBoxLogInUsername.Name = "textBoxLogInUsername";
-            this.textBoxLogInUsername.Size = new System.Drawing.Size(140, 21);
+            this.textBoxLogInUsername.Size = new System.Drawing.Size(163, 21);
             this.textBoxLogInUsername.TabIndex = 1;
             // 
             // textBoxLogInPassword
             // 
             this.textBoxLogInPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBoxLogInPassword.Location = new System.Drawing.Point(184, 114);
-            this.textBoxLogInPassword.Margin = new System.Windows.Forms.Padding(5, 20, 5, 5);
+            this.textBoxLogInPassword.Location = new System.Drawing.Point(196, 132);
+            this.textBoxLogInPassword.Margin = new System.Windows.Forms.Padding(6, 23, 6, 6);
             this.textBoxLogInPassword.Name = "textBoxLogInPassword";
             this.textBoxLogInPassword.PasswordChar = '*';
-            this.textBoxLogInPassword.Size = new System.Drawing.Size(140, 21);
+            this.textBoxLogInPassword.Size = new System.Drawing.Size(163, 21);
             this.textBoxLogInPassword.TabIndex = 2;
             this.textBoxLogInPassword.UseSystemPasswordChar = true;
             // 
             // buttonLogIn
             // 
-            this.buttonLogIn.Location = new System.Drawing.Point(20, 145);
-            this.buttonLogIn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 25);
+            this.buttonLogIn.Location = new System.Drawing.Point(21, 165);
+            this.buttonLogIn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 29);
             this.buttonLogIn.Name = "buttonLogIn";
-            this.buttonLogIn.Size = new System.Drawing.Size(140, 25);
+            this.buttonLogIn.Size = new System.Drawing.Size(163, 29);
             this.buttonLogIn.TabIndex = 3;
             this.buttonLogIn.Text = "Вход";
             this.buttonLogIn.UseVisualStyleBackColor = true;
@@ -75,10 +76,10 @@
             // buttonExit
             // 
             this.buttonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonExit.Location = new System.Drawing.Point(184, 145);
-            this.buttonExit.Margin = new System.Windows.Forms.Padding(5, 5, 5, 25);
+            this.buttonExit.Location = new System.Drawing.Point(196, 165);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(6, 6, 6, 29);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(140, 25);
+            this.buttonExit.Size = new System.Drawing.Size(163, 29);
             this.buttonExit.TabIndex = 4;
             this.buttonExit.Text = "Выход из системы";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -87,10 +88,11 @@
             // labelUsernamePassword
             // 
             this.labelUsernamePassword.AutoSize = true;
-            this.labelUsernamePassword.Location = new System.Drawing.Point(79, 87);
-            this.labelUsernamePassword.Margin = new System.Windows.Forms.Padding(40);
+            this.labelUsernamePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUsernamePassword.Location = new System.Drawing.Point(65, 93);
+            this.labelUsernamePassword.Margin = new System.Windows.Forms.Padding(50, 0, 50, 0);
             this.labelUsernamePassword.Name = "labelUsernamePassword";
-            this.labelUsernamePassword.Size = new System.Drawing.Size(194, 13);
+            this.labelUsernamePassword.Size = new System.Drawing.Size(248, 16);
             this.labelUsernamePassword.TabIndex = 0;
             this.labelUsernamePassword.Text = "Введите имя пользователя и пароль";
             this.labelUsernamePassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -98,10 +100,10 @@
             // buttonSetPassword
             // 
             this.buttonSetPassword.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonSetPassword.Location = new System.Drawing.Point(20, 230);
-            this.buttonSetPassword.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonSetPassword.Location = new System.Drawing.Point(21, 264);
+            this.buttonSetPassword.Margin = new System.Windows.Forms.Padding(6);
             this.buttonSetPassword.Name = "buttonSetPassword";
-            this.buttonSetPassword.Size = new System.Drawing.Size(180, 25);
+            this.buttonSetPassword.Size = new System.Drawing.Size(210, 29);
             this.buttonSetPassword.TabIndex = 5;
             this.buttonSetPassword.Text = "Задать пароль пользователю";
             this.buttonSetPassword.UseVisualStyleBackColor = true;
@@ -110,10 +112,10 @@
             // buttonHardReset
             // 
             this.buttonHardReset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonHardReset.Location = new System.Drawing.Point(249, 230);
-            this.buttonHardReset.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonHardReset.Location = new System.Drawing.Point(272, 264);
+            this.buttonHardReset.Margin = new System.Windows.Forms.Padding(6);
             this.buttonHardReset.Name = "buttonHardReset";
-            this.buttonHardReset.Size = new System.Drawing.Size(75, 25);
+            this.buttonHardReset.Size = new System.Drawing.Size(87, 29);
             this.buttonHardReset.TabIndex = 6;
             this.buttonHardReset.Text = "Сброс";
             this.buttonHardReset.UseVisualStyleBackColor = true;
@@ -122,13 +124,15 @@
             // statusStrip1
             // 
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LabelConnectionStatus,
             this.toolStripConnectionStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 261);
-            this.statusStrip1.MinimumSize = new System.Drawing.Size(345, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(-1, 299);
+            this.statusStrip1.MinimumSize = new System.Drawing.Size(25, 25);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(345, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(50, 25);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
@@ -136,20 +140,21 @@
             // LabelConnectionStatus
             // 
             this.LabelConnectionStatus.Name = "LabelConnectionStatus";
-            this.LabelConnectionStatus.Size = new System.Drawing.Size(0, 17);
+            this.LabelConnectionStatus.Size = new System.Drawing.Size(0, 20);
             // 
             // toolStripConnectionStatusLabel
             // 
             this.toolStripConnectionStatusLabel.Name = "toolStripConnectionStatusLabel";
-            this.toolStripConnectionStatusLabel.Size = new System.Drawing.Size(0, 17);
+            this.toolStripConnectionStatusLabel.Size = new System.Drawing.Size(0, 20);
             // 
             // FormLogIn
             // 
             this.AcceptButton = this.buttonLogIn;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonExit;
-            this.ClientSize = new System.Drawing.Size(344, 282);
+            this.ClientSize = new System.Drawing.Size(401, 325);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.buttonSetPassword);
             this.Controls.Add(this.labelUsernamePassword);
@@ -158,7 +163,9 @@
             this.Controls.Add(this.textBoxLogInPassword);
             this.Controls.Add(this.textBoxLogInUsername);
             this.Controls.Add(this.buttonHardReset);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormLogIn";
             this.Padding = new System.Windows.Forms.Padding(15);
