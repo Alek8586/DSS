@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
 using System.Data.SQLite;
-
+using System.Data;
 
 namespace DSS
 {
@@ -13,10 +12,47 @@ namespace DSS
         public Suppliers()
         {
             InitializeComponent();
-
         }
 
         private void Suppliers_Load(object sender, EventArgs e)
+        {
+            ListOfSuppliers();
+        }
+
+        private void buttonAddSupplier_Click(object sender, EventArgs e)
+        {
+            string[] supplierData = new string[dataGridViewSuppliers.CurrentRow.Cells.Count];
+
+            EditSupplier EditSupplierForm = new EditSupplier(supplierData);
+            EditSupplierForm.Owner = this;
+            EditSupplierForm.ShowDialog();
+        }
+
+        private void buttonEditSupplier_Click(object sender, EventArgs e)
+        {
+            //Передаем данные строки в поля формы
+            string[] supplierData = new string[dataGridViewSuppliers.CurrentRow.Cells.Count];
+            for (int i = 0; i < dataGridViewSuppliers.CurrentRow.Cells.Count; i++)
+            {
+                supplierData[i] = dataGridViewSuppliers.CurrentRow.Cells[i].Value.ToString();
+            }
+
+            EditSupplier EditSupplierForm = new EditSupplier(supplierData);
+            EditSupplierForm.Owner = this;
+            EditSupplierForm.ShowDialog();
+        }
+
+        private void buttonDeleteSupplier_Click(object sender, EventArgs e)
+        {
+            DeleteSupplier();
+        }
+
+        private void buttonToFormAdminMode_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ListOfSuppliers()
         {
             try
             {
@@ -25,135 +61,44 @@ namespace DSS
 
                 SQLiteCommand listSuppliers = dbConnection.CreateCommand();
                 listSuppliers.CommandText = "Select * from Suppliers";
-                SQLiteDataReader sql = listSuppliers.ExecuteReader();
 
-                dataGridViewSuppliers.Columns["ID"].ReadOnly = true;
+                using (var sqlReader = listSuppliers.ExecuteReader())
 
-                while (sql.Read())
-                {
-                    dataGridViewSuppliers.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString(), sql[6].ToString());
-                }
-                sql.Close();
+                    while (sqlReader.Read())
+                    {
+                        dataGridViewSuppliers.Rows.Add(sqlReader[0].ToString(), sqlReader[1].ToString(), sqlReader[2], sqlReader[3].ToString(), sqlReader[4].ToString(), sqlReader[5].ToString(), sqlReader[6].ToString(), sqlReader[7].ToString(), sqlReader[8].ToString(), sqlReader[9].ToString());
+                    }
+                dbConnection.Close();
             }
             catch (SQLiteException ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-        }
-
-        private void buttonAddSupplier_Click(object sender, EventArgs e)
-        {
-            dataGridViewSuppliers.CurrentCell = dataGridViewSuppliers[0, dataGridViewSuppliers.Rows.Count - 1];
-            dataGridViewSuppliers.BeginEdit(true);
-        }
-
-        private void buttonEditSupplier_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void buttonDeleteSupplier_Click(object sender, EventArgs e)
+        private void DeleteSupplier()
         {
-
-        }
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
+            SQLiteCommand cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "Delete from Suppliers where ID=@id";
+            cmd.Parameters.Add("@id", DbType.Int32).Value = dataGridViewSuppliers.CurrentRow.Cells[0].Value;
             try
             {
-                SQLiteCommand setSupplier = dbConnection.CreateCommand();
-                setSupplier.CommandText = "Insert into Users(Login, Role, Password, Fullname, Etc) values (@Login, @Role, @Password, @Fullname, @Etc)";
-                if (dataGridViewSuppliers.CurrentRow.Cells[0].Value == null)
-                {
-                    setSupplier.Parameters.Add("@Login", DbType.String).Value = "";
-                }
-                else setSupplier.Parameters.Add("@Login", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[0].Value.ToString();
+                //Удаление записи из таблицы в ДБ
+                dbConnection.Open();
+                cmd.ExecuteNonQuery();
+                dbConnection.Close();
 
-                if (dataGridViewSuppliers.CurrentRow.Cells[1].Value == null)
+                //Удаление строки в DGV при выбранной ячейке
+                foreach (DataGridViewCell cell in dataGridViewSuppliers.SelectedCells)
                 {
-                    setSupplier.Parameters.Add("@Role", DbType.String).Value = "";
+                    dataGridViewSuppliers.Rows.RemoveAt(cell.RowIndex);
                 }
-                else setSupplier.Parameters.Add("@Role", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[1].Value.ToString();
-
-                if (dataGridViewSuppliers.CurrentRow.Cells[2].Value == null)
-                {
-                    setSupplier.Parameters.Add("@Password", DbType.String).Value = "";
-                }
-                else setSupplier.Parameters.Add("@Password", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[2].Value.ToString();
-
-                if (dataGridViewSuppliers.CurrentRow.Cells[3].Value == null)
-                {
-                    setSupplier.Parameters.Add("@Fullname", DbType.String).Value = "";
-                }
-                else setSupplier.Parameters.Add("@Fullname", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[3].Value.ToString();
-
-                if (dataGridViewSuppliers.CurrentRow.Cells[4].Value == null)
-                {
-                    setSupplier.Parameters.Add("@Etc", DbType.String).Value = "";
-                }
-                else setSupplier.Parameters.Add("@Etc", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[4].Value.ToString();
-
-                setSupplier.ExecuteNonQuery();
-                dataGridViewSuppliers.Update();
             }
             catch (SQLiteException ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-        }
-
-        private void buttonSaveAndExit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SQLiteCommand setSupplier = dbConnection.CreateCommand();
-                setSupplier.CommandText = "Insert into Users(Login, Role, Password, Fullname, Etc) values (@Login, @Role, @Password, @Fullname, @Etc)";
-                if (dataGridViewSuppliers.CurrentRow.Cells[0].Value == null)
-                {
-                    setSupplier.Parameters.Add("@Login", DbType.String).Value = "";
-                }
-                else setSupplier.Parameters.Add("@Login", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[0].Value.ToString();
-
-                if (dataGridViewSuppliers.CurrentRow.Cells[1].Value == null)
-                {
-                    setSupplier.Parameters.Add("@Role", DbType.String).Value = "";
-                }
-                else setSupplier.Parameters.Add("@Role", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[1].Value.ToString();
-
-                if (dataGridViewSuppliers.CurrentRow.Cells[2].Value == null)
-                {
-                    setSupplier.Parameters.Add("@Password", DbType.String).Value = "";
-                }
-                else setSupplier.Parameters.Add("@Password", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[2].Value.ToString();
-
-                if (dataGridViewSuppliers.CurrentRow.Cells[3].Value == null)
-                {
-                    setSupplier.Parameters.Add("@Fullname", DbType.String).Value = "";
-                }
-                else setSupplier.Parameters.Add("@Fullname", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[3].Value.ToString();
-
-                if (dataGridViewSuppliers.CurrentRow.Cells[4].Value == null)
-                {
-                    setSupplier.Parameters.Add("@Etc", DbType.String).Value = "";
-                }
-                else setSupplier.Parameters.Add("@Etc", DbType.String).Value = dataGridViewSuppliers.CurrentRow.Cells[4].Value.ToString();
-
-                setSupplier.ExecuteNonQuery();
-                dataGridViewSuppliers.Update();
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-
-            this.Close();
-            dbConnection.Close();
-        }
-
-        private void buttonToFormAdminMode_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            dbConnection.Close();
         }
     }
 }

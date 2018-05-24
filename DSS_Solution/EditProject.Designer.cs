@@ -28,119 +28,123 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelProjectLogin = new System.Windows.Forms.Label();
+            this.labelProjectName = new System.Windows.Forms.Label();
             this.textBoxProjectName = new System.Windows.Forms.TextBox();
-            this.labelProjectPassword = new System.Windows.Forms.Label();
+            this.labelProjectMainContract = new System.Windows.Forms.Label();
             this.textBoxProjectMainContract = new System.Windows.Forms.TextBox();
-            this.labelProjectRole = new System.Windows.Forms.Label();
-            this.labelProjectPost = new System.Windows.Forms.Label();
+            this.labelProjectShippingDate = new System.Windows.Forms.Label();
+            this.labelProjectManager = new System.Windows.Forms.Label();
+            this.textBoxProjectManager = new System.Windows.Forms.TextBox();
+            this.labelProjectChiefDesigner = new System.Windows.Forms.Label();
             this.textBoxProjectChiefDesigner = new System.Windows.Forms.TextBox();
-            this.labelProjectFullname = new System.Windows.Forms.Label();
-            this.textBoxProjectSupplierName = new System.Windows.Forms.TextBox();
-            this.labelProjectEtc = new System.Windows.Forms.Label();
-            this.textBoxProjectDeliveryTime = new System.Windows.Forms.TextBox();
+            this.labelProjectSupplier = new System.Windows.Forms.Label();
+            this.textBoxProjectSupplier = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonSaveAndClose = new System.Windows.Forms.Button();
             this.buttonBackToProjectsForm = new System.Windows.Forms.Button();
             this.buttonSelectSupplier = new System.Windows.Forms.Button();
-            this.textBoxProjectManager = new System.Windows.Forms.TextBox();
+            this.textBoxProjectShippingDate = new System.Windows.Forms.TextBox();
+            this.labelProjectOfficer = new System.Windows.Forms.Label();
+            this.textBoxProjectOfficer = new System.Windows.Forms.TextBox();
+            this.labelProjectStatus = new System.Windows.Forms.Label();
+            this.textBoxProjectStatus = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // labelProjectLogin
+            // labelProjectName
             // 
-            this.labelProjectLogin.AutoSize = true;
-            this.labelProjectLogin.Location = new System.Drawing.Point(18, 15);
-            this.labelProjectLogin.Name = "labelProjectLogin";
-            this.labelProjectLogin.Size = new System.Drawing.Size(118, 15);
-            this.labelProjectLogin.TabIndex = 0;
-            this.labelProjectLogin.Text = "Имя пользователя";
+            this.labelProjectName.AutoSize = true;
+            this.labelProjectName.Location = new System.Drawing.Point(18, 15);
+            this.labelProjectName.Name = "labelProjectName";
+            this.labelProjectName.Size = new System.Drawing.Size(95, 15);
+            this.labelProjectName.TabIndex = 0;
+            this.labelProjectName.Text = "Наименование";
             // 
             // textBoxProjectName
             // 
             this.textBoxProjectName.Location = new System.Drawing.Point(21, 33);
             this.textBoxProjectName.Name = "textBoxProjectName";
-            this.textBoxProjectName.Size = new System.Drawing.Size(100, 21);
+            this.textBoxProjectName.Size = new System.Drawing.Size(150, 21);
             this.textBoxProjectName.TabIndex = 1;
             this.textBoxProjectName.WordWrap = false;
             // 
-            // labelProjectPassword
+            // labelProjectMainContract
             // 
-            this.labelProjectPassword.AutoSize = true;
-            this.labelProjectPassword.Location = new System.Drawing.Point(18, 57);
-            this.labelProjectPassword.Name = "labelProjectPassword";
-            this.labelProjectPassword.Size = new System.Drawing.Size(161, 15);
-            this.labelProjectPassword.TabIndex = 2;
-            this.labelProjectPassword.Text = "Пароль для пользователя";
+            this.labelProjectMainContract.AutoSize = true;
+            this.labelProjectMainContract.Location = new System.Drawing.Point(18, 57);
+            this.labelProjectMainContract.Name = "labelProjectMainContract";
+            this.labelProjectMainContract.Size = new System.Drawing.Size(120, 15);
+            this.labelProjectMainContract.TabIndex = 2;
+            this.labelProjectMainContract.Text = "Головной контракт";
             // 
             // textBoxProjectMainContract
             // 
             this.textBoxProjectMainContract.Location = new System.Drawing.Point(21, 75);
             this.textBoxProjectMainContract.Name = "textBoxProjectMainContract";
-            this.textBoxProjectMainContract.Size = new System.Drawing.Size(100, 21);
+            this.textBoxProjectMainContract.Size = new System.Drawing.Size(150, 21);
             this.textBoxProjectMainContract.TabIndex = 3;
             // 
-            // labelProjectRole
+            // labelProjectShippingDate
             // 
-            this.labelProjectRole.AutoSize = true;
-            this.labelProjectRole.Location = new System.Drawing.Point(18, 99);
-            this.labelProjectRole.Name = "labelProjectRole";
-            this.labelProjectRole.Size = new System.Drawing.Size(93, 15);
-            this.labelProjectRole.TabIndex = 4;
-            this.labelProjectRole.Text = "Права доступа";
+            this.labelProjectShippingDate.AutoSize = true;
+            this.labelProjectShippingDate.Location = new System.Drawing.Point(18, 99);
+            this.labelProjectShippingDate.Name = "labelProjectShippingDate";
+            this.labelProjectShippingDate.Size = new System.Drawing.Size(90, 15);
+            this.labelProjectShippingDate.TabIndex = 4;
+            this.labelProjectShippingDate.Text = "Дата отгрузки";
             // 
-            // labelProjectPost
+            // labelProjectManager
             // 
-            this.labelProjectPost.AutoSize = true;
-            this.labelProjectPost.Location = new System.Drawing.Point(18, 143);
-            this.labelProjectPost.Name = "labelProjectPost";
-            this.labelProjectPost.Size = new System.Drawing.Size(73, 15);
-            this.labelProjectPost.TabIndex = 6;
-            this.labelProjectPost.Text = "Должность";
+            this.labelProjectManager.AutoSize = true;
+            this.labelProjectManager.Location = new System.Drawing.Point(18, 143);
+            this.labelProjectManager.Name = "labelProjectManager";
+            this.labelProjectManager.Size = new System.Drawing.Size(140, 15);
+            this.labelProjectManager.TabIndex = 6;
+            this.labelProjectManager.Text = "Руководитель проекта";
+            // 
+            // textBoxProjectManager
+            // 
+            this.textBoxProjectManager.Location = new System.Drawing.Point(21, 161);
+            this.textBoxProjectManager.Name = "textBoxProjectManager";
+            this.textBoxProjectManager.Size = new System.Drawing.Size(150, 21);
+            this.textBoxProjectManager.TabIndex = 7;
+            // 
+            // labelProjectChiefDesigner
+            // 
+            this.labelProjectChiefDesigner.AutoSize = true;
+            this.labelProjectChiefDesigner.Location = new System.Drawing.Point(18, 185);
+            this.labelProjectChiefDesigner.Name = "labelProjectChiefDesigner";
+            this.labelProjectChiefDesigner.Size = new System.Drawing.Size(184, 15);
+            this.labelProjectChiefDesigner.TabIndex = 8;
+            this.labelProjectChiefDesigner.Text = "Главный конструктор проекта";
             // 
             // textBoxProjectChiefDesigner
             // 
-            this.textBoxProjectChiefDesigner.Location = new System.Drawing.Point(21, 161);
+            this.textBoxProjectChiefDesigner.Location = new System.Drawing.Point(21, 203);
             this.textBoxProjectChiefDesigner.Name = "textBoxProjectChiefDesigner";
-            this.textBoxProjectChiefDesigner.Size = new System.Drawing.Size(100, 21);
-            this.textBoxProjectChiefDesigner.TabIndex = 7;
+            this.textBoxProjectChiefDesigner.Size = new System.Drawing.Size(150, 21);
+            this.textBoxProjectChiefDesigner.TabIndex = 9;
             // 
-            // labelProjectFullname
+            // labelProjectSupplier
             // 
-            this.labelProjectFullname.AutoSize = true;
-            this.labelProjectFullname.Location = new System.Drawing.Point(18, 185);
-            this.labelProjectFullname.Name = "labelProjectFullname";
-            this.labelProjectFullname.Size = new System.Drawing.Size(163, 15);
-            this.labelProjectFullname.TabIndex = 8;
-            this.labelProjectFullname.Text = "Полное имя пользователя";
+            this.labelProjectSupplier.AutoSize = true;
+            this.labelProjectSupplier.Location = new System.Drawing.Point(18, 227);
+            this.labelProjectSupplier.Name = "labelProjectSupplier";
+            this.labelProjectSupplier.Size = new System.Drawing.Size(72, 15);
+            this.labelProjectSupplier.TabIndex = 10;
+            this.labelProjectSupplier.Text = "Поставщик";
             // 
-            // textBoxProjectSupplierName
+            // textBoxProjectSupplier
             // 
-            this.textBoxProjectSupplierName.Location = new System.Drawing.Point(21, 203);
-            this.textBoxProjectSupplierName.Name = "textBoxProjectSupplierName";
-            this.textBoxProjectSupplierName.Size = new System.Drawing.Size(100, 21);
-            this.textBoxProjectSupplierName.TabIndex = 9;
-            // 
-            // labelProjectEtc
-            // 
-            this.labelProjectEtc.AutoSize = true;
-            this.labelProjectEtc.Location = new System.Drawing.Point(18, 227);
-            this.labelProjectEtc.Name = "labelProjectEtc";
-            this.labelProjectEtc.Size = new System.Drawing.Size(50, 15);
-            this.labelProjectEtc.TabIndex = 10;
-            this.labelProjectEtc.Text = "Прочее";
-            // 
-            // textBoxProjectDeliveryTime
-            // 
-            this.textBoxProjectDeliveryTime.Location = new System.Drawing.Point(21, 245);
-            this.textBoxProjectDeliveryTime.Name = "textBoxProjectDeliveryTime";
-            this.textBoxProjectDeliveryTime.Size = new System.Drawing.Size(100, 21);
-            this.textBoxProjectDeliveryTime.TabIndex = 11;
+            this.textBoxProjectSupplier.Location = new System.Drawing.Point(21, 245);
+            this.textBoxProjectSupplier.Name = "textBoxProjectSupplier";
+            this.textBoxProjectSupplier.Size = new System.Drawing.Size(150, 21);
+            this.textBoxProjectSupplier.TabIndex = 11;
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(325, 18);
+            this.buttonSave.Location = new System.Drawing.Point(281, 15);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(106, 23);
+            this.buttonSave.Size = new System.Drawing.Size(150, 25);
             this.buttonSave.TabIndex = 12;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -149,9 +153,9 @@
             // buttonSaveAndClose
             // 
             this.buttonSaveAndClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSaveAndClose.Location = new System.Drawing.Point(325, 47);
+            this.buttonSaveAndClose.Location = new System.Drawing.Point(281, 46);
             this.buttonSaveAndClose.Name = "buttonSaveAndClose";
-            this.buttonSaveAndClose.Size = new System.Drawing.Size(106, 49);
+            this.buttonSaveAndClose.Size = new System.Drawing.Size(150, 25);
             this.buttonSaveAndClose.TabIndex = 13;
             this.buttonSaveAndClose.Text = "Сохранить и закрыть";
             this.buttonSaveAndClose.UseVisualStyleBackColor = true;
@@ -160,9 +164,9 @@
             // buttonBackToProjectsForm
             // 
             this.buttonBackToProjectsForm.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonBackToProjectsForm.Location = new System.Drawing.Point(325, 102);
+            this.buttonBackToProjectsForm.Location = new System.Drawing.Point(281, 77);
             this.buttonBackToProjectsForm.Name = "buttonBackToProjectsForm";
-            this.buttonBackToProjectsForm.Size = new System.Drawing.Size(106, 23);
+            this.buttonBackToProjectsForm.Size = new System.Drawing.Size(150, 25);
             this.buttonBackToProjectsForm.TabIndex = 14;
             this.buttonBackToProjectsForm.Text = "Закрыть";
             this.buttonBackToProjectsForm.UseVisualStyleBackColor = true;
@@ -170,43 +174,81 @@
             // 
             // buttonSelectSupplier
             // 
-            this.buttonSelectSupplier.Location = new System.Drawing.Point(325, 227);
+            this.buttonSelectSupplier.Location = new System.Drawing.Point(281, 325);
             this.buttonSelectSupplier.Name = "buttonSelectSupplier";
-            this.buttonSelectSupplier.Size = new System.Drawing.Size(105, 42);
+            this.buttonSelectSupplier.Size = new System.Drawing.Size(150, 25);
             this.buttonSelectSupplier.TabIndex = 15;
             this.buttonSelectSupplier.Text = "Выбрать поставщика";
             this.buttonSelectSupplier.UseVisualStyleBackColor = true;
             this.buttonSelectSupplier.Click += new System.EventHandler(this.buttonSelectSupplier_Click);
             // 
-            // textBoxProjectManager
+            // textBoxProjectShippingDate
             // 
-            this.textBoxProjectManager.Location = new System.Drawing.Point(21, 117);
-            this.textBoxProjectManager.Name = "textBoxProjectManager";
-            this.textBoxProjectManager.Size = new System.Drawing.Size(100, 21);
-            this.textBoxProjectManager.TabIndex = 5;
+            this.textBoxProjectShippingDate.Location = new System.Drawing.Point(21, 117);
+            this.textBoxProjectShippingDate.Name = "textBoxProjectShippingDate";
+            this.textBoxProjectShippingDate.Size = new System.Drawing.Size(150, 21);
+            this.textBoxProjectShippingDate.TabIndex = 5;
+            // 
+            // labelProjectOfficer
+            // 
+            this.labelProjectOfficer.AutoSize = true;
+            this.labelProjectOfficer.Location = new System.Drawing.Point(18, 269);
+            this.labelProjectOfficer.Name = "labelProjectOfficer";
+            this.labelProjectOfficer.Size = new System.Drawing.Size(163, 15);
+            this.labelProjectOfficer.TabIndex = 10;
+            this.labelProjectOfficer.Text = "Ответственный сотрудник";
+            // 
+            // textBoxProjectOfficer
+            // 
+            this.textBoxProjectOfficer.Location = new System.Drawing.Point(21, 287);
+            this.textBoxProjectOfficer.Name = "textBoxProjectOfficer";
+            this.textBoxProjectOfficer.Size = new System.Drawing.Size(150, 21);
+            this.textBoxProjectOfficer.TabIndex = 11;
+            // 
+            // labelProjectStatus
+            // 
+            this.labelProjectStatus.AutoSize = true;
+            this.labelProjectStatus.Location = new System.Drawing.Point(18, 311);
+            this.labelProjectStatus.Name = "labelProjectStatus";
+            this.labelProjectStatus.Size = new System.Drawing.Size(98, 15);
+            this.labelProjectStatus.TabIndex = 10;
+            this.labelProjectStatus.Text = "Статус проекта";
+            // 
+            // textBoxProjectStatus
+            // 
+            this.textBoxProjectStatus.Location = new System.Drawing.Point(21, 329);
+            this.textBoxProjectStatus.Name = "textBoxProjectStatus";
+            this.textBoxProjectStatus.Size = new System.Drawing.Size(150, 21);
+            this.textBoxProjectStatus.TabIndex = 11;
             // 
             // EditProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonBackToProjectsForm;
-            this.ClientSize = new System.Drawing.Size(449, 287);
+            this.ClientSize = new System.Drawing.Size(653, 506);
             this.Controls.Add(this.buttonSelectSupplier);
             this.Controls.Add(this.buttonBackToProjectsForm);
             this.Controls.Add(this.buttonSaveAndClose);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBoxProjectDeliveryTime);
-            this.Controls.Add(this.labelProjectEtc);
-            this.Controls.Add(this.textBoxProjectSupplierName);
-            this.Controls.Add(this.labelProjectFullname);
-            this.Controls.Add(this.textBoxProjectManager);
+            this.Controls.Add(this.textBoxProjectStatus);
+            this.Controls.Add(this.textBoxProjectOfficer);
+            this.Controls.Add(this.textBoxProjectSupplier);
+            this.Controls.Add(this.labelProjectStatus);
+            this.Controls.Add(this.labelProjectOfficer);
+            this.Controls.Add(this.labelProjectSupplier);
             this.Controls.Add(this.textBoxProjectChiefDesigner);
-            this.Controls.Add(this.labelProjectPost);
-            this.Controls.Add(this.labelProjectRole);
+            this.Controls.Add(this.labelProjectChiefDesigner);
+            this.Controls.Add(this.textBoxProjectShippingDate);
+            this.Controls.Add(this.textBoxProjectManager);
+            this.Controls.Add(this.labelProjectManager);
+            this.Controls.Add(this.labelProjectShippingDate);
             this.Controls.Add(this.textBoxProjectMainContract);
-            this.Controls.Add(this.labelProjectPassword);
+            this.Controls.Add(this.labelProjectMainContract);
             this.Controls.Add(this.textBoxProjectName);
-            this.Controls.Add(this.labelProjectLogin);
+            this.Controls.Add(this.labelProjectName);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -214,8 +256,8 @@
             this.Padding = new System.Windows.Forms.Padding(15);
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Данные о пользователе";
-            this.Load += new System.EventHandler(this.AddProject_Load);
+            this.Text = "Данные о проекте";
+            this.Load += new System.EventHandler(this.EditProject_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,21 +265,25 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelProjectLogin;
+        private System.Windows.Forms.Label labelProjectName;
         private System.Windows.Forms.TextBox textBoxProjectName;
-        private System.Windows.Forms.Label labelProjectPassword;
+        private System.Windows.Forms.Label labelProjectMainContract;
         private System.Windows.Forms.TextBox textBoxProjectMainContract;
-        private System.Windows.Forms.Label labelProjectRole;
-        private System.Windows.Forms.Label labelProjectPost;
+        private System.Windows.Forms.Label labelProjectShippingDate;
+        private System.Windows.Forms.Label labelProjectManager;
+        private System.Windows.Forms.TextBox textBoxProjectManager;
+        private System.Windows.Forms.Label labelProjectChiefDesigner;
         private System.Windows.Forms.TextBox textBoxProjectChiefDesigner;
-        private System.Windows.Forms.Label labelProjectFullname;
-        private System.Windows.Forms.TextBox textBoxProjectSupplierName;
-        private System.Windows.Forms.Label labelProjectEtc;
-        private System.Windows.Forms.TextBox textBoxProjectDeliveryTime;
+        private System.Windows.Forms.Label labelProjectSupplier;
+        private System.Windows.Forms.TextBox textBoxProjectSupplier;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonSaveAndClose;
         private System.Windows.Forms.Button buttonBackToProjectsForm;
         private System.Windows.Forms.Button buttonSelectSupplier;
-        private System.Windows.Forms.TextBox textBoxProjectManager;
+        private System.Windows.Forms.TextBox textBoxProjectShippingDate;
+        private System.Windows.Forms.Label labelProjectOfficer;
+        private System.Windows.Forms.TextBox textBoxProjectOfficer;
+        private System.Windows.Forms.Label labelProjectStatus;
+        private System.Windows.Forms.TextBox textBoxProjectStatus;
     }
 }

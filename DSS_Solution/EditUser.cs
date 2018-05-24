@@ -21,7 +21,6 @@ namespace DSS
             textBoxUserLogin.Text = data[3];
             textBoxUserPassword.Text = data[4];
             comboBoxUserRole.SelectedItem = data[5];
-            textBoxUserEtc.Text = data[6];
         }
 
         private void AddUser_Load(object sender, EventArgs e)
@@ -69,8 +68,7 @@ namespace DSS
                         setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
                         setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
                         setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
-                        setUser.Parameters.Add("@Role", DbType.UInt16).Value = comboBoxUserRole.SelectedItem;
-                        setUser.Parameters.Add("@Etc", DbType.String).Value = textBoxUserEtc.Text;
+                        setUser.Parameters.Add("@Role", DbType.String).Value = comboBoxUserRole.SelectedItem;
                     }
                     else
                     {
@@ -79,8 +77,7 @@ namespace DSS
                         setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
                         setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
                         setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
-                        setUser.Parameters.Add("@Role", DbType.UInt16).Value = comboBoxUserRole.SelectedItem;
-                        setUser.Parameters.Add("@Etc", DbType.String).Value = textBoxUserEtc.Text;
+                        setUser.Parameters.Add("@Role", DbType.String).Value = comboBoxUserRole.SelectedItem;
                     }
                     setUser.ExecuteNonQuery();
 
@@ -104,7 +101,6 @@ namespace DSS
                     textBoxUserLogin.Clear();
                     textBoxUserPassword.Clear();
                     comboBoxUserRole.ResetText();
-                    textBoxUserEtc.Clear();
                 }
                 catch (SQLiteException ex)
                 {

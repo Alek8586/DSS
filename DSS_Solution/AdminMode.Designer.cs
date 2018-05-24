@@ -1,6 +1,6 @@
 ﻿namespace DSS
 {
-    partial class FormAdminMode
+    partial class AdminMode
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +40,7 @@
             // buttonExit
             // 
             this.buttonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonExit.Location = new System.Drawing.Point(284, 172);
+            this.buttonExit.Location = new System.Drawing.Point(251, 172);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(150, 25);
             this.buttonExit.TabIndex = 7;
@@ -50,7 +50,8 @@
             // 
             // buttonBackupDB
             // 
-            this.buttonBackupDB.Location = new System.Drawing.Point(284, 18);
+            this.buttonBackupDB.Location = new System.Drawing.Point(251, 18);
+            this.buttonBackupDB.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.buttonBackupDB.Name = "buttonBackupDB";
             this.buttonBackupDB.Size = new System.Drawing.Size(150, 40);
             this.buttonBackupDB.TabIndex = 4;
@@ -60,7 +61,8 @@
             // 
             // buttonRestoreDB
             // 
-            this.buttonRestoreDB.Location = new System.Drawing.Point(284, 64);
+            this.buttonRestoreDB.Location = new System.Drawing.Point(251, 64);
+            this.buttonRestoreDB.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.buttonRestoreDB.Name = "buttonRestoreDB";
             this.buttonRestoreDB.Size = new System.Drawing.Size(150, 40);
             this.buttonRestoreDB.TabIndex = 5;
@@ -100,7 +102,7 @@
             // 
             // buttonToLogInForm
             // 
-            this.buttonToLogInForm.Location = new System.Drawing.Point(284, 141);
+            this.buttonToLogInForm.Location = new System.Drawing.Point(251, 141);
             this.buttonToLogInForm.Name = "buttonToLogInForm";
             this.buttonToLogInForm.Size = new System.Drawing.Size(150, 25);
             this.buttonToLogInForm.TabIndex = 6;
@@ -111,9 +113,10 @@
             // FormAdminMode
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonExit;
-            this.ClientSize = new System.Drawing.Size(452, 215);
+            this.ClientSize = new System.Drawing.Size(475, 215);
             this.Controls.Add(this.buttonToLogInForm);
             this.Controls.Add(this.buttonProjects);
             this.Controls.Add(this.buttonToSuppliersForm);

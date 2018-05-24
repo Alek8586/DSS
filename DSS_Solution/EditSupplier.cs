@@ -5,26 +5,27 @@ using System.Windows.Forms;
 
 namespace DSS
 {
-    public partial class EditProject : Form
+    public partial class EditSupplier : Form
     {
         private SQLiteConnection dbConnection;
 
-        public EditProject(string[] projectData)
+        public EditSupplier(string[] supplierData)
         {
             InitializeComponent();
 
             //Заполняем поля при изменении данных проекта
-            textBoxProjectName.Text = projectData[1];
-            textBoxProjectMainContract.Text = projectData[2];
-            textBoxProjectShippingDate.Text = projectData[3];
-            textBoxProjectManager.Text = projectData[4];
-            textBoxProjectChiefDesigner.Text = projectData[5];
-            textBoxProjectSupplier.Text = projectData[6];
-            textBoxProjectOfficer.Text = projectData[7];
-            textBoxProjectStatus.Text = projectData[8];
+            textBoxSupplierName.Text = supplierData[1];
+            textBoxProjectMainContract.Text = supplierData[2];
+            textBoxSupplierQMS.Text = supplierData[3];
+            textBoxSupplierMaterialQuality.Text = supplierData[4];
+            textBoxSupplierPrice.Text = supplierData[5];
+            textBoxSupplierTimeOfDelivery.Text = supplierData[6];
+            textBoxSupplierLocationRemoteness.Text = supplierData[7];
+            textBoxSupplierFlexibility.Text = supplierData[8];
+            textBoxSupplierFlexibility.Text = supplierData[9];
         }
 
-        private void EditProject_Load(object sender, EventArgs e)
+        private void AddProject_Load(object sender, EventArgs e)
         {
             dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
             dbConnection.Open();            
@@ -32,12 +33,12 @@ namespace DSS
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            setProject();
+            setSupplier();
         }
 
         private void buttonSaveAndClose_Click(object sender, EventArgs e)
         {
-            setProject();
+            setSupplier();
             this.Close();
         }
 
@@ -46,39 +47,33 @@ namespace DSS
             this.Close();
         }
 
-        private void buttonSelectSupplier_Click(object sender, EventArgs e)
-        {
-            SelectSupplier();
-        }
-
-
-        private void setProject()
+        private void setSupplier()
         {
             
-            if (textBoxProjectName.Text != ""/* && comboBoxProjectRole.SelectedItem.ToString() != ""*/)
+            if (textBoxSupplierName.Text != ""/* && comboBoxProjectRole.SelectedItem.ToString() != ""*/)
             {
                 try
                 {
                     SQLiteCommand setProject = dbConnection.CreateCommand();
-                    if (textBoxProjectManager.Text != "" && textBoxProjectChiefDesigner.Text != "")
+                    if (textBoxSupplierMaterialQuality.Text != "" && textBoxSupplierPrice.Text != "")
                     {
                         setProject.CommandText = "Update Projects set MainContract = @MainContract, ProjectManager = @ProjectManager, ChiefDesigner = @ChiefDesigner, SupplierName = @SupplierName, DeliveryTime = @DeliveryTime where ProjectName = @ProjectName";
-                        setProject.Parameters.Add("@ProjectName", DbType.String).Value = textBoxProjectName.Text;
+                        setProject.Parameters.Add("@ProjectName", DbType.String).Value = textBoxSupplierName.Text;
                         setProject.Parameters.Add("@MainContract", DbType.String).Value = textBoxProjectMainContract.Text;
-                        setProject.Parameters.Add("@ProjectManager", DbType.String).Value = textBoxProjectShippingDate.Text;
-                        setProject.Parameters.Add("@ChiefDesigner", DbType.String).Value = textBoxProjectManager.Text;
-                        setProject.Parameters.Add("@SupplierName", DbType.String).Value = textBoxProjectChiefDesigner.Text;
-                        setProject.Parameters.Add("@DeliveryTime", DbType.String).Value = textBoxProjectSupplier.Text;
+                        setProject.Parameters.Add("@ProjectManager", DbType.String).Value = textBoxSupplierQMS.Text;
+                        setProject.Parameters.Add("@ChiefDesigner", DbType.String).Value = textBoxSupplierMaterialQuality.Text;
+                        setProject.Parameters.Add("@SupplierName", DbType.String).Value = textBoxSupplierPrice.Text;
+                        setProject.Parameters.Add("@DeliveryTime", DbType.String).Value = textBoxSupplierTimeOfDelivery.Text;
                     }
                     else
                     {
                         setProject.CommandText = "Insert into Projects(ProjectName, MainContract, ProjectManager, ChiefDesigner, SupplierName, DeliveryTime) values (@ProjectName, @MainContract, @ProjectManager, @ChiefDesigner, @SupplierName, @DeliveryTime)";
-                        setProject.Parameters.Add("@ProjectName", DbType.String).Value = textBoxProjectName.Text;
+                        setProject.Parameters.Add("@ProjectName", DbType.String).Value = textBoxSupplierName.Text;
                         setProject.Parameters.Add("@MainContract", DbType.String).Value = textBoxProjectMainContract.Text;
-                        setProject.Parameters.Add("@ProjectManager", DbType.String).Value = textBoxProjectShippingDate.Text;
-                        setProject.Parameters.Add("@ChiefDesigner", DbType.String).Value = textBoxProjectManager.Text;
-                        setProject.Parameters.Add("@SupplierName", DbType.String).Value = textBoxProjectChiefDesigner.Text;
-                        setProject.Parameters.Add("@DeliveryTime", DbType.String).Value = textBoxProjectSupplier.Text;
+                        setProject.Parameters.Add("@ProjectManager", DbType.String).Value = textBoxSupplierQMS.Text;
+                        setProject.Parameters.Add("@ChiefDesigner", DbType.String).Value = textBoxSupplierMaterialQuality.Text;
+                        setProject.Parameters.Add("@SupplierName", DbType.String).Value = textBoxSupplierPrice.Text;
+                        setProject.Parameters.Add("@DeliveryTime", DbType.String).Value = textBoxSupplierTimeOfDelivery.Text;
                     }
                     setProject.ExecuteNonQuery();
 
@@ -97,12 +92,12 @@ namespace DSS
                         }
                     }
 
-                    textBoxProjectName.Clear();
+                    textBoxSupplierName.Clear();
                     textBoxProjectMainContract.Clear();
-                    textBoxProjectShippingDate.Clear();
-                    textBoxProjectManager.Clear();
-                    textBoxProjectChiefDesigner.Clear();
-                    textBoxProjectSupplier.Clear();
+                    textBoxSupplierQMS.Clear();
+                    textBoxSupplierMaterialQuality.Clear();
+                    textBoxSupplierPrice.Clear();
+                    textBoxSupplierTimeOfDelivery.Clear();
                 }
                 catch (SQLiteException ex)
                 {
@@ -110,14 +105,6 @@ namespace DSS
                 }
 
             }
-        }
-
-        //Подбор поставщика
-        private void SelectSupplier()
-        {
-            SelectSupplier selectSupplierForm = new SelectSupplier();
-            selectSupplierForm.Owner = this;
-            selectSupplierForm.ShowDialog();
         }
     }
 }

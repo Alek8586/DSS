@@ -21,7 +21,9 @@ namespace DSS
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-            EditUser AddUserForm = new EditUser(null);
+            string[] userData = new string[dataGridViewUsers.CurrentRow.Cells.Count];
+
+            EditUser AddUserForm = new EditUser(userData);
             AddUserForm.Owner = this;
             AddUserForm.ShowDialog();
         }
@@ -64,7 +66,7 @@ namespace DSS
 
                 while (sql.Read())
                 {
-                    dataGridViewUsers.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString(), sql[6].ToString());
+                    dataGridViewUsers.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString());
                 }
                 sql.Close();
                 dbConnection.Close();

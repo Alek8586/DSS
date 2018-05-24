@@ -3,9 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SQLite;
-using System.Text;
-using System.Security.Cryptography;
-
+using System.IO;
 
 namespace DSS
 {
@@ -20,10 +18,10 @@ namespace DSS
 
         private void FormLogIn_Load(object sender, EventArgs e)
         {
-            dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
+            dbConnection = new SQLiteConnection("Data Source = " + Application.StartupPath + "\\database.db; Version=3");
             dbConnection.Open();
 
-            if (dbConnection.State == ConnectionState.Open)
+            if (File.Exists(Application.StartupPath + "\\database.db") == true && dbConnection.State == ConnectionState.Open)
             {
                 toolStripConnectionStatusLabel.Text = "Подключено к БД";
                 toolStripConnectionStatusLabel.ForeColor = Color.Green;
@@ -40,9 +38,9 @@ namespace DSS
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            try
+            if (textBoxLogInUsername.Text != "")
             {
-                if (textBoxLogInUsername.Text != "")
+                try
                 {
                     SQLiteCommand command = dbConnection.CreateCommand();
                     command.CommandText = "select * from Users";
@@ -55,19 +53,19 @@ namespace DSS
                             {
                                 if (textBoxLogInUsername.Text.Equals(sqlReader["Login"]) && textBoxLogInPassword.Text.Equals(sqlReader["Password"]))
                                 {
-                                    switch (Convert.ToInt32(sqlReader["Role"]))
+                                    switch (sqlReader["Role"])
                                     {
-                                        case 1:
+                                        case "Администратор":
                                             {
-                                                FormAdminMode AdminMode = new FormAdminMode();
+                                                AdminMode AdminMode = new AdminMode();
                                                 AdminMode.Show();
                                                 this.Hide();
 
                                                 break;
                                             }
-                                        case 2:
+                                        case "Оператор":
                                             {
-                                                FormOperatorMode OperatorMode = new FormOperatorMode();
+                                                OperatorMode OperatorMode = new OperatorMode();
                                                 OperatorMode.Show();
                                                 this.Hide();
 
@@ -80,19 +78,17 @@ namespace DSS
                                 else
                                 {
                                     labelUsernamePassword.Text = "Неверное имя пользователя и/или пароль";
-
-                                    break;
                                 }
                             }
                         }
-
                     }
                 }
+                catch (SQLiteException ex)
+                {
+                    MessageBox.Show("Нет подключения к БД! \n\n" + ex.Message);
+                }
             }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show("Нет подключения к БД!" + ex.Message);
-            }
+            else labelUsernamePassword.Text = "Введите логин";
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -115,7 +111,7 @@ namespace DSS
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("Нет подклбюччения к БД!" + ex.Message);
+                MessageBox.Show("Нет подключения к БД! \n\n" + ex.Message);
             }
         }
 
@@ -135,7 +131,7 @@ namespace DSS
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("Нет подклбючения к БД!" + ex.Message);
+                MessageBox.Show("Нет подключения к БД!\n\n" + ex.Message);
             }
         }
 
@@ -143,24 +139,6 @@ namespace DSS
         {
             dbConnection.Close();
             Application.Exit();
-        }
-
-        public string GetHashStirng()
-        {
-            //Хеширование вводимого пароля через MD5
-            //Переводим строку пароля в байт-массив
-            byte[] bytes = Encoding.Unicode.GetBytes(textBoxLogInPassword.Text.ToString());
-            //создаем обеъкт для получения средств шифрования
-            MD5CryptoServiceProvider cryptoServiceProvider = new MD5CryptoServiceProvider();
-            //высчитываем хеш-представление в байтах
-            byte[] byteHash = cryptoServiceProvider.ComputeHash(bytes);
-            string MD5Hash = string.Empty;
-            //формируем одну цельную строку из массива
-            foreach (byte b in byteHash)
-            {
-                MD5Hash += string.Format("{0:x2}", b);
-            }
-            return MD5Hash;
         }
     }
 }

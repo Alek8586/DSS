@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
 
@@ -18,6 +19,9 @@ namespace DSS
         private void SelectSupplier_Load(object sender, EventArgs e)
         {
             ListOfTheCriteria();
+
+            comboBoxSupplierType.SelectedIndex = 0;
+            comboBoxQMS.SelectedIndex = 0;
         }
 
         private void buttonAddСriterion_Click(object sender, EventArgs e)
@@ -76,13 +80,13 @@ namespace DSS
 
         private void buttonListboxSelectedCriteriaOneStepHigher_Click(object sender, EventArgs e)
         {
-            if (listBoxSelectedCriteria.Items.Count > 0)
-            {
-                if (listBoxSelectedCriteria.TopIndex != listBoxSelectedCriteria.SelectedIndex)
-                {
-                    listBoxSelectedCriteria.TopIndex = listBoxSelectedCriteria.SelectedIndex;
-                }
-            }
+            //if (listBoxSelectedCriteria.Items.Count > 0)
+            //{
+            //    if (listBoxSelectedCriteria.TopIndex != listBoxSelectedCriteria.SelectedIndex)
+            //    {
+            //        listBoxSelectedCriteria.TopIndex = listBoxSelectedCriteria.SelectedIndex;
+            //    }
+            //}
         }
 
         private void buttonListboxSelectedCriteriaOneStepBelow_Click(object sender, EventArgs e)
@@ -110,22 +114,26 @@ namespace DSS
 
         private void ListOfTheCriteria()
         {
+            /*
+             * Считываем все колонки из таблицы Поставщики
+             * Оставляем только параметры оценивания
+            */
             dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
             dbConnection.Open();
 
             SQLiteCommand listUsers = dbConnection.CreateCommand();
             listUsers.CommandText = "pragma table_info(Suppliers)";
-            SQLiteDataReader sqlCommand = listUsers.ExecuteReader();
 
-            using (sqlCommand)
+            using (var sqlCommand = listUsers.ExecuteReader())
             {
                 while (sqlCommand.Read())
                 {
                     listBoxAllCriteria.Items.Add(sqlCommand[1].ToString());
                     listBoxAllCriteria.Items.Remove("ID");
                     listBoxAllCriteria.Items.Remove("Name");
+                    listBoxAllCriteria.Items.Remove("Class");
+                    listBoxAllCriteria.Items.Remove("QMS");
                 }
-
             }
             dbConnection.Close();
         }
@@ -142,7 +150,6 @@ namespace DSS
              * * Передача данных в форму решения по выбору поставщика
             */
 
-
             //Заполнение списка поставщиков с экспертными оценками
             dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
             dbConnection.Open();
@@ -150,22 +157,46 @@ namespace DSS
             SQLiteCommand sqlSuppliersList = dbConnection.CreateCommand();
             sqlSuppliersList.CommandText = "Select * from Suppliers";
 
-            List<ListOfTheSuppliers> listOfTheSuppliers = new List<ListOfTheSuppliers>();
+            SQLiteDataReader sqlReader = sqlSuppliersList.ExecuteReader();
 
-            using (var sqlReader = sqlSuppliersList.ExecuteReader())
+            /*
+             * ВНИМАНИЕ! КОСТЫЛИ!
+             * Считаем количество строк в таблице Поставщики
+            */
+            SQLiteCommand sqlSuppliersCount = dbConnection.CreateCommand();
+            sqlSuppliersCount.CommandText = "Select count(*) from Suppliers";
+            SQLiteDataReader sqlReader1 = sqlSuppliersCount.ExecuteReader();
+            int rowscount = 0;
+
+            using (sqlReader1)
             {
-                while (sqlReader.Read())
+                if (sqlReader1.HasRows)
                 {
-                    ListOfTheSuppliers suppliers = new ListOfTheSuppliers();
-                    suppliers.ID = Convert.ToInt32(sqlReader["ID"].ToString());
-                    suppliers.Name = sqlReader["Name"].ToString();
-                    suppliers.Class = Convert.ToInt32(sqlReader["Class"].ToString());
-                    suppliers.MaterialQuality = Convert.ToInt32(sqlReader["MaterialQuality"].ToString());
-                    suppliers.Price = Convert.ToInt32(sqlReader["Price"].ToString());
-                    suppliers.TimeOfDelivery = Convert.ToInt32(sqlReader["TimeOfDelivery"].ToString());
-                    suppliers.Reliability = Convert.ToInt32(sqlReader["Reliability"].ToString());
+                    while (sqlReader1.Read())
+                    {
+                        rowscount = Convert.ToInt32(sqlReader1[0]);
+                    }
+                }
+            }
+            /*
+             * ВНИМАНИЕ! КОНЕЦ КОСТЫЛЕЙ!
+            */
 
-                    listOfTheSuppliers.Add(suppliers);
+            string[,] listOfTheSuppliers = new string[rowscount, sqlReader.FieldCount];
+
+            using (sqlReader)
+            {
+                if (sqlReader.HasRows)
+                {
+                    int i = 0;
+                    while (sqlReader.Read())
+                    {
+                        for (int k = 0; k < listOfTheSuppliers.GetLength(1); k++)
+                        {
+                            listOfTheSuppliers[i, k] = sqlReader[k].ToString();
+                        }
+                        i++;
+                    }
                 }
             }
 
@@ -180,89 +211,83 @@ namespace DSS
             //}
 
             //Присвоение выбранному критерию веса
-            List<UnitWeightOfTheCriteria> unitWeightOfTheCriteria = new List<UnitWeightOfTheCriteria>();
             int countOfSelectedCriteria = listBoxSelectedCriteria.Items.Count;
-            int summOfWeightOfAllCriteria = 0;
+            double MaterialQuality = 0;
+            double Price = 0;
+            double TimeOfDelivery = 0;
+            double LocationRemoteness = 0;
+            double Flexibility = 0;
+            double WarrantyService = 0;
 
-            foreach (UnitWeightOfTheCriteria i in unitWeightOfTheCriteria)
+            if (listBoxSelectedCriteria.Items.Contains("MaterialQuality"))
             {
-                UnitWeightOfTheCriteria unitWeight = new UnitWeightOfTheCriteria();
-
-                if (listBoxSelectedCriteria.Items.Contains("Class"))
-                {
-                    unitWeight.Class = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Class");
-                }
-                else unitWeight.Class = 0;
-                if (listBoxSelectedCriteria.Items.Contains("MaterialQuality"))
-                {
-                    unitWeight.MaterialQuality = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("MaterialQuality");
-                }
-                else unitWeight.MaterialQuality = 0;
-                if (listBoxSelectedCriteria.Items.Contains("Price"))
-                {
-                    unitWeight.Price = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Price");
-                }
-                else unitWeight.Price = 0;
-                if (listBoxSelectedCriteria.Items.Contains("TimeOfDelivery"))
-                {
-                    unitWeight.TimeOfDelivery = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("TimeOfDelivery");
-                }
-                else unitWeight.TimeOfDelivery = 0;
-                if (listBoxSelectedCriteria.Items.Contains("Reliability"))
-                {
-                    unitWeight.Reliability = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Reliability");
-                }
-                else unitWeight.Reliability = 0;
-
-                summOfWeightOfAllCriteria = Convert.ToInt32(unitWeight.Class + unitWeight.MaterialQuality + unitWeight.Price + unitWeight.TimeOfDelivery + unitWeight.Reliability);
-
-                //Рассчет удельного значения каждого критерия
-                unitWeight.Class /= summOfWeightOfAllCriteria;
-                unitWeight.MaterialQuality /= summOfWeightOfAllCriteria;
-                unitWeight.Price /= summOfWeightOfAllCriteria;
-                unitWeight.TimeOfDelivery /= summOfWeightOfAllCriteria;
-                unitWeight.Reliability /= summOfWeightOfAllCriteria;
-
-                unitWeightOfTheCriteria.Add(unitWeight);
+                MaterialQuality = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("MaterialQuality");
             }
+            else MaterialQuality = 0;
+            if (listBoxSelectedCriteria.Items.Contains("Price"))
+            {
+                Price = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Price");
+            }
+            else Price = 0;
+            if (listBoxSelectedCriteria.Items.Contains("TimeOfDelivery"))
+            {
+                TimeOfDelivery = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("TimeOfDelivery");
+            }
+            else TimeOfDelivery = 0;
+            if (listBoxSelectedCriteria.Items.Contains("LocationRemoteness"))
+            {
+                LocationRemoteness = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("LocationRemoteness");
+            }
+            else LocationRemoteness = 0;
+            if (listBoxSelectedCriteria.Items.Contains("Flexibility"))
+            {
+                Flexibility = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Flexibility");
+            }
+            else Flexibility = 0;
+            if (listBoxSelectedCriteria.Items.Contains("WarrantyService"))
+            {
+                WarrantyService = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("WarrantyService");
+            }
+            else WarrantyService = 0;
+
+            int summOfWeightOfAllCriteria = Convert.ToInt32(MaterialQuality + Price + TimeOfDelivery + LocationRemoteness + Flexibility + WarrantyService);
+
+            //Рассчет удельного значения каждого критерия
+            MaterialQuality /= summOfWeightOfAllCriteria;
+            Price /= summOfWeightOfAllCriteria;
+            TimeOfDelivery /= summOfWeightOfAllCriteria;
+            LocationRemoteness /= summOfWeightOfAllCriteria;
+            Flexibility /= summOfWeightOfAllCriteria;
+            WarrantyService /= summOfWeightOfAllCriteria;
 
             //Проверка записи данных в экземпляр класса
-            foreach (UnitWeightOfTheCriteria i in unitWeightOfTheCriteria)
-            {
-                MessageBox.Show(/*i.ID.ToString() + ", " + i.Name.ToString() + ", " + */i.Class.ToString() + ", " +
-                    i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() +
-                    ", " + i.Reliability.ToString());
-            }
+            //MessageBox.Show(MaterialQuality.ToString() + ", " + Price.ToString() + ", " + TimeOfDelivery.ToString() + ", " + LocationRemoteness.ToString() + ", " + Flexibility.ToString() + ", " + WarrantyService.ToString());
 
             //Рассчет рейтинга поставщика по каждому критерию
             List<RaitingOfTheSuppliers> raitingOfTheSuppliers = new List<RaitingOfTheSuppliers>();
-            foreach (RaitingOfTheSuppliers i in raitingOfTheSuppliers)
+
+            for (int i = 0; i < rowscount; i++)
             {
                 RaitingOfTheSuppliers raiting = new RaitingOfTheSuppliers();
-                ListOfTheSuppliers suppliers = new ListOfTheSuppliers();
-                UnitWeightOfTheCriteria unitWeight = new UnitWeightOfTheCriteria();
 
-                raiting.ID = suppliers.ID;
-                raiting.Name = suppliers.Name;
-                raiting.Class = suppliers.Class * unitWeight.Class;
-                raiting.MaterialQuality = suppliers.MaterialQuality * unitWeight.MaterialQuality;
-                raiting.Price = suppliers.Price * unitWeight.Price;
-                raiting.TimeOfDelivery = suppliers.TimeOfDelivery * unitWeight.TimeOfDelivery;
-                raiting.Reliability = suppliers.Reliability * unitWeight.Reliability;
+                raiting.ID = Convert.ToInt32(listOfTheSuppliers[i, 0]);
+                raiting.Name = listOfTheSuppliers[i, 1];
+                raiting.Class = listOfTheSuppliers[i, 2];
+                raiting.QMS = Convert.ToBoolean(listOfTheSuppliers[i, 3]);
+                raiting.MaterialQuality = Convert.ToDouble(listOfTheSuppliers[i, 4]) * MaterialQuality;
+                raiting.Price = Convert.ToDouble(listOfTheSuppliers[i, 5]) * Price;
+                raiting.TimeOfDelivery = Convert.ToDouble(listOfTheSuppliers[i, 6]) * TimeOfDelivery;
+                raiting.LocationRemoteness = Convert.ToDouble(listOfTheSuppliers[i, 7]) * LocationRemoteness;
+                raiting.Flexibility = Convert.ToDouble(listOfTheSuppliers[i, 8]) * Flexibility;
+                raiting.WarrantyService = Convert.ToDouble(listOfTheSuppliers[i, 9]) * WarrantyService;
 
                 raitingOfTheSuppliers.Add(raiting);
+
+                //MessageBox.Show(raiting.ID.ToString() + ", " + raiting.Name.ToString() + ", " + raiting.Class.ToString() + ", " + raiting.MaterialQuality.ToString() + ", " + raiting.Price.ToString() + ", " + raiting.TimeOfDelivery.ToString() + ", " + raiting.LocationRemoteness.ToString() + ", " + raiting.Flexibility.ToString() + ", " + raiting.WarrantyService.ToString());
             }
 
             //Сортировка по убыванию
             raitingOfTheSuppliers.Sort(delegate (RaitingOfTheSuppliers raiting1, RaitingOfTheSuppliers raiting2) { return raiting1.ID.CompareTo(raiting2.ID); });
-
-            //Проверка записи данных в экземпляр класса
-            foreach (RaitingOfTheSuppliers i in raitingOfTheSuppliers)
-            {
-                MessageBox.Show(i.ID.ToString() + ", " + i.Name.ToString() + ", " + i.Class.ToString() + ", " +
-                    i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() +
-                    ", " + i.Reliability.ToString());
-            }
 
             //Передача данных в форму решения по выбору поставщика
 

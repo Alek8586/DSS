@@ -21,7 +21,9 @@ namespace DSS
 
         private void buttonAddProject_Click(object sender, EventArgs e)
         {
-            EditProject AddProjectForm = new EditProject(null);
+            string[] projectData = new string[dataGridViewProjects.CurrentRow.Cells.Count];
+
+            EditProject AddProjectForm = new EditProject(projectData);
             AddProjectForm.Owner = this;
             AddProjectForm.ShowDialog();
         }
@@ -29,13 +31,13 @@ namespace DSS
         private void buttonEditProject_Click(object sender, EventArgs e)
         {
             //Передаем данные строки в поля формы
-            string[] sample = new string[dataGridViewProjects.CurrentRow.Cells.Count];
+            string[] projectData = new string[dataGridViewProjects.CurrentRow.Cells.Count];
             for (int i = 0; i < dataGridViewProjects.CurrentRow.Cells.Count; i++)
             {
-                sample[i] = dataGridViewProjects.CurrentRow.Cells[i].Value.ToString();
+                projectData[i] = dataGridViewProjects.CurrentRow.Cells[i].Value.ToString();
             }
 
-            EditProject EditProjectForm = new EditProject(sample);
+            EditProject EditProjectForm = new EditProject(projectData);
             EditProjectForm.Owner = this;
             EditProjectForm.ShowDialog();
         }
@@ -43,6 +45,13 @@ namespace DSS
         private void buttonDeleteProject_Click(object sender, EventArgs e)
         {
             DeleteProject();
+        }
+
+        private void buttonSelectionSupplier_Click(object sender, EventArgs e)
+        {
+            SelectSupplier selectSupplierForm = new SelectSupplier();
+            selectSupplierForm.Owner = this;
+            selectSupplierForm.ShowDialog();
         }
 
         private void buttonToFormAdminMode_Click(object sender, EventArgs e)
@@ -60,13 +69,14 @@ namespace DSS
 
                 SQLiteCommand listProjects = dbConnection.CreateCommand();
                 listProjects.CommandText = "Select * from Projects";
-                SQLiteDataReader sql = listProjects.ExecuteReader();
 
-                while (sql.Read())
+                using (var sql = listProjects.ExecuteReader())
                 {
-                    dataGridViewProjects.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString(), sql[6].ToString());
+                    while (sql.Read())
+                    {
+                        dataGridViewProjects.Rows.Add(sql[0].ToString(), sql[1].ToString(), sql[2].ToString(), sql[3].ToString(), sql[4].ToString(), sql[5].ToString(), sql[6].ToString(), sql[7].ToString(), sql[8].ToString());
+                    }
                 }
-                sql.Close();
                 dbConnection.Close();
             }
             catch (SQLiteException ex)
@@ -79,7 +89,7 @@ namespace DSS
         {
             SQLiteCommand cmd = dbConnection.CreateCommand();
             cmd.CommandText = "Delete from Projects where ID=@id";
-            cmd.Parameters.Add("@id", DbType.UInt16).Value = dataGridViewProjects.CurrentRow.Cells[0].Value;
+            cmd.Parameters.Add("@id", DbType.Int32).Value = dataGridViewProjects.CurrentRow.Cells[0].Value;
             try
             {
                 //Удаление записи из таблицы в ДБ

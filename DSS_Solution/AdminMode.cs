@@ -1,60 +1,59 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DSS
 {
-    public partial class FormAdminMode : Form
+    public partial class AdminMode : Form
     {
-        public FormAdminMode()
+        public AdminMode()
         {
             InitializeComponent();
         }
 
         private void buttonBackupDB_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveDB = new SaveFileDialog();
             /*
-             * Резервирование методом копирования сходного файла
+             * Резервирование методом копирования исходного файла
              * Сделать дефолтной путь к сохранению бэкапа базы
              * Добавить маску для имени файла бэкапа
             */
-            string fileName = "database.db";
-            string sourcePathDBFile = AppDomain.CurrentDomain.BaseDirectory;
-            string backupPathDBFile = AppDomain.CurrentDomain.BaseDirectory + "backup";
-            string date = DateTime.Now.ToString("yyyy.MM.dd");
-            string backupFileName = "database_" + date.Replace(".", "");
-            string soursePath = Path.Combine(sourcePathDBFile, fileName);
-            string backupPath = Path.Combine(backupPathDBFile, backupFileName);
+            SaveFileDialog saveDB = new SaveFileDialog();
+            string backupFileName = "database_" + DateTime.Now.ToString("yyyy.MM.dd").Replace(".", "") + ".dbbackup";
+            string sourceDBFile = Application.StartupPath + "\\database.db";
+            string backupDBFile = Path.Combine(Application.StartupPath + "\\backup", backupFileName);
 
-            saveDB.InitialDirectory = backupPathDBFile;
+            saveDB.InitialDirectory = Application.StartupPath + "\\backup";
             saveDB.FileName = backupFileName;
             saveDB.Filter = "Database backup file(*.dbbackup)|*.dbbackup";
 
-            saveDB.ShowDialog();
-            File.Copy(soursePath, backupPath, true);
+            if (saveDB.ShowDialog(this) == DialogResult.OK)
+            {
+                File.Copy(sourceDBFile, backupDBFile, true);
+            }
         }
 
         private void buttonRestoreDB_Click(object sender, EventArgs e)
         {
-            OpenFileDialog restoreDB = new OpenFileDialog();
             /*
-             * Выбирать соответсвующий файл для вооставления основной базы
+             * Восстановление базы данных
             */
-            string fileName = "database.db1";
-            string sourcePathDBFile = AppDomain.CurrentDomain.BaseDirectory;
-            string backupPathDBFile = AppDomain.CurrentDomain.BaseDirectory + "backup";
-            string date = DateTime.Now.ToString("yyyy.MM.dd");
-            string backupFileName = "database_" + date.Replace(".", "");
-            string soursePath = Path.Combine(sourcePathDBFile, fileName);
-            string backupPath = Path.Combine(backupPathDBFile, backupFileName);
+            OpenFileDialog restoreDB = new OpenFileDialog();
+
+            string backupPathDBFile = Application.StartupPath + "\\backup";
 
             restoreDB.InitialDirectory = backupPathDBFile;
-            //restoreDB.FileName = backupFileName;
             restoreDB.Filter = "Database backup file(*.dbbackup)|*.dbbackup";
 
-            restoreDB.ShowDialog();
-            File.Copy(backupPath, soursePath, true);
+            if (restoreDB.ShowDialog(this) == DialogResult.OK)
+            {
+                string backupFileName = Path.GetFileName(Application.StartupPath + "\\backup\\" + restoreDB.FileName);
+                string backupDBFile = Application.StartupPath + "\\backup\\" + backupFileName;
+                string restoreDBFile = Application.StartupPath + "\\database.db";
+
+                MessageBox.Show(backupDBFile + "\n\n" + restoreDBFile);
+                File.Copy(backupDBFile, restoreDBFile, true);
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

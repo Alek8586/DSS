@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DSS
 {
-    public partial class FormOperatorMode : Form
+    public partial class OperatorMode : Form
     {
-        public FormOperatorMode()
+        public OperatorMode()
         {
             InitializeComponent();
         }

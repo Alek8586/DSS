@@ -1,6 +1,6 @@
 ﻿namespace DSS
 {
-    partial class FormOperatorMode
+    partial class OperatorMode
     {
         /// <summary>
         /// Required designer variable.
