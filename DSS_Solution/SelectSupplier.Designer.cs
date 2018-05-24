@@ -36,17 +36,22 @@
             this.buttonBackToFormEditProject = new System.Windows.Forms.Button();
             this.groupBoxCriteriaOfTheSelection = new System.Windows.Forms.GroupBox();
             this.buttonListboxSelectedCriteriaOneStepBelow = new System.Windows.Forms.Button();
+            this.buttonListboxSelectedCriteriaOneStepHigher = new System.Windows.Forms.Button();
             this.labelQMS = new System.Windows.Forms.Label();
             this.labelSupplierType = new System.Windows.Forms.Label();
             this.comboBoxQMS = new System.Windows.Forms.ComboBox();
             this.comboBoxSupplierType = new System.Windows.Forms.ComboBox();
-            this.buttonListboxSelectedCriteriaOneStepHigher = new System.Windows.Forms.Button();
+            this.groupBoxSearchingResult = new System.Windows.Forms.GroupBox();
+            this.listBoxSearchingResult = new System.Windows.Forms.ListBox();
+            this.buttonSelectSupplierToProject = new System.Windows.Forms.Button();
+            this.buttonSelectTheSupplierManually = new System.Windows.Forms.Button();
             this.groupBoxCriteriaOfTheSelection.SuspendLayout();
+            this.groupBoxSearchingResult.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAddСriterion
             // 
-            this.buttonAddСriterion.Location = new System.Drawing.Point(135, 129);
+            this.buttonAddСriterion.Location = new System.Drawing.Point(134, 129);
             this.buttonAddСriterion.Name = "buttonAddСriterion";
             this.buttonAddСriterion.Size = new System.Drawing.Size(120, 23);
             this.buttonAddСriterion.TabIndex = 1;
@@ -56,7 +61,7 @@
             // 
             // buttonRemoveCriterion
             // 
-            this.buttonRemoveCriterion.Location = new System.Drawing.Point(135, 156);
+            this.buttonRemoveCriterion.Location = new System.Drawing.Point(134, 156);
             this.buttonRemoveCriterion.Name = "buttonRemoveCriterion";
             this.buttonRemoveCriterion.Size = new System.Drawing.Size(120, 23);
             this.buttonRemoveCriterion.TabIndex = 2;
@@ -68,7 +73,7 @@
             // 
             this.listBoxAllCriteria.FormattingEnabled = true;
             this.listBoxAllCriteria.ItemHeight = 15;
-            this.listBoxAllCriteria.Location = new System.Drawing.Point(9, 129);
+            this.listBoxAllCriteria.Location = new System.Drawing.Point(8, 129);
             this.listBoxAllCriteria.Name = "listBoxAllCriteria";
             this.listBoxAllCriteria.Size = new System.Drawing.Size(120, 154);
             this.listBoxAllCriteria.TabIndex = 0;
@@ -77,16 +82,16 @@
             // 
             this.listBoxSelectedCriteria.FormattingEnabled = true;
             this.listBoxSelectedCriteria.ItemHeight = 15;
-            this.listBoxSelectedCriteria.Location = new System.Drawing.Point(259, 129);
+            this.listBoxSelectedCriteria.Location = new System.Drawing.Point(260, 129);
             this.listBoxSelectedCriteria.Name = "listBoxSelectedCriteria";
             this.listBoxSelectedCriteria.Size = new System.Drawing.Size(120, 154);
             this.listBoxSelectedCriteria.TabIndex = 3;
             // 
             // buttonSelectionOfTheSupplier
             // 
-            this.buttonSelectionOfTheSupplier.Location = new System.Drawing.Point(9, 289);
+            this.buttonSelectionOfTheSupplier.Location = new System.Drawing.Point(8, 289);
             this.buttonSelectionOfTheSupplier.Name = "buttonSelectionOfTheSupplier";
-            this.buttonSelectionOfTheSupplier.Size = new System.Drawing.Size(370, 23);
+            this.buttonSelectionOfTheSupplier.Size = new System.Drawing.Size(372, 23);
             this.buttonSelectionOfTheSupplier.TabIndex = 4;
             this.buttonSelectionOfTheSupplier.Text = "Произвести подбор поставщика";
             this.buttonSelectionOfTheSupplier.UseVisualStyleBackColor = true;
@@ -95,7 +100,7 @@
             // buttonBackToFormEditProject
             // 
             this.buttonBackToFormEditProject.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonBackToFormEditProject.Location = new System.Drawing.Point(277, 344);
+            this.buttonBackToFormEditProject.Location = new System.Drawing.Point(278, 569);
             this.buttonBackToFormEditProject.Name = "buttonBackToFormEditProject";
             this.buttonBackToFormEditProject.Size = new System.Drawing.Size(120, 25);
             this.buttonBackToFormEditProject.TabIndex = 5;
@@ -127,7 +132,7 @@
             // 
             // buttonListboxSelectedCriteriaOneStepBelow
             // 
-            this.buttonListboxSelectedCriteriaOneStepBelow.Location = new System.Drawing.Point(385, 156);
+            this.buttonListboxSelectedCriteriaOneStepBelow.Location = new System.Drawing.Point(386, 156);
             this.buttonListboxSelectedCriteriaOneStepBelow.Name = "buttonListboxSelectedCriteriaOneStepBelow";
             this.buttonListboxSelectedCriteriaOneStepBelow.Size = new System.Drawing.Size(120, 23);
             this.buttonListboxSelectedCriteriaOneStepBelow.TabIndex = 8;
@@ -135,6 +140,17 @@
             this.buttonListboxSelectedCriteriaOneStepBelow.UseVisualStyleBackColor = true;
             this.buttonListboxSelectedCriteriaOneStepBelow.Visible = false;
             this.buttonListboxSelectedCriteriaOneStepBelow.Click += new System.EventHandler(this.buttonListboxSelectedCriteriaOneStepBelow_Click);
+            // 
+            // buttonListboxSelectedCriteriaOneStepHigher
+            // 
+            this.buttonListboxSelectedCriteriaOneStepHigher.Location = new System.Drawing.Point(386, 127);
+            this.buttonListboxSelectedCriteriaOneStepHigher.Name = "buttonListboxSelectedCriteriaOneStepHigher";
+            this.buttonListboxSelectedCriteriaOneStepHigher.Size = new System.Drawing.Size(120, 23);
+            this.buttonListboxSelectedCriteriaOneStepHigher.TabIndex = 7;
+            this.buttonListboxSelectedCriteriaOneStepHigher.Text = "Выше";
+            this.buttonListboxSelectedCriteriaOneStepHigher.UseVisualStyleBackColor = true;
+            this.buttonListboxSelectedCriteriaOneStepHigher.Visible = false;
+            this.buttonListboxSelectedCriteriaOneStepHigher.Click += new System.EventHandler(this.buttonListboxSelectedCriteriaOneStepHigher_Click);
             // 
             // labelQMS
             // 
@@ -180,16 +196,50 @@
             this.comboBoxSupplierType.TabIndex = 5;
             this.comboBoxSupplierType.TabStop = false;
             // 
-            // buttonListboxSelectedCriteriaOneStepHigher
+            // groupBoxSearchingResult
             // 
-            this.buttonListboxSelectedCriteriaOneStepHigher.Location = new System.Drawing.Point(385, 127);
-            this.buttonListboxSelectedCriteriaOneStepHigher.Name = "buttonListboxSelectedCriteriaOneStepHigher";
-            this.buttonListboxSelectedCriteriaOneStepHigher.Size = new System.Drawing.Size(120, 23);
-            this.buttonListboxSelectedCriteriaOneStepHigher.TabIndex = 7;
-            this.buttonListboxSelectedCriteriaOneStepHigher.Text = "Выше";
-            this.buttonListboxSelectedCriteriaOneStepHigher.UseVisualStyleBackColor = true;
-            this.buttonListboxSelectedCriteriaOneStepHigher.Visible = false;
-            this.buttonListboxSelectedCriteriaOneStepHigher.Click += new System.EventHandler(this.buttonListboxSelectedCriteriaOneStepHigher_Click);
+            this.groupBoxSearchingResult.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBoxSearchingResult.Controls.Add(this.buttonSelectTheSupplierManually);
+            this.groupBoxSearchingResult.Controls.Add(this.buttonSelectSupplierToProject);
+            this.groupBoxSearchingResult.Controls.Add(this.listBoxSearchingResult);
+            this.groupBoxSearchingResult.Location = new System.Drawing.Point(18, 348);
+            this.groupBoxSearchingResult.Name = "groupBoxSearchingResult";
+            this.groupBoxSearchingResult.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBoxSearchingResult.Size = new System.Drawing.Size(512, 215);
+            this.groupBoxSearchingResult.TabIndex = 6;
+            this.groupBoxSearchingResult.TabStop = false;
+            this.groupBoxSearchingResult.Text = "Результаты поиска";
+            // 
+            // listBoxSearchingResult
+            // 
+            this.listBoxSearchingResult.FormattingEnabled = true;
+            this.listBoxSearchingResult.ItemHeight = 15;
+            this.listBoxSearchingResult.Location = new System.Drawing.Point(9, 22);
+            this.listBoxSearchingResult.Name = "listBoxSearchingResult";
+            this.listBoxSearchingResult.Size = new System.Drawing.Size(496, 154);
+            this.listBoxSearchingResult.TabIndex = 0;
+            // 
+            // buttonSelectSupplierToProject
+            // 
+            this.buttonSelectSupplierToProject.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonSelectSupplierToProject.Location = new System.Drawing.Point(8, 182);
+            this.buttonSelectSupplierToProject.Name = "buttonSelectSupplierToProject";
+            this.buttonSelectSupplierToProject.Size = new System.Drawing.Size(162, 25);
+            this.buttonSelectSupplierToProject.TabIndex = 5;
+            this.buttonSelectSupplierToProject.Text = "Выбрать поставщика";
+            this.buttonSelectSupplierToProject.UseVisualStyleBackColor = true;
+            this.buttonSelectSupplierToProject.Click += new System.EventHandler(this.buttonBackToFormEditProject_Click);
+            // 
+            // buttonSelectTheSupplierManually
+            // 
+            this.buttonSelectTheSupplierManually.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonSelectTheSupplierManually.Location = new System.Drawing.Point(176, 182);
+            this.buttonSelectTheSupplierManually.Name = "buttonSelectTheSupplierManually";
+            this.buttonSelectTheSupplierManually.Size = new System.Drawing.Size(204, 25);
+            this.buttonSelectTheSupplierManually.TabIndex = 5;
+            this.buttonSelectTheSupplierManually.Text = "Выбрать другого поставщика";
+            this.buttonSelectTheSupplierManually.UseVisualStyleBackColor = true;
+            this.buttonSelectTheSupplierManually.Click += new System.EventHandler(this.buttonBackToFormEditProject_Click);
             // 
             // SelectSupplier
             // 
@@ -199,8 +249,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonBackToFormEditProject;
-            this.ClientSize = new System.Drawing.Size(682, 686);
+            this.ClientSize = new System.Drawing.Size(682, 799);
             this.Controls.Add(this.buttonBackToFormEditProject);
+            this.Controls.Add(this.groupBoxSearchingResult);
             this.Controls.Add(this.groupBoxCriteriaOfTheSelection);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -214,6 +265,7 @@
             this.Load += new System.EventHandler(this.SelectSupplier_Load);
             this.groupBoxCriteriaOfTheSelection.ResumeLayout(false);
             this.groupBoxCriteriaOfTheSelection.PerformLayout();
+            this.groupBoxSearchingResult.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -232,5 +284,9 @@
         private System.Windows.Forms.ComboBox comboBoxQMS;
         private System.Windows.Forms.ComboBox comboBoxSupplierType;
         private System.Windows.Forms.Button buttonListboxSelectedCriteriaOneStepHigher;
+        private System.Windows.Forms.GroupBox groupBoxSearchingResult;
+        private System.Windows.Forms.ListBox listBoxSearchingResult;
+        private System.Windows.Forms.Button buttonSelectSupplierToProject;
+        private System.Windows.Forms.Button buttonSelectTheSupplierManually;
     }
 }

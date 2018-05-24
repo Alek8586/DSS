@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
 
@@ -22,21 +20,23 @@ namespace DSS
 
             comboBoxSupplierType.SelectedIndex = 0;
             comboBoxQMS.SelectedIndex = 0;
+
+            groupBoxSearchingResult.Visible = false;
         }
 
         private void buttonAddСriterion_Click(object sender, EventArgs e)
         {
             try
             {
-            if (listBoxAllCriteria.SelectedItem != null)
-            {
-                AddCriterion();
-            }
-            else
-            {
-                listBoxAllCriteria.SetSelected(listBoxAllCriteria.TopIndex, true);
-                AddCriterion();
-            }
+                if (listBoxAllCriteria.SelectedItem != null)
+                {
+                    AddCriterion();
+                }
+                else
+                {
+                    listBoxAllCriteria.SetSelected(listBoxAllCriteria.TopIndex, true);
+                    AddCriterion();
+                }
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -70,10 +70,6 @@ namespace DSS
             if (listBoxSelectedCriteria.Items.Count > 0)
             {
                 SelectionOfTheSupplier();
-
-                //ResultOfTheSelection ResultOfTheSelectionForm = new ResultOfTheSelection();
-                //ResultOfTheSelectionForm.Owner = this;
-                //ResultOfTheSelectionForm.ShowDialog();
             }
 
         }
@@ -199,16 +195,7 @@ namespace DSS
                     }
                 }
             }
-
             dbConnection.Close();
-
-            //Проверка записи данных в экземпляр класса
-            //foreach (ListOfTheSuppliers i in listOfTheSuppliers)
-            //{
-            //    MessageBox.Show(i.ID.ToString() + ", " + i.Name.ToString() + ", " + i.Class.ToString() + ", " + 
-            //        i.MaterialQuality.ToString() + ", " + i.Price.ToString() + ", " + i.TimeOfDelivery.ToString() +
-            //        ", " + i.Reliability.ToString());
-            //}
 
             //Присвоение выбранному критерию веса
             int countOfSelectedCriteria = listBoxSelectedCriteria.Items.Count;
@@ -264,33 +251,54 @@ namespace DSS
             //MessageBox.Show(MaterialQuality.ToString() + ", " + Price.ToString() + ", " + TimeOfDelivery.ToString() + ", " + LocationRemoteness.ToString() + ", " + Flexibility.ToString() + ", " + WarrantyService.ToString());
 
             //Рассчет рейтинга поставщика по каждому критерию
-            List<RaitingOfTheSuppliers> raitingOfTheSuppliers = new List<RaitingOfTheSuppliers>();
+            List<RatingOfTheSuppliers> ratingOfTheSuppliers = new List<RatingOfTheSuppliers>();
 
             for (int i = 0; i < rowscount; i++)
             {
-                RaitingOfTheSuppliers raiting = new RaitingOfTheSuppliers();
+                RatingOfTheSuppliers rating = new RatingOfTheSuppliers();
 
-                raiting.ID = Convert.ToInt32(listOfTheSuppliers[i, 0]);
-                raiting.Name = listOfTheSuppliers[i, 1];
-                raiting.Class = listOfTheSuppliers[i, 2];
-                raiting.QMS = Convert.ToBoolean(listOfTheSuppliers[i, 3]);
-                raiting.MaterialQuality = Convert.ToDouble(listOfTheSuppliers[i, 4]) * MaterialQuality;
-                raiting.Price = Convert.ToDouble(listOfTheSuppliers[i, 5]) * Price;
-                raiting.TimeOfDelivery = Convert.ToDouble(listOfTheSuppliers[i, 6]) * TimeOfDelivery;
-                raiting.LocationRemoteness = Convert.ToDouble(listOfTheSuppliers[i, 7]) * LocationRemoteness;
-                raiting.Flexibility = Convert.ToDouble(listOfTheSuppliers[i, 8]) * Flexibility;
-                raiting.WarrantyService = Convert.ToDouble(listOfTheSuppliers[i, 9]) * WarrantyService;
+                rating.ID = Convert.ToInt32(listOfTheSuppliers[i, 0]);
+                rating.Name = listOfTheSuppliers[i, 1];
+                rating.Class = listOfTheSuppliers[i, 2];
+                rating.QMS = Convert.ToBoolean(listOfTheSuppliers[i, 3]);
+                rating.MaterialQuality = Convert.ToDouble(listOfTheSuppliers[i, 4]) * MaterialQuality;
+                rating.Price = Convert.ToDouble(listOfTheSuppliers[i, 5]) * Price;
+                rating.TimeOfDelivery = Convert.ToDouble(listOfTheSuppliers[i, 6]) * TimeOfDelivery;
+                rating.LocationRemoteness = Convert.ToDouble(listOfTheSuppliers[i, 7]) * LocationRemoteness;
+                rating.Flexibility = Convert.ToDouble(listOfTheSuppliers[i, 8]) * Flexibility;
+                rating.WarrantyService = Convert.ToDouble(listOfTheSuppliers[i, 9]) * WarrantyService;
 
-                raitingOfTheSuppliers.Add(raiting);
+                ratingOfTheSuppliers.Add(rating);
 
+                //Проверка работы
                 //MessageBox.Show(raiting.ID.ToString() + ", " + raiting.Name.ToString() + ", " + raiting.Class.ToString() + ", " + raiting.MaterialQuality.ToString() + ", " + raiting.Price.ToString() + ", " + raiting.TimeOfDelivery.ToString() + ", " + raiting.LocationRemoteness.ToString() + ", " + raiting.Flexibility.ToString() + ", " + raiting.WarrantyService.ToString());
             }
 
-            //Сортировка по убыванию
-            raitingOfTheSuppliers.Sort(delegate (RaitingOfTheSuppliers raiting1, RaitingOfTheSuppliers raiting2) { return raiting1.ID.CompareTo(raiting2.ID); });
+            //Расчет итоговой оценки по показателям
+            foreach (var overallRating in ratingOfTheSuppliers)
+            {
+                overallRating.TotalGrade = Math.Round(overallRating.MaterialQuality + overallRating.Price + overallRating.TimeOfDelivery + overallRating.LocationRemoteness + overallRating.Flexibility + WarrantyService, 2);
 
-            //Передача данных в форму решения по выбору поставщика
+                //MessageBox.Show(overallRating.ID.ToString() + ", " + overallRating.Name.ToString() + ", " + overallRating.TotalGrade.ToString(), "Результат выборки", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
 
+            //Сортировка полученных данных по убыванию
+            ratingOfTheSuppliers.Sort((a, b) => (b.TotalGrade.CompareTo(a.TotalGrade)));
+
+            //Проверка вывода
+            groupBoxSearchingResult.Visible = true;
+            listBoxSearchingResult.Items.Clear();
+
+            foreach (var item in ratingOfTheSuppliers)
+            {
+                //Проверка работы
+                //MessageBox.Show(item.ID.ToString() + ", " + item.Name.ToString() + ", " + item.TotalGrade.ToString(), "Результат выборки", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                listBoxSearchingResult.Items.Add(item.Name.ToString());
+                if (listBoxSearchingResult.Items.Count > 2)
+                {
+                    break;
+                }
+            }
         }
     }
 }

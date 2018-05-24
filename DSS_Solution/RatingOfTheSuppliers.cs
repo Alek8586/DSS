@@ -1,6 +1,6 @@
 ﻿namespace DSS
 {
-    class RaitingOfTheSuppliers
+    class RatingOfTheSuppliers
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -12,5 +12,6 @@
         public double LocationRemoteness { get; set; }
         public double Flexibility { get; set; }
         public double WarrantyService { get; set; }
+        public double TotalGrade { get; set; }
     }
 }
