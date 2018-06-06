@@ -45,9 +45,9 @@
             this.buttonSelectSupplier = new System.Windows.Forms.Button();
             this.textBoxProjectShippingDate = new System.Windows.Forms.TextBox();
             this.labelProjectOfficer = new System.Windows.Forms.Label();
-            this.textBoxProjectOfficer = new System.Windows.Forms.TextBox();
             this.labelProjectStatus = new System.Windows.Forms.Label();
-            this.textBoxProjectStatus = new System.Windows.Forms.TextBox();
+            this.comboBoxProjectStatus = new System.Windows.Forms.ComboBox();
+            this.comboBoxProjectOfficer = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelProjectName
@@ -139,12 +139,14 @@
             this.textBoxProjectSupplier.Name = "textBoxProjectSupplier";
             this.textBoxProjectSupplier.Size = new System.Drawing.Size(150, 21);
             this.textBoxProjectSupplier.TabIndex = 11;
+            this.textBoxProjectSupplier.DoubleClick += new System.EventHandler(this.textBoxProjectSupplier_DoubleClick);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(281, 15);
+            this.buttonSave.Location = new System.Drawing.Point(264, 248);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(150, 25);
+            this.buttonSave.Size = new System.Drawing.Size(150, 30);
             this.buttonSave.TabIndex = 12;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -153,9 +155,10 @@
             // buttonSaveAndClose
             // 
             this.buttonSaveAndClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSaveAndClose.Location = new System.Drawing.Point(281, 46);
+            this.buttonSaveAndClose.Location = new System.Drawing.Point(264, 284);
+            this.buttonSaveAndClose.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonSaveAndClose.Name = "buttonSaveAndClose";
-            this.buttonSaveAndClose.Size = new System.Drawing.Size(150, 25);
+            this.buttonSaveAndClose.Size = new System.Drawing.Size(150, 30);
             this.buttonSaveAndClose.TabIndex = 13;
             this.buttonSaveAndClose.Text = "Сохранить и закрыть";
             this.buttonSaveAndClose.UseVisualStyleBackColor = true;
@@ -164,9 +167,10 @@
             // buttonBackToProjectsForm
             // 
             this.buttonBackToProjectsForm.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonBackToProjectsForm.Location = new System.Drawing.Point(281, 77);
+            this.buttonBackToProjectsForm.Location = new System.Drawing.Point(264, 320);
+            this.buttonBackToProjectsForm.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonBackToProjectsForm.Name = "buttonBackToProjectsForm";
-            this.buttonBackToProjectsForm.Size = new System.Drawing.Size(150, 25);
+            this.buttonBackToProjectsForm.Size = new System.Drawing.Size(150, 30);
             this.buttonBackToProjectsForm.TabIndex = 14;
             this.buttonBackToProjectsForm.Text = "Закрыть";
             this.buttonBackToProjectsForm.UseVisualStyleBackColor = true;
@@ -174,9 +178,10 @@
             // 
             // buttonSelectSupplier
             // 
-            this.buttonSelectSupplier.Location = new System.Drawing.Point(281, 325);
+            this.buttonSelectSupplier.Location = new System.Drawing.Point(264, 18);
+            this.buttonSelectSupplier.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonSelectSupplier.Name = "buttonSelectSupplier";
-            this.buttonSelectSupplier.Size = new System.Drawing.Size(150, 25);
+            this.buttonSelectSupplier.Size = new System.Drawing.Size(150, 30);
             this.buttonSelectSupplier.TabIndex = 15;
             this.buttonSelectSupplier.Text = "Выбрать поставщика";
             this.buttonSelectSupplier.UseVisualStyleBackColor = true;
@@ -198,13 +203,6 @@
             this.labelProjectOfficer.TabIndex = 10;
             this.labelProjectOfficer.Text = "Ответственный сотрудник";
             // 
-            // textBoxProjectOfficer
-            // 
-            this.textBoxProjectOfficer.Location = new System.Drawing.Point(21, 287);
-            this.textBoxProjectOfficer.Name = "textBoxProjectOfficer";
-            this.textBoxProjectOfficer.Size = new System.Drawing.Size(150, 21);
-            this.textBoxProjectOfficer.TabIndex = 11;
-            // 
             // labelProjectStatus
             // 
             this.labelProjectStatus.AutoSize = true;
@@ -214,27 +212,37 @@
             this.labelProjectStatus.TabIndex = 10;
             this.labelProjectStatus.Text = "Статус проекта";
             // 
-            // textBoxProjectStatus
+            // comboBoxProjectStatus
             // 
-            this.textBoxProjectStatus.Location = new System.Drawing.Point(21, 329);
-            this.textBoxProjectStatus.Name = "textBoxProjectStatus";
-            this.textBoxProjectStatus.Size = new System.Drawing.Size(150, 21);
-            this.textBoxProjectStatus.TabIndex = 11;
+            this.comboBoxProjectStatus.FormattingEnabled = true;
+            this.comboBoxProjectStatus.Location = new System.Drawing.Point(21, 329);
+            this.comboBoxProjectStatus.Name = "comboBoxProjectStatus";
+            this.comboBoxProjectStatus.Size = new System.Drawing.Size(150, 23);
+            this.comboBoxProjectStatus.TabIndex = 11;
+            // 
+            // comboBoxProjectOfficer
+            // 
+            this.comboBoxProjectOfficer.FormattingEnabled = true;
+            this.comboBoxProjectOfficer.Location = new System.Drawing.Point(21, 288);
+            this.comboBoxProjectOfficer.Name = "comboBoxProjectOfficer";
+            this.comboBoxProjectOfficer.Size = new System.Drawing.Size(150, 23);
+            this.comboBoxProjectOfficer.TabIndex = 11;
             // 
             // EditProject
             // 
+            this.AcceptButton = this.buttonSaveAndClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonBackToProjectsForm;
             this.ClientSize = new System.Drawing.Size(653, 506);
+            this.Controls.Add(this.comboBoxProjectOfficer);
+            this.Controls.Add(this.comboBoxProjectStatus);
             this.Controls.Add(this.buttonSelectSupplier);
             this.Controls.Add(this.buttonBackToProjectsForm);
             this.Controls.Add(this.buttonSaveAndClose);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBoxProjectStatus);
-            this.Controls.Add(this.textBoxProjectOfficer);
             this.Controls.Add(this.textBoxProjectSupplier);
             this.Controls.Add(this.labelProjectStatus);
             this.Controls.Add(this.labelProjectOfficer);
@@ -275,15 +283,15 @@
         private System.Windows.Forms.Label labelProjectChiefDesigner;
         private System.Windows.Forms.TextBox textBoxProjectChiefDesigner;
         private System.Windows.Forms.Label labelProjectSupplier;
-        private System.Windows.Forms.TextBox textBoxProjectSupplier;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonSaveAndClose;
         private System.Windows.Forms.Button buttonBackToProjectsForm;
         private System.Windows.Forms.Button buttonSelectSupplier;
         private System.Windows.Forms.TextBox textBoxProjectShippingDate;
         private System.Windows.Forms.Label labelProjectOfficer;
-        private System.Windows.Forms.TextBox textBoxProjectOfficer;
         private System.Windows.Forms.Label labelProjectStatus;
-        private System.Windows.Forms.TextBox textBoxProjectStatus;
+        public System.Windows.Forms.TextBox textBoxProjectSupplier;
+        private System.Windows.Forms.ComboBox comboBoxProjectStatus;
+        private System.Windows.Forms.ComboBox comboBoxProjectOfficer;
     }
 }

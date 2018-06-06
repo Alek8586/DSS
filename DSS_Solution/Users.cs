@@ -30,16 +30,7 @@ namespace DSS
 
         private void buttonEditUser_Click(object sender, EventArgs e)
         {
-            //Передаем данные строки в поля формы
-            string[] userData = new string[dataGridViewUsers.CurrentRow.Cells.Count];
-            for (int i = 0; i < dataGridViewUsers.CurrentRow.Cells.Count; i++)
-            {
-                userData[i] = dataGridViewUsers.CurrentRow.Cells[i].Value.ToString();
-            }
-
-            EditUser EditUserForm = new EditUser(userData);
-            EditUserForm.Owner = this;
-            EditUserForm.ShowDialog();
+            EditRecord();
         }
 
         private void buttonDeleteUser_Click(object sender, EventArgs e)
@@ -51,13 +42,18 @@ namespace DSS
         {
             this.Close();
         }
+        
+        private void dataGridViewUsers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            EditRecord();
+        }
 
         public void ListOfUsers()
         {
             //Заполнение таблицы с информацией о пользователях
             try
             {
-                dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
+                dbConnection = new SQLiteConnection("Data Source=" + Application.StartupPath + "\\database.db; Version=3");
                 dbConnection.Open();
 
                 SQLiteCommand listUsers = dbConnection.CreateCommand();
@@ -77,6 +73,21 @@ namespace DSS
             }
         }
 
+        private void EditRecord()
+        {
+            //Передаем данные строки DGV в поля формы редактирования
+            string[] userData = new string[dataGridViewUsers.CurrentRow.Cells.Count];
+            for (int i = 0; i < dataGridViewUsers.CurrentRow.Cells.Count; i++)
+            {
+                userData[i] = dataGridViewUsers.CurrentRow.Cells[i].Value.ToString();
+            }
+
+            EditUser EditUserForm = new EditUser(userData);
+            EditUserForm.Owner = this;
+            EditUserForm.ShowDialog();
+
+        }
+
         private void DeleteUser()
         {
             SQLiteCommand cmd = dbConnection.CreateCommand();
@@ -93,6 +104,8 @@ namespace DSS
                 foreach (DataGridViewCell cell in dataGridViewUsers.SelectedCells)
                 {
                     dataGridViewUsers.Rows.RemoveAt(cell.RowIndex);
+
+                    if (cell.RowIndex < 0) break;
                 }
             }
             catch (SQLiteException ex)

@@ -28,6 +28,8 @@ namespace DSS
 
                 //Временно для тестирования. По окончанию - удалить.
                 textBoxLogInUsername.Text = "Admin";
+                textBoxLogInPassword.Text = "12345";
+                //Временно для тестирования. По окончанию - удалить.
             }
             else
             {
@@ -38,6 +40,9 @@ namespace DSS
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
+            HashString hashString = new HashString();
+            hashString.s = hashString.GetHashString(textBoxLogInPassword.Text);
+
             if (textBoxLogInUsername.Text != "")
             {
                 try
@@ -51,7 +56,7 @@ namespace DSS
                         {
                             while (sqlReader.Read())
                             {
-                                if (textBoxLogInUsername.Text.Equals(sqlReader["Login"]) && textBoxLogInPassword.Text.Equals(sqlReader["Password"]))
+                                if (textBoxLogInUsername.Text.Equals(sqlReader["Login"]) && hashString.s.Equals(sqlReader["Password"]))
                                 {
                                     switch (sqlReader["Role"])
                                     {
@@ -65,10 +70,31 @@ namespace DSS
                                             }
                                         case "Оператор":
                                             {
-                                                OperatorMode OperatorMode = new OperatorMode();
-                                                OperatorMode.Show();
-                                                this.Hide();
+                                                if (textBoxLogInPassword.Text.Equals("password1"))
+                                                {
+                                                    var passwordMessage = MessageBox.Show("В целях безопасности рекомендуется сменить стандартный пароль.", "Предупреждение!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                                                    
+                                                    if (passwordMessage == DialogResult.OK)
+                                                    {
+                                                        //dbConnection.Close();
 
+                                                        SettingUserPassword settingUserPassword = new SettingUserPassword();
+                                                        settingUserPassword.Owner = this;
+                                                        settingUserPassword.ShowDialog();
+                                                    }
+                                                    else
+                                                    {
+                                                        //OperatorMode OperatorMode = new OperatorMode();
+                                                        //OperatorMode.Show();
+                                                    }
+
+                                                }
+                                                if (textBoxLogInPassword.Text.Equals(string.Empty))
+                                                {
+                                                    var passwordMessage = MessageBox.Show("В целях безопасности рекомендуется установить пароль.", "Предупреждение!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                                                }
+
+                                                this.Hide();
                                                 break;
                                             }
                                     }
@@ -85,7 +111,7 @@ namespace DSS
                 }
                 catch (SQLiteException ex)
                 {
-                    MessageBox.Show("Нет подключения к БД! \n\n" + ex.Message);
+                    MessageBox.Show("Ошибка: \n\n" + ex.Message);
                 }
             }
             else labelUsernamePassword.Text = "Введите логин";
@@ -101,9 +127,14 @@ namespace DSS
         {
             try
             {
-                SQLiteCommand command = dbConnection.CreateCommand();
-                command.CommandText = "update Users set Password=''";
-                command.ExecuteNonQuery();
+                HashString hashString = new HashString();
+                hashString.s = hashString.GetHashString("");
+
+                SQLiteCommand sqlCommand = dbConnection.CreateCommand();
+                sqlCommand.CommandText = "Update Users set Password = @Password";
+                sqlCommand.Parameters.Add("@Password", DbType.String).Value = hashString.s;
+
+                sqlCommand.ExecuteNonQuery();
 
                 textBoxLogInUsername.Clear();
                 textBoxLogInPassword.Clear();
@@ -111,7 +142,7 @@ namespace DSS
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("Нет подключения к БД! \n\n" + ex.Message);
+                MessageBox.Show("Ошибка: \n\n" + ex.Message);
             }
         }
 
@@ -122,7 +153,7 @@ namespace DSS
                 if (textBoxLogInUsername.Text != "" && textBoxLogInPassword.Text != "")
                 {
                     SQLiteCommand cmd = dbConnection.CreateCommand();
-                    cmd.CommandText = "update Users set Password='" + textBoxLogInPassword.Text + "' where Login = '" + textBoxLogInUsername.Text + "'";
+                    cmd.CommandText = "Update Users set Password='" + textBoxLogInPassword.Text + "' where Login = '" + textBoxLogInUsername.Text + "'";
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Пароль '" + textBoxLogInPassword.Text + "' для пользователя '" + textBoxLogInUsername.Text + "' задан");
@@ -131,7 +162,7 @@ namespace DSS
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("Нет подключения к БД!\n\n" + ex.Message);
+                MessageBox.Show("Ошибка: \n\n" + ex.Message);
             }
         }
 

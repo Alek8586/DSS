@@ -21,6 +21,8 @@ namespace DSS
 
     public class HashString
     {
+        public string s { get; set; }
+
         public string GetHashString(string s)
         {
             //Хеширование вводимого пароля через MD5

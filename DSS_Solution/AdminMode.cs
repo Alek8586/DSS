@@ -51,7 +51,6 @@ namespace DSS
                 string backupDBFile = Application.StartupPath + "\\backup\\" + backupFileName;
                 string restoreDBFile = Application.StartupPath + "\\database.db";
 
-                MessageBox.Show(backupDBFile + "\n\n" + restoreDBFile);
                 File.Copy(backupDBFile, restoreDBFile, true);
             }
         }

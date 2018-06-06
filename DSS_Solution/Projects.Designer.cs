@@ -45,7 +45,6 @@
             this.buttonEditProject = new System.Windows.Forms.Button();
             this.buttonDeleteProject = new System.Windows.Forms.Button();
             this.buttonToFormAdminMode = new System.Windows.Forms.Button();
-            this.buttonSelectionSupplier = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,6 +89,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewProjects.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewProjects.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridViewProjects.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.dataGridViewProjects.Location = new System.Drawing.Point(15, 15);
             this.dataGridViewProjects.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
@@ -108,9 +108,10 @@
             this.dataGridViewProjects.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewProjects.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewProjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProjects.Size = new System.Drawing.Size(958, 297);
+            this.dataGridViewProjects.Size = new System.Drawing.Size(958, 402);
             this.dataGridViewProjects.TabIndex = 0;
             this.dataGridViewProjects.TabStop = false;
+            this.dataGridViewProjects.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewProjects_MouseDoubleClick);
             // 
             // ID
             // 
@@ -177,8 +178,8 @@
             // 
             // buttonAddProject
             // 
-            this.buttonAddProject.Location = new System.Drawing.Point(998, 15);
-            this.buttonAddProject.Margin = new System.Windows.Forms.Padding(25);
+            this.buttonAddProject.Location = new System.Drawing.Point(1013, 15);
+            this.buttonAddProject.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.buttonAddProject.Name = "buttonAddProject";
             this.buttonAddProject.Size = new System.Drawing.Size(150, 30);
             this.buttonAddProject.TabIndex = 1;
@@ -188,8 +189,8 @@
             // 
             // buttonEditProject
             // 
-            this.buttonEditProject.Location = new System.Drawing.Point(998, 87);
-            this.buttonEditProject.Margin = new System.Windows.Forms.Padding(15);
+            this.buttonEditProject.Location = new System.Drawing.Point(1013, 87);
+            this.buttonEditProject.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.buttonEditProject.Name = "buttonEditProject";
             this.buttonEditProject.Size = new System.Drawing.Size(150, 30);
             this.buttonEditProject.TabIndex = 3;
@@ -199,8 +200,8 @@
             // 
             // buttonDeleteProject
             // 
-            this.buttonDeleteProject.Location = new System.Drawing.Point(998, 51);
-            this.buttonDeleteProject.Margin = new System.Windows.Forms.Padding(15);
+            this.buttonDeleteProject.Location = new System.Drawing.Point(1013, 51);
+            this.buttonDeleteProject.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.buttonDeleteProject.Name = "buttonDeleteProject";
             this.buttonDeleteProject.Size = new System.Drawing.Size(150, 30);
             this.buttonDeleteProject.TabIndex = 2;
@@ -211,33 +212,24 @@
             // buttonToFormAdminMode
             // 
             this.buttonToFormAdminMode.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonToFormAdminMode.Location = new System.Drawing.Point(1008, 287);
+            this.buttonToFormAdminMode.Location = new System.Drawing.Point(1013, 320);
+            this.buttonToFormAdminMode.Margin = new System.Windows.Forms.Padding(30, 200, 3, 3);
             this.buttonToFormAdminMode.Name = "buttonToFormAdminMode";
-            this.buttonToFormAdminMode.Size = new System.Drawing.Size(140, 25);
+            this.buttonToFormAdminMode.Size = new System.Drawing.Size(150, 30);
             this.buttonToFormAdminMode.TabIndex = 6;
             this.buttonToFormAdminMode.Text = "Назад";
             this.buttonToFormAdminMode.UseVisualStyleBackColor = true;
             this.buttonToFormAdminMode.Click += new System.EventHandler(this.buttonToFormAdminMode_Click);
             // 
-            // buttonSelectionSupplier
-            // 
-            this.buttonSelectionSupplier.Location = new System.Drawing.Point(1008, 256);
-            this.buttonSelectionSupplier.Name = "buttonSelectionSupplier";
-            this.buttonSelectionSupplier.Size = new System.Drawing.Size(140, 25);
-            this.buttonSelectionSupplier.TabIndex = 7;
-            this.buttonSelectionSupplier.Text = "Выбрать поставщика";
-            this.buttonSelectionSupplier.UseVisualStyleBackColor = true;
-            this.buttonSelectionSupplier.Click += new System.EventHandler(this.buttonSelectionSupplier_Click);
-            // 
             // Projects
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScroll = true;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonToFormAdminMode;
-            this.ClientSize = new System.Drawing.Size(1219, 522);
-            this.Controls.Add(this.buttonSelectionSupplier);
+            this.ClientSize = new System.Drawing.Size(1219, 432);
             this.Controls.Add(this.buttonEditProject);
             this.Controls.Add(this.buttonDeleteProject);
             this.Controls.Add(this.buttonAddProject);
@@ -272,6 +264,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectOfficer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.Button buttonSelectionSupplier;
     }
 }

@@ -31,24 +31,23 @@
             this.labelSupplierName = new System.Windows.Forms.Label();
             this.textBoxSupplierName = new System.Windows.Forms.TextBox();
             this.labelSupplierType = new System.Windows.Forms.Label();
-            this.textBoxProjectMainContract = new System.Windows.Forms.TextBox();
-            this.labelSupplierQMS = new System.Windows.Forms.Label();
             this.labelSupplierMaterialQuality = new System.Windows.Forms.Label();
-            this.textBoxSupplierMaterialQuality = new System.Windows.Forms.TextBox();
             this.labelSupplierPrice = new System.Windows.Forms.Label();
-            this.textBoxSupplierPrice = new System.Windows.Forms.TextBox();
             this.labelSupplierTimeOfDelivery = new System.Windows.Forms.Label();
-            this.textBoxSupplierTimeOfDelivery = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonSaveAndClose = new System.Windows.Forms.Button();
             this.buttonBackToProjectsForm = new System.Windows.Forms.Button();
-            this.textBoxSupplierQMS = new System.Windows.Forms.TextBox();
             this.labelSupplierLocationRemoteness = new System.Windows.Forms.Label();
-            this.textBoxSupplierLocationRemoteness = new System.Windows.Forms.TextBox();
             this.labelSupplierFlexibility = new System.Windows.Forms.Label();
-            this.textBoxSupplierFlexibility = new System.Windows.Forms.TextBox();
             this.labelSupplierWarrantyService = new System.Windows.Forms.Label();
-            this.textBoxSupplierWarrantyService = new System.Windows.Forms.TextBox();
+            this.comboBoxSupplierType = new System.Windows.Forms.ComboBox();
+            this.checkBoxQMS = new System.Windows.Forms.CheckBox();
+            this.domainUpDownMaterialQuality = new System.Windows.Forms.DomainUpDown();
+            this.domainUpDownPrice = new System.Windows.Forms.DomainUpDown();
+            this.domainUpDownTimeOfDelivery = new System.Windows.Forms.DomainUpDown();
+            this.domainUpDownLocationRemoteness = new System.Windows.Forms.DomainUpDown();
+            this.domainUpDownFlexibility = new System.Windows.Forms.DomainUpDown();
+            this.domainUpDownWarrantyService = new System.Windows.Forms.DomainUpDown();
             this.SuspendLayout();
             // 
             // labelSupplierName
@@ -77,37 +76,14 @@
             this.labelSupplierType.TabIndex = 2;
             this.labelSupplierType.Text = "Тип поставщика";
             // 
-            // textBoxProjectMainContract
-            // 
-            this.textBoxProjectMainContract.Location = new System.Drawing.Point(21, 75);
-            this.textBoxProjectMainContract.Name = "textBoxProjectMainContract";
-            this.textBoxProjectMainContract.Size = new System.Drawing.Size(150, 21);
-            this.textBoxProjectMainContract.TabIndex = 3;
-            // 
-            // labelSupplierQMS
-            // 
-            this.labelSupplierQMS.AutoSize = true;
-            this.labelSupplierQMS.Location = new System.Drawing.Point(18, 99);
-            this.labelSupplierQMS.Name = "labelSupplierQMS";
-            this.labelSupplierQMS.Size = new System.Drawing.Size(147, 15);
-            this.labelSupplierQMS.TabIndex = 4;
-            this.labelSupplierQMS.Text = "Наличие СМК ИСО 9001";
-            // 
             // labelSupplierMaterialQuality
             // 
             this.labelSupplierMaterialQuality.AutoSize = true;
             this.labelSupplierMaterialQuality.Location = new System.Drawing.Point(18, 143);
             this.labelSupplierMaterialQuality.Name = "labelSupplierMaterialQuality";
-            this.labelSupplierMaterialQuality.Size = new System.Drawing.Size(137, 15);
-            this.labelSupplierMaterialQuality.TabIndex = 6;
-            this.labelSupplierMaterialQuality.Text = "Качество материалов";
-            // 
-            // textBoxSupplierMaterialQuality
-            // 
-            this.textBoxSupplierMaterialQuality.Location = new System.Drawing.Point(21, 161);
-            this.textBoxSupplierMaterialQuality.Name = "textBoxSupplierMaterialQuality";
-            this.textBoxSupplierMaterialQuality.Size = new System.Drawing.Size(150, 21);
-            this.textBoxSupplierMaterialQuality.TabIndex = 7;
+            this.labelSupplierMaterialQuality.Size = new System.Drawing.Size(113, 15);
+            this.labelSupplierMaterialQuality.TabIndex = 5;
+            this.labelSupplierMaterialQuality.Text = "Качество изделий";
             // 
             // labelSupplierPrice
             // 
@@ -115,15 +91,8 @@
             this.labelSupplierPrice.Location = new System.Drawing.Point(18, 185);
             this.labelSupplierPrice.Name = "labelSupplierPrice";
             this.labelSupplierPrice.Size = new System.Drawing.Size(39, 15);
-            this.labelSupplierPrice.TabIndex = 8;
+            this.labelSupplierPrice.TabIndex = 7;
             this.labelSupplierPrice.Text = "Цены";
-            // 
-            // textBoxSupplierPrice
-            // 
-            this.textBoxSupplierPrice.Location = new System.Drawing.Point(21, 203);
-            this.textBoxSupplierPrice.Name = "textBoxSupplierPrice";
-            this.textBoxSupplierPrice.Size = new System.Drawing.Size(150, 21);
-            this.textBoxSupplierPrice.TabIndex = 9;
             // 
             // labelSupplierTimeOfDelivery
             // 
@@ -131,22 +100,17 @@
             this.labelSupplierTimeOfDelivery.Location = new System.Drawing.Point(18, 227);
             this.labelSupplierTimeOfDelivery.Name = "labelSupplierTimeOfDelivery";
             this.labelSupplierTimeOfDelivery.Size = new System.Drawing.Size(99, 15);
-            this.labelSupplierTimeOfDelivery.TabIndex = 10;
+            this.labelSupplierTimeOfDelivery.TabIndex = 9;
             this.labelSupplierTimeOfDelivery.Text = "Сроки поставки";
-            // 
-            // textBoxSupplierTimeOfDelivery
-            // 
-            this.textBoxSupplierTimeOfDelivery.Location = new System.Drawing.Point(21, 245);
-            this.textBoxSupplierTimeOfDelivery.Name = "textBoxSupplierTimeOfDelivery";
-            this.textBoxSupplierTimeOfDelivery.Size = new System.Drawing.Size(150, 21);
-            this.textBoxSupplierTimeOfDelivery.TabIndex = 11;
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(281, 15);
+            this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonSave.Location = new System.Drawing.Point(264, 291);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(150, 25);
-            this.buttonSave.TabIndex = 12;
+            this.buttonSave.Size = new System.Drawing.Size(150, 30);
+            this.buttonSave.TabIndex = 17;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -154,10 +118,11 @@
             // buttonSaveAndClose
             // 
             this.buttonSaveAndClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSaveAndClose.Location = new System.Drawing.Point(281, 46);
+            this.buttonSaveAndClose.Location = new System.Drawing.Point(264, 327);
+            this.buttonSaveAndClose.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonSaveAndClose.Name = "buttonSaveAndClose";
-            this.buttonSaveAndClose.Size = new System.Drawing.Size(150, 25);
-            this.buttonSaveAndClose.TabIndex = 13;
+            this.buttonSaveAndClose.Size = new System.Drawing.Size(150, 30);
+            this.buttonSaveAndClose.TabIndex = 18;
             this.buttonSaveAndClose.Text = "Сохранить и закрыть";
             this.buttonSaveAndClose.UseVisualStyleBackColor = true;
             this.buttonSaveAndClose.Click += new System.EventHandler(this.buttonSaveAndClose_Click);
@@ -165,20 +130,14 @@
             // buttonBackToProjectsForm
             // 
             this.buttonBackToProjectsForm.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonBackToProjectsForm.Location = new System.Drawing.Point(281, 77);
+            this.buttonBackToProjectsForm.Location = new System.Drawing.Point(264, 363);
+            this.buttonBackToProjectsForm.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonBackToProjectsForm.Name = "buttonBackToProjectsForm";
-            this.buttonBackToProjectsForm.Size = new System.Drawing.Size(150, 25);
-            this.buttonBackToProjectsForm.TabIndex = 14;
+            this.buttonBackToProjectsForm.Size = new System.Drawing.Size(150, 30);
+            this.buttonBackToProjectsForm.TabIndex = 19;
             this.buttonBackToProjectsForm.Text = "Закрыть";
             this.buttonBackToProjectsForm.UseVisualStyleBackColor = true;
-            this.buttonBackToProjectsForm.Click += new System.EventHandler(this.buttonBackToProjectsForm_Click);
-            // 
-            // textBoxSupplierQMS
-            // 
-            this.textBoxSupplierQMS.Location = new System.Drawing.Point(21, 117);
-            this.textBoxSupplierQMS.Name = "textBoxSupplierQMS";
-            this.textBoxSupplierQMS.Size = new System.Drawing.Size(150, 21);
-            this.textBoxSupplierQMS.TabIndex = 5;
+            this.buttonBackToProjectsForm.Click += new System.EventHandler(this.buttonBackToSuppliersForm_Click);
             // 
             // labelSupplierLocationRemoteness
             // 
@@ -186,15 +145,8 @@
             this.labelSupplierLocationRemoteness.Location = new System.Drawing.Point(18, 269);
             this.labelSupplierLocationRemoteness.Name = "labelSupplierLocationRemoteness";
             this.labelSupplierLocationRemoteness.Size = new System.Drawing.Size(181, 15);
-            this.labelSupplierLocationRemoteness.TabIndex = 10;
+            this.labelSupplierLocationRemoteness.TabIndex = 11;
             this.labelSupplierLocationRemoteness.Text = "Географическая удаленность";
-            // 
-            // textBoxSupplierLocationRemoteness
-            // 
-            this.textBoxSupplierLocationRemoteness.Location = new System.Drawing.Point(21, 287);
-            this.textBoxSupplierLocationRemoteness.Name = "textBoxSupplierLocationRemoteness";
-            this.textBoxSupplierLocationRemoteness.Size = new System.Drawing.Size(150, 21);
-            this.textBoxSupplierLocationRemoteness.TabIndex = 11;
             // 
             // labelSupplierFlexibility
             // 
@@ -202,15 +154,8 @@
             this.labelSupplierFlexibility.Location = new System.Drawing.Point(18, 311);
             this.labelSupplierFlexibility.Name = "labelSupplierFlexibility";
             this.labelSupplierFlexibility.Size = new System.Drawing.Size(61, 15);
-            this.labelSupplierFlexibility.TabIndex = 10;
+            this.labelSupplierFlexibility.TabIndex = 13;
             this.labelSupplierFlexibility.Text = "Гибкость";
-            // 
-            // textBoxSupplierFlexibility
-            // 
-            this.textBoxSupplierFlexibility.Location = new System.Drawing.Point(21, 329);
-            this.textBoxSupplierFlexibility.Name = "textBoxSupplierFlexibility";
-            this.textBoxSupplierFlexibility.Size = new System.Drawing.Size(150, 21);
-            this.textBoxSupplierFlexibility.TabIndex = 11;
             // 
             // labelSupplierWarrantyService
             // 
@@ -218,42 +163,117 @@
             this.labelSupplierWarrantyService.Location = new System.Drawing.Point(18, 353);
             this.labelSupplierWarrantyService.Name = "labelSupplierWarrantyService";
             this.labelSupplierWarrantyService.Size = new System.Drawing.Size(174, 15);
-            this.labelSupplierWarrantyService.TabIndex = 10;
+            this.labelSupplierWarrantyService.TabIndex = 15;
             this.labelSupplierWarrantyService.Text = "Работа гарантийной службы";
             // 
-            // textBoxSupplierWarrantyService
+            // comboBoxSupplierType
             // 
-            this.textBoxSupplierWarrantyService.Location = new System.Drawing.Point(21, 371);
-            this.textBoxSupplierWarrantyService.Name = "textBoxSupplierWarrantyService";
-            this.textBoxSupplierWarrantyService.Size = new System.Drawing.Size(150, 21);
-            this.textBoxSupplierWarrantyService.TabIndex = 11;
+            this.comboBoxSupplierType.FormattingEnabled = true;
+            this.comboBoxSupplierType.ItemHeight = 15;
+            this.comboBoxSupplierType.Items.AddRange(new object[] {
+            "Утвержденный",
+            "Неутвержденный"});
+            this.comboBoxSupplierType.Location = new System.Drawing.Point(21, 76);
+            this.comboBoxSupplierType.Name = "comboBoxSupplierType";
+            this.comboBoxSupplierType.Size = new System.Drawing.Size(150, 23);
+            this.comboBoxSupplierType.TabIndex = 15;
+            // 
+            // checkBoxQMS
+            // 
+            this.checkBoxQMS.AutoSize = true;
+            this.checkBoxQMS.Location = new System.Drawing.Point(21, 112);
+            this.checkBoxQMS.Name = "checkBoxQMS";
+            this.checkBoxQMS.Size = new System.Drawing.Size(166, 19);
+            this.checkBoxQMS.TabIndex = 4;
+            this.checkBoxQMS.Text = "Наличие СМК ИСО 9001";
+            this.checkBoxQMS.UseVisualStyleBackColor = true;
+            // 
+            // domainUpDownMaterialQuality
+            // 
+            this.domainUpDownMaterialQuality.Items.Add("3");
+            this.domainUpDownMaterialQuality.Items.Add("2");
+            this.domainUpDownMaterialQuality.Items.Add("1");
+            this.domainUpDownMaterialQuality.Location = new System.Drawing.Point(21, 162);
+            this.domainUpDownMaterialQuality.Name = "domainUpDownMaterialQuality";
+            this.domainUpDownMaterialQuality.Size = new System.Drawing.Size(150, 21);
+            this.domainUpDownMaterialQuality.TabIndex = 6;
+            // 
+            // domainUpDownPrice
+            // 
+            this.domainUpDownPrice.Items.Add("3");
+            this.domainUpDownPrice.Items.Add("2");
+            this.domainUpDownPrice.Items.Add("1");
+            this.domainUpDownPrice.Location = new System.Drawing.Point(21, 204);
+            this.domainUpDownPrice.Name = "domainUpDownPrice";
+            this.domainUpDownPrice.Size = new System.Drawing.Size(150, 21);
+            this.domainUpDownPrice.TabIndex = 8;
+            // 
+            // domainUpDownTimeOfDelivery
+            // 
+            this.domainUpDownTimeOfDelivery.Items.Add("3");
+            this.domainUpDownTimeOfDelivery.Items.Add("2");
+            this.domainUpDownTimeOfDelivery.Items.Add("1");
+            this.domainUpDownTimeOfDelivery.Location = new System.Drawing.Point(21, 246);
+            this.domainUpDownTimeOfDelivery.Name = "domainUpDownTimeOfDelivery";
+            this.domainUpDownTimeOfDelivery.Size = new System.Drawing.Size(150, 21);
+            this.domainUpDownTimeOfDelivery.TabIndex = 10;
+            // 
+            // domainUpDownLocationRemoteness
+            // 
+            this.domainUpDownLocationRemoteness.Items.Add("3");
+            this.domainUpDownLocationRemoteness.Items.Add("2");
+            this.domainUpDownLocationRemoteness.Items.Add("1");
+            this.domainUpDownLocationRemoteness.Location = new System.Drawing.Point(21, 288);
+            this.domainUpDownLocationRemoteness.Name = "domainUpDownLocationRemoteness";
+            this.domainUpDownLocationRemoteness.Size = new System.Drawing.Size(150, 21);
+            this.domainUpDownLocationRemoteness.TabIndex = 12;
+            // 
+            // domainUpDownFlexibility
+            // 
+            this.domainUpDownFlexibility.Items.Add("3");
+            this.domainUpDownFlexibility.Items.Add("2");
+            this.domainUpDownFlexibility.Items.Add("1");
+            this.domainUpDownFlexibility.Location = new System.Drawing.Point(21, 330);
+            this.domainUpDownFlexibility.Name = "domainUpDownFlexibility";
+            this.domainUpDownFlexibility.Size = new System.Drawing.Size(150, 21);
+            this.domainUpDownFlexibility.TabIndex = 14;
+            // 
+            // domainUpDownWarrantyService
+            // 
+            this.domainUpDownWarrantyService.Items.Add("3");
+            this.domainUpDownWarrantyService.Items.Add("2");
+            this.domainUpDownWarrantyService.Items.Add("1");
+            this.domainUpDownWarrantyService.Location = new System.Drawing.Point(21, 372);
+            this.domainUpDownWarrantyService.Name = "domainUpDownWarrantyService";
+            this.domainUpDownWarrantyService.Size = new System.Drawing.Size(150, 21);
+            this.domainUpDownWarrantyService.TabIndex = 16;
             // 
             // EditSupplier
             // 
+            this.AcceptButton = this.buttonSaveAndClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonBackToProjectsForm;
             this.ClientSize = new System.Drawing.Size(653, 506);
+            this.Controls.Add(this.domainUpDownWarrantyService);
+            this.Controls.Add(this.domainUpDownFlexibility);
+            this.Controls.Add(this.domainUpDownLocationRemoteness);
+            this.Controls.Add(this.domainUpDownTimeOfDelivery);
+            this.Controls.Add(this.domainUpDownPrice);
+            this.Controls.Add(this.domainUpDownMaterialQuality);
+            this.Controls.Add(this.checkBoxQMS);
+            this.Controls.Add(this.comboBoxSupplierType);
             this.Controls.Add(this.buttonBackToProjectsForm);
             this.Controls.Add(this.buttonSaveAndClose);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBoxSupplierWarrantyService);
-            this.Controls.Add(this.textBoxSupplierFlexibility);
-            this.Controls.Add(this.textBoxSupplierLocationRemoteness);
             this.Controls.Add(this.labelSupplierWarrantyService);
-            this.Controls.Add(this.textBoxSupplierTimeOfDelivery);
             this.Controls.Add(this.labelSupplierFlexibility);
             this.Controls.Add(this.labelSupplierLocationRemoteness);
             this.Controls.Add(this.labelSupplierTimeOfDelivery);
-            this.Controls.Add(this.textBoxSupplierPrice);
             this.Controls.Add(this.labelSupplierPrice);
-            this.Controls.Add(this.textBoxSupplierQMS);
-            this.Controls.Add(this.textBoxSupplierMaterialQuality);
             this.Controls.Add(this.labelSupplierMaterialQuality);
-            this.Controls.Add(this.labelSupplierQMS);
-            this.Controls.Add(this.textBoxProjectMainContract);
             this.Controls.Add(this.labelSupplierType);
             this.Controls.Add(this.textBoxSupplierName);
             this.Controls.Add(this.labelSupplierName);
@@ -276,23 +296,22 @@
         private System.Windows.Forms.Label labelSupplierName;
         private System.Windows.Forms.TextBox textBoxSupplierName;
         private System.Windows.Forms.Label labelSupplierType;
-        private System.Windows.Forms.TextBox textBoxProjectMainContract;
-        private System.Windows.Forms.Label labelSupplierQMS;
         private System.Windows.Forms.Label labelSupplierMaterialQuality;
-        private System.Windows.Forms.TextBox textBoxSupplierMaterialQuality;
         private System.Windows.Forms.Label labelSupplierPrice;
-        private System.Windows.Forms.TextBox textBoxSupplierPrice;
         private System.Windows.Forms.Label labelSupplierTimeOfDelivery;
-        private System.Windows.Forms.TextBox textBoxSupplierTimeOfDelivery;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonSaveAndClose;
         private System.Windows.Forms.Button buttonBackToProjectsForm;
-        private System.Windows.Forms.TextBox textBoxSupplierQMS;
         private System.Windows.Forms.Label labelSupplierLocationRemoteness;
-        private System.Windows.Forms.TextBox textBoxSupplierLocationRemoteness;
         private System.Windows.Forms.Label labelSupplierFlexibility;
-        private System.Windows.Forms.TextBox textBoxSupplierFlexibility;
         private System.Windows.Forms.Label labelSupplierWarrantyService;
-        private System.Windows.Forms.TextBox textBoxSupplierWarrantyService;
+        private System.Windows.Forms.ComboBox comboBoxSupplierType;
+        private System.Windows.Forms.CheckBox checkBoxQMS;
+        private System.Windows.Forms.DomainUpDown domainUpDownMaterialQuality;
+        private System.Windows.Forms.DomainUpDown domainUpDownPrice;
+        private System.Windows.Forms.DomainUpDown domainUpDownTimeOfDelivery;
+        private System.Windows.Forms.DomainUpDown domainUpDownLocationRemoteness;
+        private System.Windows.Forms.DomainUpDown domainUpDownFlexibility;
+        private System.Windows.Forms.DomainUpDown domainUpDownWarrantyService;
     }
 }

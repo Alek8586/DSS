@@ -65,9 +65,9 @@
             this.labelUserPassword.AutoSize = true;
             this.labelUserPassword.Location = new System.Drawing.Point(18, 141);
             this.labelUserPassword.Name = "labelUserPassword";
-            this.labelUserPassword.Size = new System.Drawing.Size(161, 15);
+            this.labelUserPassword.Size = new System.Drawing.Size(137, 15);
             this.labelUserPassword.TabIndex = 6;
-            this.labelUserPassword.Text = "Пароль для пользователя";
+            this.labelUserPassword.Text = "Пароль пользователя";
             // 
             // textBoxUserPassword
             // 
@@ -75,6 +75,7 @@
             this.textBoxUserPassword.Name = "textBoxUserPassword";
             this.textBoxUserPassword.Size = new System.Drawing.Size(200, 21);
             this.textBoxUserPassword.TabIndex = 7;
+            this.textBoxUserPassword.UseSystemPasswordChar = true;
             // 
             // labelUserRole
             // 
@@ -130,10 +131,10 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(254, 137);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.buttonSave.Location = new System.Drawing.Point(314, 124);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(150, 25);
+            this.buttonSave.Size = new System.Drawing.Size(150, 30);
             this.buttonSave.TabIndex = 12;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -142,10 +143,10 @@
             // buttonSaveAndClose
             // 
             this.buttonSaveAndClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSaveAndClose.Location = new System.Drawing.Point(254, 168);
-            this.buttonSaveAndClose.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.buttonSaveAndClose.Location = new System.Drawing.Point(314, 160);
+            this.buttonSaveAndClose.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonSaveAndClose.Name = "buttonSaveAndClose";
-            this.buttonSaveAndClose.Size = new System.Drawing.Size(150, 25);
+            this.buttonSaveAndClose.Size = new System.Drawing.Size(150, 30);
             this.buttonSaveAndClose.TabIndex = 13;
             this.buttonSaveAndClose.Text = "Сохранить и закрыть";
             this.buttonSaveAndClose.UseVisualStyleBackColor = true;
@@ -154,10 +155,10 @@
             // buttonBackToUsersForm
             // 
             this.buttonBackToUsersForm.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonBackToUsersForm.Location = new System.Drawing.Point(254, 199);
-            this.buttonBackToUsersForm.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.buttonBackToUsersForm.Location = new System.Drawing.Point(314, 196);
+            this.buttonBackToUsersForm.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonBackToUsersForm.Name = "buttonBackToUsersForm";
-            this.buttonBackToUsersForm.Size = new System.Drawing.Size(150, 25);
+            this.buttonBackToUsersForm.Size = new System.Drawing.Size(150, 30);
             this.buttonBackToUsersForm.TabIndex = 14;
             this.buttonBackToUsersForm.Text = "Закрыть";
             this.buttonBackToUsersForm.UseVisualStyleBackColor = true;
@@ -165,6 +166,7 @@
             // 
             // EditUser
             // 
+            this.AcceptButton = this.buttonSaveAndClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;

@@ -32,16 +32,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.buttonAddUser = new System.Windows.Forms.Button();
-            this.buttonEditUser = new System.Windows.Forms.Button();
-            this.buttonDeleteUser = new System.Windows.Forms.Button();
-            this.buttonToFormAdminMode = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Post = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonAddUser = new System.Windows.Forms.Button();
+            this.buttonEditUser = new System.Windows.Forms.Button();
+            this.buttonDeleteUser = new System.Windows.Forms.Button();
+            this.buttonToFormAdminMode = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,54 +107,10 @@
             this.dataGridViewUsers.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewUsers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUsers.Size = new System.Drawing.Size(800, 392);
+            this.dataGridViewUsers.Size = new System.Drawing.Size(800, 848);
             this.dataGridViewUsers.TabIndex = 0;
             this.dataGridViewUsers.TabStop = false;
-            // 
-            // buttonAddUser
-            // 
-            this.buttonAddUser.Location = new System.Drawing.Point(825, 15);
-            this.buttonAddUser.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonAddUser.Name = "buttonAddUser";
-            this.buttonAddUser.Size = new System.Drawing.Size(150, 30);
-            this.buttonAddUser.TabIndex = 1;
-            this.buttonAddUser.Text = "Добавить пользователя";
-            this.buttonAddUser.UseVisualStyleBackColor = true;
-            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
-            // 
-            // buttonEditUser
-            // 
-            this.buttonEditUser.Location = new System.Drawing.Point(825, 75);
-            this.buttonEditUser.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonEditUser.Name = "buttonEditUser";
-            this.buttonEditUser.Size = new System.Drawing.Size(150, 30);
-            this.buttonEditUser.TabIndex = 3;
-            this.buttonEditUser.Text = "Изменить данные";
-            this.buttonEditUser.UseVisualStyleBackColor = true;
-            this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
-            // 
-            // buttonDeleteUser
-            // 
-            this.buttonDeleteUser.Location = new System.Drawing.Point(825, 45);
-            this.buttonDeleteUser.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonDeleteUser.Name = "buttonDeleteUser";
-            this.buttonDeleteUser.Size = new System.Drawing.Size(150, 30);
-            this.buttonDeleteUser.TabIndex = 2;
-            this.buttonDeleteUser.Text = "Удалить пользователя";
-            this.buttonDeleteUser.UseVisualStyleBackColor = true;
-            this.buttonDeleteUser.Click += new System.EventHandler(this.buttonDeleteUser_Click);
-            // 
-            // buttonToFormAdminMode
-            // 
-            this.buttonToFormAdminMode.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonToFormAdminMode.Location = new System.Drawing.Point(825, 287);
-            this.buttonToFormAdminMode.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonToFormAdminMode.Name = "buttonToFormAdminMode";
-            this.buttonToFormAdminMode.Size = new System.Drawing.Size(150, 25);
-            this.buttonToFormAdminMode.TabIndex = 6;
-            this.buttonToFormAdminMode.Text = "Назад";
-            this.buttonToFormAdminMode.UseVisualStyleBackColor = true;
-            this.buttonToFormAdminMode.Click += new System.EventHandler(this.buttonToFormAdminMode_Click);
+            this.dataGridViewUsers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewUsers_MouseDoubleClick);
             // 
             // ID
             // 
@@ -208,6 +164,51 @@
             this.Role.ReadOnly = true;
             this.Role.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // buttonAddUser
+            // 
+            this.buttonAddUser.Location = new System.Drawing.Point(845, 15);
+            this.buttonAddUser.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.buttonAddUser.Name = "buttonAddUser";
+            this.buttonAddUser.Size = new System.Drawing.Size(150, 30);
+            this.buttonAddUser.TabIndex = 1;
+            this.buttonAddUser.Text = "Добавить пользователя";
+            this.buttonAddUser.UseVisualStyleBackColor = true;
+            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
+            // 
+            // buttonEditUser
+            // 
+            this.buttonEditUser.Location = new System.Drawing.Point(845, 87);
+            this.buttonEditUser.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.buttonEditUser.Name = "buttonEditUser";
+            this.buttonEditUser.Size = new System.Drawing.Size(150, 30);
+            this.buttonEditUser.TabIndex = 3;
+            this.buttonEditUser.Text = "Изменить данные";
+            this.buttonEditUser.UseVisualStyleBackColor = true;
+            this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
+            // 
+            // buttonDeleteUser
+            // 
+            this.buttonDeleteUser.Location = new System.Drawing.Point(845, 51);
+            this.buttonDeleteUser.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.buttonDeleteUser.Name = "buttonDeleteUser";
+            this.buttonDeleteUser.Size = new System.Drawing.Size(150, 30);
+            this.buttonDeleteUser.TabIndex = 2;
+            this.buttonDeleteUser.Text = "Удалить пользователя";
+            this.buttonDeleteUser.UseVisualStyleBackColor = true;
+            this.buttonDeleteUser.Click += new System.EventHandler(this.buttonDeleteUser_Click);
+            // 
+            // buttonToFormAdminMode
+            // 
+            this.buttonToFormAdminMode.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonToFormAdminMode.Location = new System.Drawing.Point(845, 420);
+            this.buttonToFormAdminMode.Margin = new System.Windows.Forms.Padding(30, 300, 3, 3);
+            this.buttonToFormAdminMode.Name = "buttonToFormAdminMode";
+            this.buttonToFormAdminMode.Size = new System.Drawing.Size(150, 30);
+            this.buttonToFormAdminMode.TabIndex = 6;
+            this.buttonToFormAdminMode.Text = "Назад";
+            this.buttonToFormAdminMode.UseVisualStyleBackColor = true;
+            this.buttonToFormAdminMode.Click += new System.EventHandler(this.buttonToFormAdminMode_Click);
+            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,7 +216,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonToFormAdminMode;
-            this.ClientSize = new System.Drawing.Size(1025, 422);
+            this.ClientSize = new System.Drawing.Size(1131, 878);
             this.Controls.Add(this.buttonEditUser);
             this.Controls.Add(this.buttonDeleteUser);
             this.Controls.Add(this.buttonAddUser);
@@ -227,7 +228,7 @@
             this.Padding = new System.Windows.Forms.Padding(15);
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Пользователи";
             this.Load += new System.EventHandler(this.Users_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();

@@ -30,16 +30,7 @@ namespace DSS
 
         private void buttonEditSupplier_Click(object sender, EventArgs e)
         {
-            //Передаем данные строки в поля формы
-            string[] supplierData = new string[dataGridViewSuppliers.CurrentRow.Cells.Count];
-            for (int i = 0; i < dataGridViewSuppliers.CurrentRow.Cells.Count; i++)
-            {
-                supplierData[i] = dataGridViewSuppliers.CurrentRow.Cells[i].Value.ToString();
-            }
-
-            EditSupplier EditSupplierForm = new EditSupplier(supplierData);
-            EditSupplierForm.Owner = this;
-            EditSupplierForm.ShowDialog();
+            EditRecord();
         }
 
         private void buttonDeleteSupplier_Click(object sender, EventArgs e)
@@ -52,7 +43,12 @@ namespace DSS
             this.Close();
         }
 
-        private void ListOfSuppliers()
+        private void dataGridViewSuppliers_DoubleClick(object sender, EventArgs e)
+        {
+            EditRecord();
+        }
+
+        public void ListOfSuppliers()
         {
             try
             {
@@ -77,6 +73,21 @@ namespace DSS
 
         }
 
+        private void EditRecord()
+        {
+            //Передаем данные строки в поля формы
+            string[] supplierData = new string[dataGridViewSuppliers.CurrentRow.Cells.Count];
+            for (int i = 0; i < dataGridViewSuppliers.CurrentRow.Cells.Count; i++)
+            {
+                supplierData[i] = dataGridViewSuppliers.CurrentRow.Cells[i].Value.ToString();
+            }
+
+            EditSupplier EditSupplierForm = new EditSupplier(supplierData);
+            EditSupplierForm.Owner = this;
+            EditSupplierForm.ShowDialog();
+
+        }
+
         private void DeleteSupplier()
         {
             SQLiteCommand cmd = dbConnection.CreateCommand();
@@ -93,6 +104,8 @@ namespace DSS
                 foreach (DataGridViewCell cell in dataGridViewSuppliers.SelectedCells)
                 {
                     dataGridViewSuppliers.Rows.RemoveAt(cell.RowIndex);
+
+                    if (cell.RowIndex < 0) break;
                 }
             }
             catch (SQLiteException ex)

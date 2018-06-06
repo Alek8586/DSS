@@ -30,16 +30,7 @@ namespace DSS
 
         private void buttonEditProject_Click(object sender, EventArgs e)
         {
-            //Передаем данные строки в поля формы
-            string[] projectData = new string[dataGridViewProjects.CurrentRow.Cells.Count];
-            for (int i = 0; i < dataGridViewProjects.CurrentRow.Cells.Count; i++)
-            {
-                projectData[i] = dataGridViewProjects.CurrentRow.Cells[i].Value.ToString();
-            }
-
-            EditProject EditProjectForm = new EditProject(projectData);
-            EditProjectForm.Owner = this;
-            EditProjectForm.ShowDialog();
+            EditRecord();
         }
 
         private void buttonDeleteProject_Click(object sender, EventArgs e)
@@ -57,6 +48,11 @@ namespace DSS
         private void buttonToFormAdminMode_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridViewProjects_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            EditRecord();
         }
 
         public void ListOfProjects()
@@ -81,31 +77,48 @@ namespace DSS
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Ошибка: \n\n" + ex.Message);
             }
+        }
+
+        private void EditRecord()
+        {
+            //Передаем данные строки DGV в поля формы редактирования
+
+            string[] projectData = new string[dataGridViewProjects.CurrentRow.Cells.Count];
+            for (int i = 0; i < dataGridViewProjects.CurrentRow.Cells.Count; i++)
+            {
+                projectData[i] = dataGridViewProjects.CurrentRow.Cells[i].Value.ToString();
+            }
+
+            EditProject EditProjectForm = new EditProject(projectData);
+            EditProjectForm.Owner = this;
+            EditProjectForm.ShowDialog();
         }
 
         private void DeleteProject()
         {
-            SQLiteCommand cmd = dbConnection.CreateCommand();
-            cmd.CommandText = "Delete from Projects where ID=@id";
-            cmd.Parameters.Add("@id", DbType.Int32).Value = dataGridViewProjects.CurrentRow.Cells[0].Value;
+            SQLiteCommand sqlCommand = dbConnection.CreateCommand();
+            sqlCommand.CommandText = "Delete from Projects where ID=@ID";
+            sqlCommand.Parameters.Add("@ID", DbType.Int32).Value = dataGridViewProjects.CurrentRow.Cells[0].Value;
             try
             {
                 //Удаление записи из таблицы в ДБ
                 dbConnection.Open();
-                cmd.ExecuteNonQuery();
+                sqlCommand.ExecuteNonQuery();
                 dbConnection.Close();
 
                 //Удаление строки в DGV при выбранной ячейке
                 foreach (DataGridViewCell cell in dataGridViewProjects.SelectedCells)
                 {
                     dataGridViewProjects.Rows.RemoveAt(cell.RowIndex);
+
+                    if (cell.RowIndex < 0) break;
                 }
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Ошибка: \n\n" + ex.Message);
             }
         }
     }

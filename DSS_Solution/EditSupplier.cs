@@ -9,25 +9,32 @@ namespace DSS
     {
         private SQLiteConnection dbConnection;
 
+        string supplierID = string.Empty;
+
         public EditSupplier(string[] supplierData)
         {
             InitializeComponent();
 
-            //Заполняем поля при изменении данных проекта
-            textBoxSupplierName.Text = supplierData[1];
-            textBoxProjectMainContract.Text = supplierData[2];
-            textBoxSupplierQMS.Text = supplierData[3];
-            textBoxSupplierMaterialQuality.Text = supplierData[4];
-            textBoxSupplierPrice.Text = supplierData[5];
-            textBoxSupplierTimeOfDelivery.Text = supplierData[6];
-            textBoxSupplierLocationRemoteness.Text = supplierData[7];
-            textBoxSupplierFlexibility.Text = supplierData[8];
-            textBoxSupplierFlexibility.Text = supplierData[9];
+            if (supplierData != null || supplierData.Length != 0)
+            {
+                //Заполняем поля при изменении данных проекта
+                supplierID = supplierData[0];
+                textBoxSupplierName.Text = supplierData[1];
+                comboBoxSupplierType.SelectedItem = supplierData[2];
+                checkBoxQMS.Checked = Convert.ToBoolean(supplierData[3]);
+                domainUpDownMaterialQuality.Text = supplierData[4];
+                domainUpDownPrice.Text = supplierData[5];
+                domainUpDownTimeOfDelivery.Text = supplierData[6];
+                domainUpDownLocationRemoteness.Text = supplierData[7];
+                domainUpDownFlexibility.Text = supplierData[8];
+                domainUpDownWarrantyService.Text = supplierData[9];
+            }
+            if (supplierID != null) buttonSave.Visible = false;
         }
 
         private void AddProject_Load(object sender, EventArgs e)
         {
-            dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
+            dbConnection = new SQLiteConnection("Data Source=" + Application.StartupPath + "\\database.db; Version=3");
             dbConnection.Open();            
         }
 
@@ -42,68 +49,68 @@ namespace DSS
             this.Close();
         }
 
-        private void buttonBackToProjectsForm_Click(object sender, EventArgs e)
+        private void buttonBackToSuppliersForm_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void setSupplier()
-        {
-            
-            if (textBoxSupplierName.Text != ""/* && comboBoxProjectRole.SelectedItem.ToString() != ""*/)
+        {            
+            if (textBoxSupplierName.Text != string.Empty)
             {
                 try
                 {
-                    SQLiteCommand setProject = dbConnection.CreateCommand();
-                    if (textBoxSupplierMaterialQuality.Text != "" && textBoxSupplierPrice.Text != "")
+                    SQLiteCommand setSupplier = dbConnection.CreateCommand();
+                    if (supplierID != null)
                     {
-                        setProject.CommandText = "Update Projects set MainContract = @MainContract, ProjectManager = @ProjectManager, ChiefDesigner = @ChiefDesigner, SupplierName = @SupplierName, DeliveryTime = @DeliveryTime where ProjectName = @ProjectName";
-                        setProject.Parameters.Add("@ProjectName", DbType.String).Value = textBoxSupplierName.Text;
-                        setProject.Parameters.Add("@MainContract", DbType.String).Value = textBoxProjectMainContract.Text;
-                        setProject.Parameters.Add("@ProjectManager", DbType.String).Value = textBoxSupplierQMS.Text;
-                        setProject.Parameters.Add("@ChiefDesigner", DbType.String).Value = textBoxSupplierMaterialQuality.Text;
-                        setProject.Parameters.Add("@SupplierName", DbType.String).Value = textBoxSupplierPrice.Text;
-                        setProject.Parameters.Add("@DeliveryTime", DbType.String).Value = textBoxSupplierTimeOfDelivery.Text;
+                        setSupplier.CommandText = "Update Suppliers set Type = @Type, QMS = @QMS, MaterialQuality = @MaterialQuality, Price = @Price, TimeOfDelivery = @TimeOfDelivery, LocationRemoteness = @LocationRemoteness, Flexibility = @Flexibility, WarrantyService = @WarrantyService where Name = @SupplierName";
+                        setSupplier.Parameters.Add("@SupplierName", DbType.String).Value = textBoxSupplierName.Text;
+                        setSupplier.Parameters.Add("@Type", DbType.String).Value = comboBoxSupplierType.Text;
+                        setSupplier.Parameters.Add("@QMS", DbType.Boolean).Value = checkBoxQMS.Checked;
+                        setSupplier.Parameters.Add("@MaterialQuality", DbType.Int32).Value = Convert.ToInt32(domainUpDownMaterialQuality.Text);
+                        setSupplier.Parameters.Add("@Price", DbType.Int32).Value = Convert.ToInt32(domainUpDownPrice.Text);
+                        setSupplier.Parameters.Add("@TimeOfDelivery", DbType.Int32).Value = Convert.ToInt32(domainUpDownTimeOfDelivery.Text);
+                        setSupplier.Parameters.Add("@LocationRemoteness", DbType.Int32).Value = Convert.ToInt32(domainUpDownLocationRemoteness.Text);
+                        setSupplier.Parameters.Add("@Flexibility", DbType.Int32).Value = Convert.ToInt32(domainUpDownFlexibility.Text);
+                        setSupplier.Parameters.Add("@WarrantyService", DbType.Int32).Value = Convert.ToInt32(domainUpDownWarrantyService.Text);
                     }
                     else
                     {
-                        setProject.CommandText = "Insert into Projects(ProjectName, MainContract, ProjectManager, ChiefDesigner, SupplierName, DeliveryTime) values (@ProjectName, @MainContract, @ProjectManager, @ChiefDesigner, @SupplierName, @DeliveryTime)";
-                        setProject.Parameters.Add("@ProjectName", DbType.String).Value = textBoxSupplierName.Text;
-                        setProject.Parameters.Add("@MainContract", DbType.String).Value = textBoxProjectMainContract.Text;
-                        setProject.Parameters.Add("@ProjectManager", DbType.String).Value = textBoxSupplierQMS.Text;
-                        setProject.Parameters.Add("@ChiefDesigner", DbType.String).Value = textBoxSupplierMaterialQuality.Text;
-                        setProject.Parameters.Add("@SupplierName", DbType.String).Value = textBoxSupplierPrice.Text;
-                        setProject.Parameters.Add("@DeliveryTime", DbType.String).Value = textBoxSupplierTimeOfDelivery.Text;
+                        setSupplier.CommandText = "Insert into Suppliers(Name, Type, QMS, MaterialQuality, Price, TimeOfDelivery, LocationRemoteness, Flexibility, WarrantyService) values (@SupplierName, @Type, @QMS, @MaterialQuality, @Price, @TimeOfDelivery, @LocationRemoteness, @Flexibility, @WarrantyService)";
+                        setSupplier.Parameters.Add("@SupplierName", DbType.String).Value = textBoxSupplierName.Text;
+                        setSupplier.Parameters.Add("@Type", DbType.String).Value = comboBoxSupplierType.Text;
+                        setSupplier.Parameters.Add("@QMS", DbType.Boolean).Value = checkBoxQMS.Checked;
+                        setSupplier.Parameters.Add("@MaterialQuality", DbType.Int32).Value = Convert.ToInt32(domainUpDownMaterialQuality.Text);
+                        setSupplier.Parameters.Add("@Price", DbType.Int32).Value = Convert.ToInt32(domainUpDownPrice.Text);
+                        setSupplier.Parameters.Add("@TimeOfDelivery", DbType.Int32).Value = Convert.ToInt32(domainUpDownTimeOfDelivery.Text);
+                        setSupplier.Parameters.Add("@LocationRemoteness", DbType.Int32).Value = Convert.ToInt32(domainUpDownLocationRemoteness.Text);
+                        setSupplier.Parameters.Add("@Flexibility", DbType.Int32).Value = Convert.ToInt32(domainUpDownFlexibility.Text);
+                        setSupplier.Parameters.Add("@WarrantyService", DbType.Int32).Value = Convert.ToInt32(domainUpDownWarrantyService.Text);
                     }
-                    setProject.ExecuteNonQuery();
+                    setSupplier.ExecuteNonQuery();
 
-                    Projects main = this.Owner as Projects;
+                    textBoxSupplierName.ResetText();
+                    comboBoxSupplierType.ResetText();
+                    checkBoxQMS.ResetText();
+                    domainUpDownMaterialQuality.ResetText();
+                    domainUpDownPrice.ResetText();
+                    domainUpDownTimeOfDelivery.ResetText();
+                    domainUpDownLocationRemoteness.ResetText();
+                    domainUpDownFlexibility.ResetText();
+                    domainUpDownWarrantyService.ResetText();
+
+                    Suppliers main = this.Owner as Suppliers;
                     if (main != null)
                     {
                         //Обновление таблицы с информацией о проектах
-                        try
-                        {
-                            main.dataGridViewProjects.Rows.Clear();
-                            main.ListOfProjects();
-                        }
-                        catch (SQLiteException ex)
-                        {
-                            MessageBox.Show("Error: " + ex.Message);
-                        }
+                        main.dataGridViewSuppliers.Rows.Clear();
+                        main.ListOfSuppliers();
                     }
-
-                    textBoxSupplierName.Clear();
-                    textBoxProjectMainContract.Clear();
-                    textBoxSupplierQMS.Clear();
-                    textBoxSupplierMaterialQuality.Clear();
-                    textBoxSupplierPrice.Clear();
-                    textBoxSupplierTimeOfDelivery.Clear();
                 }
                 catch (SQLiteException ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
-
             }
         }
     }

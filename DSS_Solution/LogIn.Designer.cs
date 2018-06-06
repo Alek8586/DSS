@@ -125,6 +125,7 @@
             this.buttonHardReset.TabIndex = 6;
             this.buttonHardReset.Text = "Сброс";
             this.buttonHardReset.UseVisualStyleBackColor = true;
+            this.buttonHardReset.Visible = false;
             this.buttonHardReset.Click += new System.EventHandler(this.buttonHardReset_Click);
             // 
             // statusStrip1
@@ -189,8 +190,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBoxLogInUsername;
-        private System.Windows.Forms.TextBox textBoxLogInPassword;
         private System.Windows.Forms.Button buttonLogIn;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Label labelUsernamePassword;
@@ -199,6 +198,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel LabelConnectionStatus;
         private System.Windows.Forms.ToolStripStatusLabel toolStripConnectionStatusLabel;
+        public System.Windows.Forms.TextBox textBoxLogInUsername;
+        public System.Windows.Forms.TextBox textBoxLogInPassword;
     }
 }
 

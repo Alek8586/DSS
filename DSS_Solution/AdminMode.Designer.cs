@@ -110,7 +110,7 @@
             this.buttonToLogInForm.UseVisualStyleBackColor = true;
             this.buttonToLogInForm.Click += new System.EventHandler(this.buttonToLogInForm_Click);
             // 
-            // FormAdminMode
+            // AdminMode
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
@@ -126,12 +126,12 @@
             this.Controls.Add(this.buttonExit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "FormAdminMode";
+            this.Name = "AdminMode";
             this.Padding = new System.Windows.Forms.Padding(15);
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Панель админисратора";
+            this.Text = "Панель администратора";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAdminMode_FormClosed);
             this.ResumeLayout(false);
 

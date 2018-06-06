@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
 
@@ -22,6 +23,25 @@ namespace DSS
             comboBoxQMS.SelectedIndex = 0;
 
             groupBoxSearchingResult.Visible = false;
+
+
+            dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
+            dbConnection.Open();
+
+            SQLiteCommand sqlSuppliersList = dbConnection.CreateCommand();
+            sqlSuppliersList.CommandText = "Select Name from Suppliers";
+            SQLiteDataReader sqlReader = sqlSuppliersList.ExecuteReader();
+
+            using (sqlReader)
+            {
+                if (sqlReader.HasRows)
+                {
+                    while (sqlReader.Read())
+                    {
+                        listBoxListOfTheSuppliers.Items.Add(sqlReader["Name"]);
+                    }
+                }
+            }
         }
 
         private void buttonAddСriterion_Click(object sender, EventArgs e)
@@ -71,32 +91,26 @@ namespace DSS
             {
                 SelectionOfTheSupplier();
             }
-
         }
 
         private void buttonListboxSelectedCriteriaOneStepHigher_Click(object sender, EventArgs e)
         {
-            //if (listBoxSelectedCriteria.Items.Count > 0)
-            //{
-            //    if (listBoxSelectedCriteria.TopIndex != listBoxSelectedCriteria.SelectedIndex)
-            //    {
-            //        listBoxSelectedCriteria.TopIndex = listBoxSelectedCriteria.SelectedIndex;
-            //    }
-            //}
+            if (listBoxSelectedCriteria.Items.Count > 0)
+            {
+                if (listBoxSelectedCriteria.SelectedIndex != listBoxSelectedCriteria.TopIndex && listBoxSelectedCriteria.SelectedIndex != listBoxSelectedCriteria.Items.Count)
+                {
+                    listBoxSelectedCriteria.Items.Insert(listBoxSelectedCriteria.SelectedIndex++, listBoxSelectedCriteria.SelectedItem);
+                    listBoxSelectedCriteria.Items.Remove(listBoxSelectedCriteria.SelectedItem);
+                }
+            }
         }
 
         private void buttonListboxSelectedCriteriaOneStepBelow_Click(object sender, EventArgs e)
         {
 
         }
-
-
-        private void buttonBackToFormEditProject_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-         private void AddCriterion()
+        
+        private void AddCriterion()
         {
             listBoxSelectedCriteria.Items.Add(listBoxAllCriteria.SelectedItem);
             listBoxAllCriteria.Items.Remove(listBoxAllCriteria.SelectedItem);
@@ -108,30 +122,75 @@ namespace DSS
             listBoxSelectedCriteria.Items.Remove(listBoxSelectedCriteria.SelectedItem);
         }
 
+        private void listBoxAllCriteria_DoubleClick(object sender, EventArgs e)
+        {
+            listBoxSelectedCriteria.Items.Add(listBoxAllCriteria.SelectedItem);
+            listBoxAllCriteria.Items.Remove(listBoxAllCriteria.SelectedItem);
+        }
+
+        private void listBoxSelectedCriteria_DoubleClick(object sender, EventArgs e)
+        {
+            listBoxAllCriteria.Items.Add(listBoxSelectedCriteria.SelectedItem);
+            listBoxSelectedCriteria.Items.Remove(listBoxSelectedCriteria.SelectedItem);
+        }
+
+        private void listBoxSearchingResult_DoubleClick(object sender, EventArgs e)
+        {
+            SupplierRecordToProject();
+        }
+
+        private void listBoxListOfTheSuppliers_MouseClick(object sender, MouseEventArgs e)
+        {
+            SupplierRecordToProject();
+        }
+
+        private void buttonSelectSupplierToProject_Click(object sender, EventArgs e)
+        {
+            SupplierRecordToProject();
+        }
+
+        private void buttonMannualySelectionSupplier_Click(object sender, EventArgs e)
+        {
+            SupplierRecordToProject();
+        }
+
+        private void buttonBackToFormEditProject_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        
         private void ListOfTheCriteria()
         {
             /*
              * Считываем все колонки из таблицы Поставщики
              * Оставляем только параметры оценивания
             */
-            dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
-            dbConnection.Open();
 
-            SQLiteCommand listUsers = dbConnection.CreateCommand();
-            listUsers.CommandText = "pragma table_info(Suppliers)";
+            //dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
+            //dbConnection.Open();
 
-            using (var sqlCommand = listUsers.ExecuteReader())
-            {
-                while (sqlCommand.Read())
-                {
-                    listBoxAllCriteria.Items.Add(sqlCommand[1].ToString());
-                    listBoxAllCriteria.Items.Remove("ID");
-                    listBoxAllCriteria.Items.Remove("Name");
-                    listBoxAllCriteria.Items.Remove("Class");
-                    listBoxAllCriteria.Items.Remove("QMS");
-                }
-            }
-            dbConnection.Close();
+            //SQLiteCommand listUsers = dbConnection.CreateCommand();
+            //listUsers.CommandText = "pragma table_info(Suppliers)";
+
+            //using (var sqlCommand = listUsers.ExecuteReader())
+            //{
+            //    while (sqlCommand.Read())
+            //    {
+            //        listBoxAllCriteria.Items.Add(sqlCommand[1].ToString());
+            //        listBoxAllCriteria.Items.Remove("ID");
+            //        listBoxAllCriteria.Items.Remove("Name");
+            //        listBoxAllCriteria.Items.Remove("Type");
+            //        listBoxAllCriteria.Items.Remove("QMS");
+            //    }
+            //}
+            //dbConnection.Close();
+
+            listBoxAllCriteria.Items.Add("Качество изделий");
+            listBoxAllCriteria.Items.Add("Цены");
+            listBoxAllCriteria.Items.Add("Сроки поставки");
+            listBoxAllCriteria.Items.Add("Географическая удаленность");
+            listBoxAllCriteria.Items.Add("Гибкость");
+            listBoxAllCriteria.Items.Add("Гарантийная служба");
         }
 
         private void SelectionOfTheSupplier()
@@ -147,11 +206,47 @@ namespace DSS
             */
 
             //Заполнение списка поставщиков с экспертными оценками
-            dbConnection = new SQLiteConnection("Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "database.db; Version=3");
+            dbConnection = new SQLiteConnection("Data Source=" + Application.StartupPath + "\\database.db; Version=3");
             dbConnection.Open();
 
             SQLiteCommand sqlSuppliersList = dbConnection.CreateCommand();
-            sqlSuppliersList.CommandText = "Select * from Suppliers";
+
+            if (comboBoxSupplierType.SelectedIndex != 0 && comboBoxQMS.SelectedIndex != 0)
+            {
+                sqlSuppliersList.CommandText = "Select * from Suppliers where Type = @Type and QMS = @QMS";
+                sqlSuppliersList.Parameters.Add("@Type", DbType.String).Value = comboBoxSupplierType.SelectedItem;
+                
+                if (comboBoxQMS.SelectedIndex == 1)
+                {
+                    sqlSuppliersList.Parameters.Add("@QMS", DbType.String).Value = "true";
+                }
+                else if (comboBoxQMS.SelectedIndex == 2)
+                {
+                    sqlSuppliersList.Parameters.Add("@QMS", DbType.String).Value = "false";
+                }
+            }
+            else if (comboBoxSupplierType.SelectedIndex != 0 && comboBoxQMS.SelectedIndex == 0)
+            {
+                sqlSuppliersList.CommandText = "Select * from Suppliers where Type = @Type";
+                sqlSuppliersList.Parameters.Add("@Type", DbType.String).Value = comboBoxSupplierType.SelectedItem;
+            }
+            else if (comboBoxSupplierType.SelectedIndex == 0 && comboBoxQMS.SelectedIndex != 0)
+            {
+                sqlSuppliersList.CommandText = "Select * from Suppliers where QMS = @QMS";
+
+                if (comboBoxQMS.SelectedIndex == 1)
+                {
+                    sqlSuppliersList.Parameters.Add("@QMS", DbType.String).Value = "true";
+                }
+                else if (comboBoxQMS.SelectedIndex == 2)
+                {
+                    sqlSuppliersList.Parameters.Add("@QMS", DbType.String).Value = "false";
+                }
+            }
+            else if (comboBoxSupplierType.SelectedIndex == 0 && comboBoxQMS.SelectedIndex == 0)
+            {
+                sqlSuppliersList.CommandText = "Select * from Suppliers";
+            }
 
             SQLiteDataReader sqlReader = sqlSuppliersList.ExecuteReader();
 
@@ -160,8 +255,44 @@ namespace DSS
              * Считаем количество строк в таблице Поставщики
             */
             SQLiteCommand sqlSuppliersCount = dbConnection.CreateCommand();
-            sqlSuppliersCount.CommandText = "Select count(*) from Suppliers";
+            if (comboBoxSupplierType.SelectedIndex != 0 && comboBoxQMS.SelectedIndex != 0)
+            {
+                sqlSuppliersCount.CommandText = "Select count(*) from Suppliers where Type = @Type and QMS = @QMS";
+                sqlSuppliersCount.Parameters.Add("@Type", DbType.String).Value = comboBoxSupplierType.SelectedItem;
+
+                if (comboBoxQMS.SelectedIndex == 1)
+                {
+                    sqlSuppliersCount.Parameters.Add("@QMS", DbType.String).Value = "true";
+                }
+                else if (comboBoxQMS.SelectedIndex == 2)
+                {
+                    sqlSuppliersCount.Parameters.Add("@QMS", DbType.String).Value = "false";
+                }
+            }
+            else if (comboBoxSupplierType.SelectedIndex != 0 && comboBoxQMS.SelectedIndex == 0)
+            {
+                sqlSuppliersCount.CommandText = "Select count(*) from Suppliers where Type = @Type";
+                sqlSuppliersCount.Parameters.Add("@Type", DbType.String).Value = comboBoxSupplierType.SelectedItem;
+            }
+            else if (comboBoxSupplierType.SelectedIndex == 0 && comboBoxQMS.SelectedIndex != 0)
+            {
+                sqlSuppliersCount.CommandText = "Select count(*) from Suppliers where QMS = @QMS";
+
+                if (comboBoxQMS.SelectedIndex == 1)
+                {
+                    sqlSuppliersCount.Parameters.Add("@QMS", DbType.String).Value = "true";
+                }
+                else if (comboBoxQMS.SelectedIndex == 2)
+                {
+                    sqlSuppliersCount.Parameters.Add("@QMS", DbType.String).Value = "false";
+                }
+            }
+            else if (comboBoxSupplierType.SelectedIndex == 0 && comboBoxQMS.SelectedIndex == 0)
+            {
+                sqlSuppliersCount.CommandText = "Select count(*) from Suppliers";
+            }
             SQLiteDataReader sqlReader1 = sqlSuppliersCount.ExecuteReader();
+
             int rowscount = 0;
 
             using (sqlReader1)
@@ -206,34 +337,34 @@ namespace DSS
             double Flexibility = 0;
             double WarrantyService = 0;
 
-            if (listBoxSelectedCriteria.Items.Contains("MaterialQuality"))
+            if (listBoxSelectedCriteria.Items.Contains("Качество изделий"))
             {
-                MaterialQuality = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("MaterialQuality");
+                MaterialQuality = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Качество изделий");
             }
             else MaterialQuality = 0;
-            if (listBoxSelectedCriteria.Items.Contains("Price"))
+            if (listBoxSelectedCriteria.Items.Contains("Цены"))
             {
-                Price = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Price");
+                Price = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Цены");
             }
             else Price = 0;
-            if (listBoxSelectedCriteria.Items.Contains("TimeOfDelivery"))
+            if (listBoxSelectedCriteria.Items.Contains("Сроки поставки"))
             {
-                TimeOfDelivery = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("TimeOfDelivery");
+                TimeOfDelivery = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Сроки поставки");
             }
             else TimeOfDelivery = 0;
-            if (listBoxSelectedCriteria.Items.Contains("LocationRemoteness"))
+            if (listBoxSelectedCriteria.Items.Contains("Географическая удаленность"))
             {
-                LocationRemoteness = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("LocationRemoteness");
+                LocationRemoteness = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Географическая удаленность");
             }
             else LocationRemoteness = 0;
-            if (listBoxSelectedCriteria.Items.Contains("Flexibility"))
+            if (listBoxSelectedCriteria.Items.Contains("Гибкость"))
             {
-                Flexibility = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Flexibility");
+                Flexibility = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Гибкость");
             }
             else Flexibility = 0;
-            if (listBoxSelectedCriteria.Items.Contains("WarrantyService"))
+            if (listBoxSelectedCriteria.Items.Contains("Гарантийная служба"))
             {
-                WarrantyService = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("WarrantyService");
+                WarrantyService = countOfSelectedCriteria - listBoxSelectedCriteria.Items.IndexOf("Гарантийная служба");
             }
             else WarrantyService = 0;
 
@@ -299,6 +430,32 @@ namespace DSS
                     break;
                 }
             }
+        }
+
+        private void SupplierRecordToProject()
+        {
+            string supplierName = string.Empty;
+
+            if (listBoxSearchingResult.SelectedItem != null || listBoxListOfTheSuppliers.SelectedItem != null)
+            {
+                if (tabControlSelectionSupplier.SelectedIndex == 0)
+                {
+                    supplierName = listBoxSearchingResult.SelectedItem.ToString();
+                }
+                else
+                {
+                    supplierName = listBoxListOfTheSuppliers.SelectedItem.ToString();
+                }
+
+                EditProject editProject = this.Owner as EditProject;
+                if (editProject != null)
+                {
+                    editProject.textBoxProjectSupplier.Text = supplierName;
+                }
+
+                this.Close();
+            }
+            else MessageBox.Show("Выберите поставщика.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
