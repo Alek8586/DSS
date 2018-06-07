@@ -65,34 +65,37 @@ namespace DSS
                                                 AdminMode AdminMode = new AdminMode();
                                                 AdminMode.Show();
                                                 this.Hide();
-
                                                 break;
                                             }
                                         case "Оператор":
                                             {
-                                                if (textBoxLogInPassword.Text.Equals("password1"))
-                                                {
-                                                    var passwordMessage = MessageBox.Show("В целях безопасности рекомендуется сменить стандартный пароль.", "Предупреждение!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                                                    
-                                                    if (passwordMessage == DialogResult.OK)
-                                                    {
-                                                        //dbConnection.Close();
+                                                //if (textBoxLogInPassword.Text.Equals("password1"))
+                                                //{
+                                                //    var passwordMessage = MessageBox.Show("В целях безопасности рекомендуется сменить стандартный пароль.", "Предупреждение!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                                                        SettingUserPassword settingUserPassword = new SettingUserPassword();
-                                                        settingUserPassword.Owner = this;
-                                                        settingUserPassword.ShowDialog();
-                                                    }
-                                                    else
-                                                    {
-                                                        //OperatorMode OperatorMode = new OperatorMode();
-                                                        //OperatorMode.Show();
-                                                    }
+                                                //    if (passwordMessage == DialogResult.OK)
+                                                //    {
+                                                //        //dbConnection.Close();
 
-                                                }
-                                                if (textBoxLogInPassword.Text.Equals(string.Empty))
-                                                {
-                                                    var passwordMessage = MessageBox.Show("В целях безопасности рекомендуется установить пароль.", "Предупреждение!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                                                }
+                                                //        SettingUserPassword settingUserPassword = new SettingUserPassword();
+                                                //        settingUserPassword.Owner = this;
+                                                //        settingUserPassword.ShowDialog();
+                                                //    }
+                                                //    else
+                                                //    {
+                                                //        //OperatorMode OperatorMode = new OperatorMode();
+                                                //        //OperatorMode.Show();
+                                                //    }
+
+                                                //}
+                                                //if (textBoxLogInPassword.Text.Equals(string.Empty))
+                                                //{
+                                                //    var passwordMessage = MessageBox.Show("В целях безопасности рекомендуется установить пароль.", "Предупреждение!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                                                //}
+
+
+                                                OperatorMode OperatorMode = new OperatorMode();
+                                                OperatorMode.Show();
 
                                                 this.Hide();
                                                 break;

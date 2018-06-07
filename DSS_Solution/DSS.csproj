@@ -112,6 +112,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditUserPost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUserPost.Designer.cs">
+      <DependentUpon>EditUserPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OperatorMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OperatorMode.Designer.cs">
+      <DependentUpon>OperatorMode.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,11 +155,11 @@
     <Compile Include="AdminMode.Designer.cs">
       <DependentUpon>AdminMode.cs</DependentUpon>
     </Compile>
-    <Compile Include="OperatorMode.cs">
+    <Compile Include="OperatorMode_old.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OperatorMode.Designer.cs">
-      <DependentUpon>OperatorMode.cs</DependentUpon>
+    <Compile Include="OperatorMode_old.Designer.cs">
+      <DependentUpon>OperatorMode_old.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -184,6 +196,12 @@
     <Compile Include="Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditUserPost.resx">
+      <DependentUpon>EditUserPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OperatorMode.resx">
+      <DependentUpon>OperatorMode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditSupplier.resx">
       <DependentUpon>EditSupplier.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,8 +220,8 @@
     <EmbeddedResource Include="LogIn.ru.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OperatorMode.resx">
-      <DependentUpon>OperatorMode.cs</DependentUpon>
+    <EmbeddedResource Include="OperatorMode_old.resx">
+      <DependentUpon>OperatorMode_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

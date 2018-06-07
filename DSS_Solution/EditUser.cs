@@ -20,10 +20,10 @@ namespace DSS
                 //Заполняем поля при изменении данных пользователя
                 userID = userData[0];
                 textBoxUserFullname.Text = userData[1];
-                textBoxUserPost.Text = userData[2];
+                comboBoxUserPost.Text = userData[2];
                 textBoxUserLogin.Text = userData[3];
                 textBoxUserPassword.Text = userData[4];
-                comboBoxUserRole.SelectedItem = userData[5];
+                comboBoxUserRole.Text = userData[5];
             }
             if (userID != null) buttonSave.Visible = false;
         }
@@ -32,6 +32,9 @@ namespace DSS
         {
             dbConnection = new SQLiteConnection("Data Source=" + Application.StartupPath + "\\database.db; Version=3");
             dbConnection.Open();
+
+            FillComboBoxUserPost();
+            FillComboBoxUserRole();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -48,6 +51,42 @@ namespace DSS
         private void buttonBackToUsersForm_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FillComboBoxUserPost()
+        {
+            SQLiteCommand sqlCommand = dbConnection.CreateCommand();
+            sqlCommand.CommandText = "Select Name from UserPost";
+            SQLiteDataReader sqlReader = sqlCommand.ExecuteReader();
+
+            using (sqlReader)
+            {
+                if (sqlReader.HasRows)
+                {
+                    while (sqlReader.Read())
+                    {
+                        comboBoxUserPost.Items.Add(sqlReader["Name"]);
+                    }
+                }
+            }
+        }
+
+        private void FillComboBoxUserRole()
+        {
+            SQLiteCommand sqlCommand = dbConnection.CreateCommand();
+            sqlCommand.CommandText = "Select Name from Roles";
+            SQLiteDataReader sqlReader = sqlCommand.ExecuteReader();
+
+            using (sqlReader)
+            {
+                if (sqlReader.HasRows)
+                {
+                    while (sqlReader.Read())
+                    {
+                        comboBoxUserRole.Items.Add(sqlReader["Name"]);
+                    }
+                }
+            }
         }
 
         private void setUser()
@@ -69,7 +108,7 @@ namespace DSS
                     {
                         setUser.CommandText = "Update Users set Fullname = @Fullname, Post = @Post, Password = @Password, Role = @Role where Login = @Login";
                         setUser.Parameters.Add("@Fullname", DbType.String).Value = textBoxUserFullname.Text;
-                        setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
+                        setUser.Parameters.Add("@Post", DbType.String).Value = comboBoxUserPost.Text;
                         setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
                         setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
                         setUser.Parameters.Add("@Role", DbType.String).Value = comboBoxUserRole.SelectedItem;
@@ -78,7 +117,7 @@ namespace DSS
                     {
                         setUser.CommandText = "Insert into Users(Fullname, Post, Login, Password, Role) values (@Fullname, @Post, @Login, @Password, @Role)";
                         setUser.Parameters.Add("@Fullname", DbType.String).Value = textBoxUserFullname.Text;
-                        setUser.Parameters.Add("@Post", DbType.String).Value = textBoxUserPost.Text;
+                        setUser.Parameters.Add("@Post", DbType.String).Value = comboBoxUserPost.Text;
                         setUser.Parameters.Add("@Login", DbType.String).Value = textBoxUserLogin.Text;
                         setUser.Parameters.Add("@Password", DbType.String).Value = textBoxUserPassword.Text;
                         setUser.Parameters.Add("@Role", DbType.String).Value = comboBoxUserRole.SelectedItem;
@@ -86,7 +125,7 @@ namespace DSS
                     setUser.ExecuteNonQuery();
 
                     textBoxUserFullname.ResetText();
-                    textBoxUserPost.ResetText();
+                    comboBoxUserPost.ResetText();
                     textBoxUserLogin.ResetText();
                     textBoxUserPassword.ResetText();
                     comboBoxUserRole.ResetText();

@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonEditSupplier = new System.Windows.Forms.Button();
             this.buttonDeleteSupplier = new System.Windows.Forms.Button();
             this.buttonAddSupplier = new System.Windows.Forms.Button();
@@ -58,7 +58,8 @@
             // 
             // buttonEditSupplier
             // 
-            this.buttonEditSupplier.Location = new System.Drawing.Point(1045, 87);
+            this.buttonEditSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEditSupplier.Location = new System.Drawing.Point(716, 90);
             this.buttonEditSupplier.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.buttonEditSupplier.Name = "buttonEditSupplier";
             this.buttonEditSupplier.Size = new System.Drawing.Size(150, 30);
@@ -69,7 +70,8 @@
             // 
             // buttonDeleteSupplier
             // 
-            this.buttonDeleteSupplier.Location = new System.Drawing.Point(1045, 51);
+            this.buttonDeleteSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteSupplier.Location = new System.Drawing.Point(716, 54);
             this.buttonDeleteSupplier.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.buttonDeleteSupplier.Name = "buttonDeleteSupplier";
             this.buttonDeleteSupplier.Size = new System.Drawing.Size(150, 30);
@@ -80,7 +82,8 @@
             // 
             // buttonAddSupplier
             // 
-            this.buttonAddSupplier.Location = new System.Drawing.Point(1045, 15);
+            this.buttonAddSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddSupplier.Location = new System.Drawing.Point(716, 18);
             this.buttonAddSupplier.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.buttonAddSupplier.Name = "buttonAddSupplier";
             this.buttonAddSupplier.Size = new System.Drawing.Size(150, 30);
@@ -91,9 +94,10 @@
             // 
             // buttonToFormAdminMode
             // 
+            this.buttonToFormAdminMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonToFormAdminMode.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonToFormAdminMode.Location = new System.Drawing.Point(1045, 548);
-            this.buttonToFormAdminMode.Margin = new System.Windows.Forms.Padding(30, 500, 3, 3);
+            this.buttonToFormAdminMode.Location = new System.Drawing.Point(716, 413);
+            this.buttonToFormAdminMode.Margin = new System.Windows.Forms.Padding(30, 300, 3, 3);
             this.buttonToFormAdminMode.Name = "buttonToFormAdminMode";
             this.buttonToFormAdminMode.Size = new System.Drawing.Size(150, 30);
             this.buttonToFormAdminMode.TabIndex = 4;
@@ -107,24 +111,26 @@
             this.dataGridViewSuppliers.AllowUserToDeleteRows = false;
             this.dataGridViewSuppliers.AllowUserToResizeColumns = false;
             this.dataGridViewSuppliers.AllowUserToResizeRows = false;
+            this.dataGridViewSuppliers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSuppliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewSuppliers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewSuppliers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridViewSuppliers.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSuppliers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewSuppliers.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dataGridViewSuppliers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSuppliers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewSuppliers.ColumnHeadersHeight = 60;
-            this.dataGridViewSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSuppliers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSuppliers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.SupplierName,
@@ -136,37 +142,35 @@
             this.LocationRemotness,
             this.Flexibility,
             this.WarrantyService});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSuppliers.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewSuppliers.Dock = System.Windows.Forms.DockStyle.Left;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSuppliers.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewSuppliers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dataGridViewSuppliers.Location = new System.Drawing.Point(15, 15);
-            this.dataGridViewSuppliers.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewSuppliers.Location = new System.Drawing.Point(18, 18);
             this.dataGridViewSuppliers.MultiSelect = false;
             this.dataGridViewSuppliers.Name = "dataGridViewSuppliers";
             this.dataGridViewSuppliers.ReadOnly = true;
             this.dataGridViewSuppliers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSuppliers.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewSuppliers.RowHeadersWidth = 30;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSuppliers.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dataGridViewSuppliers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewSuppliers.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dataGridViewSuppliers.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(2);
             this.dataGridViewSuppliers.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -174,28 +178,32 @@
             this.dataGridViewSuppliers.RowTemplate.Height = 25;
             this.dataGridViewSuppliers.RowTemplate.ReadOnly = true;
             this.dataGridViewSuppliers.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSuppliers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSuppliers.Size = new System.Drawing.Size(1000, 627);
+            this.dataGridViewSuppliers.Size = new System.Drawing.Size(668, 425);
             this.dataGridViewSuppliers.TabIndex = 0;
             this.dataGridViewSuppliers.TabStop = false;
             this.dataGridViewSuppliers.DoubleClick += new System.EventHandler(this.dataGridViewSuppliers_DoubleClick);
             // 
             // ID
             // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ID.FillWeight = 10F;
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 30;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
+            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ID.Visible = false;
+            this.ID.Width = 30;
             // 
             // SupplierName
             // 
-            this.SupplierName.FillWeight = 24.117F;
+            this.SupplierName.FillWeight = 20F;
             this.SupplierName.HeaderText = "Наименование";
-            this.SupplierName.MinimumWidth = 150;
+            this.SupplierName.MinimumWidth = 180;
             this.SupplierName.Name = "SupplierName";
             this.SupplierName.ReadOnly = true;
+            this.SupplierName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // SupplierType
             // 
@@ -209,97 +217,102 @@
             // 
             // QMS
             // 
-            this.QMS.FillWeight = 69.3139F;
+            this.QMS.FillWeight = 20F;
             this.QMS.HeaderText = "СМК ИСО 9001";
-            this.QMS.MinimumWidth = 60;
+            this.QMS.MinimumWidth = 90;
             this.QMS.Name = "QMS";
             this.QMS.ReadOnly = true;
-            this.QMS.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.QMS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // MaterialQuality
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.MaterialQuality.DefaultCellStyle = dataGridViewCellStyle2;
-            this.MaterialQuality.FillWeight = 51.96128F;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MaterialQuality.DefaultCellStyle = dataGridViewCellStyle12;
+            this.MaterialQuality.FillWeight = 20F;
             this.MaterialQuality.HeaderText = "Качество изделий";
-            this.MaterialQuality.MinimumWidth = 100;
+            this.MaterialQuality.MinimumWidth = 90;
             this.MaterialQuality.Name = "MaterialQuality";
             this.MaterialQuality.ReadOnly = true;
+            this.MaterialQuality.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.MaterialQuality.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Price
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Price.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Price.FillWeight = 39.01288F;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Price.DefaultCellStyle = dataGridViewCellStyle13;
+            this.Price.FillWeight = 20F;
             this.Price.HeaderText = "Цены";
-            this.Price.MinimumWidth = 100;
+            this.Price.MinimumWidth = 90;
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
+            this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // TimeOfDelivery
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TimeOfDelivery.DefaultCellStyle = dataGridViewCellStyle4;
-            this.TimeOfDelivery.FillWeight = 29.35087F;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TimeOfDelivery.DefaultCellStyle = dataGridViewCellStyle14;
+            this.TimeOfDelivery.FillWeight = 20F;
             this.TimeOfDelivery.HeaderText = "Сроки поставки";
-            this.TimeOfDelivery.MinimumWidth = 100;
+            this.TimeOfDelivery.MinimumWidth = 90;
             this.TimeOfDelivery.Name = "TimeOfDelivery";
             this.TimeOfDelivery.ReadOnly = true;
+            this.TimeOfDelivery.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.TimeOfDelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // LocationRemotness
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.LocationRemotness.DefaultCellStyle = dataGridViewCellStyle5;
-            this.LocationRemotness.FillWeight = 22.14116F;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.LocationRemotness.DefaultCellStyle = dataGridViewCellStyle15;
+            this.LocationRemotness.FillWeight = 20F;
             this.LocationRemotness.HeaderText = "Удаленность";
-            this.LocationRemotness.MinimumWidth = 100;
+            this.LocationRemotness.MinimumWidth = 90;
             this.LocationRemotness.Name = "LocationRemotness";
             this.LocationRemotness.ReadOnly = true;
+            this.LocationRemotness.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.LocationRemotness.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Flexibility
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Flexibility.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Flexibility.FillWeight = 21.46923F;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Flexibility.DefaultCellStyle = dataGridViewCellStyle16;
+            this.Flexibility.FillWeight = 20F;
             this.Flexibility.HeaderText = "Гибкость";
-            this.Flexibility.MinimumWidth = 100;
+            this.Flexibility.MinimumWidth = 90;
             this.Flexibility.Name = "Flexibility";
             this.Flexibility.ReadOnly = true;
+            this.Flexibility.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Flexibility.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // WarrantyService
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.WarrantyService.DefaultCellStyle = dataGridViewCellStyle7;
-            this.WarrantyService.FillWeight = 14.78586F;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.WarrantyService.DefaultCellStyle = dataGridViewCellStyle17;
+            this.WarrantyService.FillWeight = 20F;
             this.WarrantyService.HeaderText = "Работа гарантийной службы";
-            this.WarrantyService.MinimumWidth = 100;
+            this.WarrantyService.MinimumWidth = 90;
             this.WarrantyService.Name = "WarrantyService";
             this.WarrantyService.ReadOnly = true;
+            this.WarrantyService.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.WarrantyService.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Suppliers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AcceptButton = this.buttonEditSupplier;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CancelButton = this.buttonToFormAdminMode;
-            this.ClientSize = new System.Drawing.Size(1252, 657);
+            this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.dataGridViewSuppliers);
             this.Controls.Add(this.buttonEditSupplier);
             this.Controls.Add(this.buttonDeleteSupplier);
             this.Controls.Add(this.buttonAddSupplier);
             this.Controls.Add(this.buttonToFormAdminMode);
-            this.MaximizeBox = false;
             this.Name = "Suppliers";
             this.Padding = new System.Windows.Forms.Padding(15);
             this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Поставщики";
             this.Load += new System.EventHandler(this.Suppliers_Load);

@@ -95,13 +95,20 @@ namespace DSS
 
         private void buttonListboxSelectedCriteriaOneStepHigher_Click(object sender, EventArgs e)
         {
-            if (listBoxSelectedCriteria.Items.Count > 0)
+            try
             {
-                if (listBoxSelectedCriteria.SelectedIndex != listBoxSelectedCriteria.TopIndex && listBoxSelectedCriteria.SelectedIndex != listBoxSelectedCriteria.Items.Count)
+                if (listBoxSelectedCriteria.Items.Count > 0)
                 {
-                    listBoxSelectedCriteria.Items.Insert(listBoxSelectedCriteria.SelectedIndex++, listBoxSelectedCriteria.SelectedItem);
-                    listBoxSelectedCriteria.Items.Remove(listBoxSelectedCriteria.SelectedItem);
+                    if (listBoxSelectedCriteria.SelectedIndex != listBoxSelectedCriteria.TopIndex && listBoxSelectedCriteria.SelectedIndex != listBoxSelectedCriteria.Items.Count)
+                    {
+                        listBoxSelectedCriteria.Items.Insert(listBoxSelectedCriteria.SelectedIndex++, listBoxSelectedCriteria.SelectedItem);
+                        listBoxSelectedCriteria.Items.Remove(listBoxSelectedCriteria.SelectedItem);
+                    }
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
             }
         }
 

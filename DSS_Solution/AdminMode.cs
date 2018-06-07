@@ -11,6 +11,30 @@ namespace DSS
             InitializeComponent();
         }
 
+        private void buttonToUsersForm_Click(object sender, EventArgs e)
+        {
+            Users UsersForm = new Users();
+            UsersForm.Show();
+        }
+
+        private void buttonToSuplliersForm_Click(object sender, EventArgs e)
+        {
+            Suppliers SuppliersForm = new Suppliers();
+            SuppliersForm.Show();
+        }
+
+        private void buttonProjects_Click(object sender, EventArgs e)
+        {
+            Projects ProjectsForm = new Projects();
+            ProjectsForm.Show();
+        }
+
+        private void buttonUserPost_Click(object sender, EventArgs e)
+        {
+            EditUserPost editUserPost = new EditUserPost();
+            editUserPost.ShowDialog();
+        }
+
         private void buttonBackupDB_Click(object sender, EventArgs e)
         {
             /*
@@ -55,35 +79,17 @@ namespace DSS
             }
         }
 
-        private void buttonExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Application.Exit();
-        }
-
-        private void buttonToUsersForm_Click(object sender, EventArgs e)
-        {
-            Users UsersForm = new Users();
-            UsersForm.Show();
-        }
-
-        private void buttonToSuplliersForm_Click(object sender, EventArgs e)
-        {
-            Suppliers SuppliersForm = new Suppliers();
-            SuppliersForm.Show();
-        }
-
-        private void buttonProjects_Click(object sender, EventArgs e)
-        {
-            Projects ProjectsForm = new Projects();
-            ProjectsForm.Show();
-        }
-
         private void buttonToLogInForm_Click(object sender, EventArgs e)
         {
             FormLogIn formLogIn = new FormLogIn();
             formLogIn.Show();
             this.Hide();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
         }
 
         private void FormAdminMode_FormClosed(object sender, FormClosedEventArgs e)

@@ -35,12 +35,13 @@
             this.buttonToSuppliersForm = new System.Windows.Forms.Button();
             this.buttonProjects = new System.Windows.Forms.Button();
             this.buttonToLogInForm = new System.Windows.Forms.Button();
+            this.buttonUserPost = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonExit
             // 
             this.buttonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonExit.Location = new System.Drawing.Point(251, 172);
+            this.buttonExit.Location = new System.Drawing.Point(251, 198);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(150, 25);
             this.buttonExit.TabIndex = 7;
@@ -102,7 +103,7 @@
             // 
             // buttonToLogInForm
             // 
-            this.buttonToLogInForm.Location = new System.Drawing.Point(251, 141);
+            this.buttonToLogInForm.Location = new System.Drawing.Point(251, 167);
             this.buttonToLogInForm.Name = "buttonToLogInForm";
             this.buttonToLogInForm.Size = new System.Drawing.Size(150, 25);
             this.buttonToLogInForm.TabIndex = 6;
@@ -110,13 +111,25 @@
             this.buttonToLogInForm.UseVisualStyleBackColor = true;
             this.buttonToLogInForm.Click += new System.EventHandler(this.buttonToLogInForm_Click);
             // 
+            // buttonUserPost
+            // 
+            this.buttonUserPost.Location = new System.Drawing.Point(18, 263);
+            this.buttonUserPost.Name = "buttonUserPost";
+            this.buttonUserPost.Size = new System.Drawing.Size(200, 40);
+            this.buttonUserPost.TabIndex = 8;
+            this.buttonUserPost.Text = "Должности сотрудников";
+            this.buttonUserPost.UseVisualStyleBackColor = true;
+            this.buttonUserPost.Click += new System.EventHandler(this.buttonUserPost_Click);
+            // 
             // AdminMode
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonExit;
-            this.ClientSize = new System.Drawing.Size(475, 215);
+            this.ClientSize = new System.Drawing.Size(696, 430);
+            this.Controls.Add(this.buttonUserPost);
             this.Controls.Add(this.buttonToLogInForm);
             this.Controls.Add(this.buttonProjects);
             this.Controls.Add(this.buttonToSuppliersForm);
@@ -145,5 +158,6 @@
         private System.Windows.Forms.Button buttonToSuppliersForm;
         private System.Windows.Forms.Button buttonProjects;
         private System.Windows.Forms.Button buttonToLogInForm;
+        private System.Windows.Forms.Button buttonUserPost;
     }
 }

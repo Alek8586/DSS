@@ -42,12 +42,12 @@
             this.labelSupplierWarrantyService = new System.Windows.Forms.Label();
             this.comboBoxSupplierType = new System.Windows.Forms.ComboBox();
             this.checkBoxQMS = new System.Windows.Forms.CheckBox();
-            this.domainUpDownMaterialQuality = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDownPrice = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDownTimeOfDelivery = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDownLocationRemoteness = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDownFlexibility = new System.Windows.Forms.DomainUpDown();
-            this.domainUpDownWarrantyService = new System.Windows.Forms.DomainUpDown();
+            this.comboBoxMaterialQuality = new System.Windows.Forms.ComboBox();
+            this.comboBoxPrice = new System.Windows.Forms.ComboBox();
+            this.comboBoxTimeOfDelivery = new System.Windows.Forms.ComboBox();
+            this.comboBoxLocationRemoteness = new System.Windows.Forms.ComboBox();
+            this.comboBoxFlexibility = new System.Windows.Forms.ComboBox();
+            this.comboBoxWarrantyService = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelSupplierName
@@ -61,7 +61,7 @@
             // 
             // textBoxSupplierName
             // 
-            this.textBoxSupplierName.Location = new System.Drawing.Point(21, 33);
+            this.textBoxSupplierName.Location = new System.Drawing.Point(18, 33);
             this.textBoxSupplierName.Name = "textBoxSupplierName";
             this.textBoxSupplierName.Size = new System.Drawing.Size(150, 21);
             this.textBoxSupplierName.TabIndex = 1;
@@ -173,7 +173,7 @@
             this.comboBoxSupplierType.Items.AddRange(new object[] {
             "Утвержденный",
             "Неутвержденный"});
-            this.comboBoxSupplierType.Location = new System.Drawing.Point(21, 76);
+            this.comboBoxSupplierType.Location = new System.Drawing.Point(18, 75);
             this.comboBoxSupplierType.Name = "comboBoxSupplierType";
             this.comboBoxSupplierType.Size = new System.Drawing.Size(150, 23);
             this.comboBoxSupplierType.TabIndex = 15;
@@ -181,88 +181,100 @@
             // checkBoxQMS
             // 
             this.checkBoxQMS.AutoSize = true;
-            this.checkBoxQMS.Location = new System.Drawing.Point(21, 112);
+            this.checkBoxQMS.Location = new System.Drawing.Point(18, 112);
             this.checkBoxQMS.Name = "checkBoxQMS";
             this.checkBoxQMS.Size = new System.Drawing.Size(166, 19);
             this.checkBoxQMS.TabIndex = 4;
             this.checkBoxQMS.Text = "Наличие СМК ИСО 9001";
             this.checkBoxQMS.UseVisualStyleBackColor = true;
             // 
-            // domainUpDownMaterialQuality
+            // comboBoxMaterialQuality
             // 
-            this.domainUpDownMaterialQuality.Items.Add("3");
-            this.domainUpDownMaterialQuality.Items.Add("2");
-            this.domainUpDownMaterialQuality.Items.Add("1");
-            this.domainUpDownMaterialQuality.Location = new System.Drawing.Point(21, 162);
-            this.domainUpDownMaterialQuality.Name = "domainUpDownMaterialQuality";
-            this.domainUpDownMaterialQuality.Size = new System.Drawing.Size(150, 21);
-            this.domainUpDownMaterialQuality.TabIndex = 6;
+            this.comboBoxMaterialQuality.FormattingEnabled = true;
+            this.comboBoxMaterialQuality.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.comboBoxMaterialQuality.Location = new System.Drawing.Point(18, 161);
+            this.comboBoxMaterialQuality.Name = "comboBoxMaterialQuality";
+            this.comboBoxMaterialQuality.Size = new System.Drawing.Size(150, 23);
+            this.comboBoxMaterialQuality.TabIndex = 6;
             // 
-            // domainUpDownPrice
+            // comboBoxPrice
             // 
-            this.domainUpDownPrice.Items.Add("3");
-            this.domainUpDownPrice.Items.Add("2");
-            this.domainUpDownPrice.Items.Add("1");
-            this.domainUpDownPrice.Location = new System.Drawing.Point(21, 204);
-            this.domainUpDownPrice.Name = "domainUpDownPrice";
-            this.domainUpDownPrice.Size = new System.Drawing.Size(150, 21);
-            this.domainUpDownPrice.TabIndex = 8;
+            this.comboBoxPrice.FormattingEnabled = true;
+            this.comboBoxPrice.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.comboBoxPrice.Location = new System.Drawing.Point(18, 203);
+            this.comboBoxPrice.Name = "comboBoxPrice";
+            this.comboBoxPrice.Size = new System.Drawing.Size(150, 23);
+            this.comboBoxPrice.TabIndex = 8;
             // 
-            // domainUpDownTimeOfDelivery
+            // comboBoxTimeOfDelivery
             // 
-            this.domainUpDownTimeOfDelivery.Items.Add("3");
-            this.domainUpDownTimeOfDelivery.Items.Add("2");
-            this.domainUpDownTimeOfDelivery.Items.Add("1");
-            this.domainUpDownTimeOfDelivery.Location = new System.Drawing.Point(21, 246);
-            this.domainUpDownTimeOfDelivery.Name = "domainUpDownTimeOfDelivery";
-            this.domainUpDownTimeOfDelivery.Size = new System.Drawing.Size(150, 21);
-            this.domainUpDownTimeOfDelivery.TabIndex = 10;
+            this.comboBoxTimeOfDelivery.FormattingEnabled = true;
+            this.comboBoxTimeOfDelivery.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.comboBoxTimeOfDelivery.Location = new System.Drawing.Point(18, 245);
+            this.comboBoxTimeOfDelivery.Name = "comboBoxTimeOfDelivery";
+            this.comboBoxTimeOfDelivery.Size = new System.Drawing.Size(150, 23);
+            this.comboBoxTimeOfDelivery.TabIndex = 10;
             // 
-            // domainUpDownLocationRemoteness
+            // comboBoxLocationRemoteness
             // 
-            this.domainUpDownLocationRemoteness.Items.Add("3");
-            this.domainUpDownLocationRemoteness.Items.Add("2");
-            this.domainUpDownLocationRemoteness.Items.Add("1");
-            this.domainUpDownLocationRemoteness.Location = new System.Drawing.Point(21, 288);
-            this.domainUpDownLocationRemoteness.Name = "domainUpDownLocationRemoteness";
-            this.domainUpDownLocationRemoteness.Size = new System.Drawing.Size(150, 21);
-            this.domainUpDownLocationRemoteness.TabIndex = 12;
+            this.comboBoxLocationRemoteness.FormattingEnabled = true;
+            this.comboBoxLocationRemoteness.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.comboBoxLocationRemoteness.Location = new System.Drawing.Point(18, 287);
+            this.comboBoxLocationRemoteness.Name = "comboBoxLocationRemoteness";
+            this.comboBoxLocationRemoteness.Size = new System.Drawing.Size(150, 23);
+            this.comboBoxLocationRemoteness.TabIndex = 12;
             // 
-            // domainUpDownFlexibility
+            // comboBoxFlexibility
             // 
-            this.domainUpDownFlexibility.Items.Add("3");
-            this.domainUpDownFlexibility.Items.Add("2");
-            this.domainUpDownFlexibility.Items.Add("1");
-            this.domainUpDownFlexibility.Location = new System.Drawing.Point(21, 330);
-            this.domainUpDownFlexibility.Name = "domainUpDownFlexibility";
-            this.domainUpDownFlexibility.Size = new System.Drawing.Size(150, 21);
-            this.domainUpDownFlexibility.TabIndex = 14;
+            this.comboBoxFlexibility.FormattingEnabled = true;
+            this.comboBoxFlexibility.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.comboBoxFlexibility.Location = new System.Drawing.Point(18, 329);
+            this.comboBoxFlexibility.Name = "comboBoxFlexibility";
+            this.comboBoxFlexibility.Size = new System.Drawing.Size(150, 23);
+            this.comboBoxFlexibility.TabIndex = 14;
             // 
-            // domainUpDownWarrantyService
+            // comboBoxWarrantyService
             // 
-            this.domainUpDownWarrantyService.Items.Add("3");
-            this.domainUpDownWarrantyService.Items.Add("2");
-            this.domainUpDownWarrantyService.Items.Add("1");
-            this.domainUpDownWarrantyService.Location = new System.Drawing.Point(21, 372);
-            this.domainUpDownWarrantyService.Name = "domainUpDownWarrantyService";
-            this.domainUpDownWarrantyService.Size = new System.Drawing.Size(150, 21);
-            this.domainUpDownWarrantyService.TabIndex = 16;
+            this.comboBoxWarrantyService.FormattingEnabled = true;
+            this.comboBoxWarrantyService.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.comboBoxWarrantyService.Location = new System.Drawing.Point(18, 371);
+            this.comboBoxWarrantyService.Name = "comboBoxWarrantyService";
+            this.comboBoxWarrantyService.Size = new System.Drawing.Size(150, 23);
+            this.comboBoxWarrantyService.TabIndex = 16;
             // 
             // EditSupplier
             // 
             this.AcceptButton = this.buttonSaveAndClose;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonBackToProjectsForm;
             this.ClientSize = new System.Drawing.Size(653, 506);
-            this.Controls.Add(this.domainUpDownWarrantyService);
-            this.Controls.Add(this.domainUpDownFlexibility);
-            this.Controls.Add(this.domainUpDownLocationRemoteness);
-            this.Controls.Add(this.domainUpDownTimeOfDelivery);
-            this.Controls.Add(this.domainUpDownPrice);
-            this.Controls.Add(this.domainUpDownMaterialQuality);
+            this.Controls.Add(this.comboBoxWarrantyService);
+            this.Controls.Add(this.comboBoxFlexibility);
+            this.Controls.Add(this.comboBoxLocationRemoteness);
+            this.Controls.Add(this.comboBoxTimeOfDelivery);
+            this.Controls.Add(this.comboBoxPrice);
+            this.Controls.Add(this.comboBoxMaterialQuality);
             this.Controls.Add(this.checkBoxQMS);
             this.Controls.Add(this.comboBoxSupplierType);
             this.Controls.Add(this.buttonBackToProjectsForm);
@@ -278,6 +290,7 @@
             this.Controls.Add(this.textBoxSupplierName);
             this.Controls.Add(this.labelSupplierName);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "EditSupplier";
@@ -307,11 +320,11 @@
         private System.Windows.Forms.Label labelSupplierWarrantyService;
         private System.Windows.Forms.ComboBox comboBoxSupplierType;
         private System.Windows.Forms.CheckBox checkBoxQMS;
-        private System.Windows.Forms.DomainUpDown domainUpDownMaterialQuality;
-        private System.Windows.Forms.DomainUpDown domainUpDownPrice;
-        private System.Windows.Forms.DomainUpDown domainUpDownTimeOfDelivery;
-        private System.Windows.Forms.DomainUpDown domainUpDownLocationRemoteness;
-        private System.Windows.Forms.DomainUpDown domainUpDownFlexibility;
-        private System.Windows.Forms.DomainUpDown domainUpDownWarrantyService;
+        private System.Windows.Forms.ComboBox comboBoxMaterialQuality;
+        private System.Windows.Forms.ComboBox comboBoxPrice;
+        private System.Windows.Forms.ComboBox comboBoxTimeOfDelivery;
+        private System.Windows.Forms.ComboBox comboBoxLocationRemoteness;
+        private System.Windows.Forms.ComboBox comboBoxFlexibility;
+        private System.Windows.Forms.ComboBox comboBoxWarrantyService;
     }
 }

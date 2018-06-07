@@ -35,12 +35,12 @@
             this.labelUserRole = new System.Windows.Forms.Label();
             this.comboBoxUserRole = new System.Windows.Forms.ComboBox();
             this.labelUserPost = new System.Windows.Forms.Label();
-            this.textBoxUserPost = new System.Windows.Forms.TextBox();
             this.labelUserFullname = new System.Windows.Forms.Label();
             this.textBoxUserFullname = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonSaveAndClose = new System.Windows.Forms.Button();
             this.buttonBackToUsersForm = new System.Windows.Forms.Button();
+            this.comboBoxUserPost = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelUserLogin
@@ -54,7 +54,7 @@
             // 
             // textBoxUserLogin
             // 
-            this.textBoxUserLogin.Location = new System.Drawing.Point(21, 117);
+            this.textBoxUserLogin.Location = new System.Drawing.Point(18, 117);
             this.textBoxUserLogin.Name = "textBoxUserLogin";
             this.textBoxUserLogin.Size = new System.Drawing.Size(200, 21);
             this.textBoxUserLogin.TabIndex = 5;
@@ -71,7 +71,7 @@
             // 
             // textBoxUserPassword
             // 
-            this.textBoxUserPassword.Location = new System.Drawing.Point(21, 159);
+            this.textBoxUserPassword.Location = new System.Drawing.Point(18, 159);
             this.textBoxUserPassword.Name = "textBoxUserPassword";
             this.textBoxUserPassword.Size = new System.Drawing.Size(200, 21);
             this.textBoxUserPassword.TabIndex = 7;
@@ -89,10 +89,7 @@
             // comboBoxUserRole
             // 
             this.comboBoxUserRole.FormattingEnabled = true;
-            this.comboBoxUserRole.Items.AddRange(new object[] {
-            "Администратор",
-            "Оператор"});
-            this.comboBoxUserRole.Location = new System.Drawing.Point(21, 201);
+            this.comboBoxUserRole.Location = new System.Drawing.Point(18, 201);
             this.comboBoxUserRole.Name = "comboBoxUserRole";
             this.comboBoxUserRole.Size = new System.Drawing.Size(200, 23);
             this.comboBoxUserRole.TabIndex = 9;
@@ -106,13 +103,6 @@
             this.labelUserPost.TabIndex = 2;
             this.labelUserPost.Text = "Должность";
             // 
-            // textBoxUserPost
-            // 
-            this.textBoxUserPost.Location = new System.Drawing.Point(21, 75);
-            this.textBoxUserPost.Name = "textBoxUserPost";
-            this.textBoxUserPost.Size = new System.Drawing.Size(200, 21);
-            this.textBoxUserPost.TabIndex = 3;
-            // 
             // labelUserFullname
             // 
             this.labelUserFullname.AutoSize = true;
@@ -124,7 +114,7 @@
             // 
             // textBoxUserFullname
             // 
-            this.textBoxUserFullname.Location = new System.Drawing.Point(21, 33);
+            this.textBoxUserFullname.Location = new System.Drawing.Point(18, 33);
             this.textBoxUserFullname.Name = "textBoxUserFullname";
             this.textBoxUserFullname.Size = new System.Drawing.Size(200, 21);
             this.textBoxUserFullname.TabIndex = 1;
@@ -135,7 +125,7 @@
             this.buttonSave.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(150, 30);
-            this.buttonSave.TabIndex = 12;
+            this.buttonSave.TabIndex = 11;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -147,7 +137,7 @@
             this.buttonSaveAndClose.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonSaveAndClose.Name = "buttonSaveAndClose";
             this.buttonSaveAndClose.Size = new System.Drawing.Size(150, 30);
-            this.buttonSaveAndClose.TabIndex = 13;
+            this.buttonSaveAndClose.TabIndex = 12;
             this.buttonSaveAndClose.Text = "Сохранить и закрыть";
             this.buttonSaveAndClose.UseVisualStyleBackColor = true;
             this.buttonSaveAndClose.Click += new System.EventHandler(this.buttonSaveAndClose_Click);
@@ -159,26 +149,34 @@
             this.buttonBackToUsersForm.Margin = new System.Windows.Forms.Padding(90, 3, 3, 3);
             this.buttonBackToUsersForm.Name = "buttonBackToUsersForm";
             this.buttonBackToUsersForm.Size = new System.Drawing.Size(150, 30);
-            this.buttonBackToUsersForm.TabIndex = 14;
+            this.buttonBackToUsersForm.TabIndex = 13;
             this.buttonBackToUsersForm.Text = "Закрыть";
             this.buttonBackToUsersForm.UseVisualStyleBackColor = true;
             this.buttonBackToUsersForm.Click += new System.EventHandler(this.buttonBackToUsersForm_Click);
             // 
+            // comboBoxUserPost
+            // 
+            this.comboBoxUserPost.FormattingEnabled = true;
+            this.comboBoxUserPost.Location = new System.Drawing.Point(18, 75);
+            this.comboBoxUserPost.Name = "comboBoxUserPost";
+            this.comboBoxUserPost.Size = new System.Drawing.Size(200, 23);
+            this.comboBoxUserPost.TabIndex = 3;
+            // 
             // EditUser
             // 
             this.AcceptButton = this.buttonSaveAndClose;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonBackToUsersForm;
             this.ClientSize = new System.Drawing.Size(668, 508);
+            this.Controls.Add(this.comboBoxUserPost);
             this.Controls.Add(this.buttonBackToUsersForm);
             this.Controls.Add(this.buttonSaveAndClose);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxUserFullname);
             this.Controls.Add(this.labelUserFullname);
-            this.Controls.Add(this.textBoxUserPost);
             this.Controls.Add(this.labelUserPost);
             this.Controls.Add(this.comboBoxUserRole);
             this.Controls.Add(this.labelUserRole);
@@ -187,6 +185,7 @@
             this.Controls.Add(this.textBoxUserLogin);
             this.Controls.Add(this.labelUserLogin);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "EditUser";
@@ -209,11 +208,11 @@
         private System.Windows.Forms.Label labelUserRole;
         private System.Windows.Forms.ComboBox comboBoxUserRole;
         private System.Windows.Forms.Label labelUserPost;
-        private System.Windows.Forms.TextBox textBoxUserPost;
         private System.Windows.Forms.Label labelUserFullname;
         private System.Windows.Forms.TextBox textBoxUserFullname;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonSaveAndClose;
         private System.Windows.Forms.Button buttonBackToUsersForm;
+        private System.Windows.Forms.ComboBox comboBoxUserPost;
     }
 }

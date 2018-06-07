@@ -22,12 +22,12 @@ namespace DSS
                 textBoxSupplierName.Text = supplierData[1];
                 comboBoxSupplierType.SelectedItem = supplierData[2];
                 checkBoxQMS.Checked = Convert.ToBoolean(supplierData[3]);
-                domainUpDownMaterialQuality.Text = supplierData[4];
-                domainUpDownPrice.Text = supplierData[5];
-                domainUpDownTimeOfDelivery.Text = supplierData[6];
-                domainUpDownLocationRemoteness.Text = supplierData[7];
-                domainUpDownFlexibility.Text = supplierData[8];
-                domainUpDownWarrantyService.Text = supplierData[9];
+                comboBoxMaterialQuality.Text = supplierData[4];
+                comboBoxPrice.Text = supplierData[5];
+                comboBoxTimeOfDelivery.Text = supplierData[6];
+                comboBoxLocationRemoteness.Text = supplierData[7];
+                comboBoxFlexibility.Text = supplierData[8];
+                comboBoxWarrantyService.Text = supplierData[9];
             }
             if (supplierID != null) buttonSave.Visible = false;
         }
@@ -67,12 +67,12 @@ namespace DSS
                         setSupplier.Parameters.Add("@SupplierName", DbType.String).Value = textBoxSupplierName.Text;
                         setSupplier.Parameters.Add("@Type", DbType.String).Value = comboBoxSupplierType.Text;
                         setSupplier.Parameters.Add("@QMS", DbType.Boolean).Value = checkBoxQMS.Checked;
-                        setSupplier.Parameters.Add("@MaterialQuality", DbType.Int32).Value = Convert.ToInt32(domainUpDownMaterialQuality.Text);
-                        setSupplier.Parameters.Add("@Price", DbType.Int32).Value = Convert.ToInt32(domainUpDownPrice.Text);
-                        setSupplier.Parameters.Add("@TimeOfDelivery", DbType.Int32).Value = Convert.ToInt32(domainUpDownTimeOfDelivery.Text);
-                        setSupplier.Parameters.Add("@LocationRemoteness", DbType.Int32).Value = Convert.ToInt32(domainUpDownLocationRemoteness.Text);
-                        setSupplier.Parameters.Add("@Flexibility", DbType.Int32).Value = Convert.ToInt32(domainUpDownFlexibility.Text);
-                        setSupplier.Parameters.Add("@WarrantyService", DbType.Int32).Value = Convert.ToInt32(domainUpDownWarrantyService.Text);
+                        setSupplier.Parameters.Add("@MaterialQuality", DbType.Int32).Value = Convert.ToInt32(comboBoxMaterialQuality.Text);
+                        setSupplier.Parameters.Add("@Price", DbType.Int32).Value = Convert.ToInt32(comboBoxPrice.Text);
+                        setSupplier.Parameters.Add("@TimeOfDelivery", DbType.Int32).Value = Convert.ToInt32(comboBoxTimeOfDelivery.Text);
+                        setSupplier.Parameters.Add("@LocationRemoteness", DbType.Int32).Value = Convert.ToInt32(comboBoxLocationRemoteness.Text);
+                        setSupplier.Parameters.Add("@Flexibility", DbType.Int32).Value = Convert.ToInt32(comboBoxFlexibility.Text);
+                        setSupplier.Parameters.Add("@WarrantyService", DbType.Int32).Value = Convert.ToInt32(comboBoxWarrantyService.Text);
                     }
                     else
                     {
@@ -80,24 +80,24 @@ namespace DSS
                         setSupplier.Parameters.Add("@SupplierName", DbType.String).Value = textBoxSupplierName.Text;
                         setSupplier.Parameters.Add("@Type", DbType.String).Value = comboBoxSupplierType.Text;
                         setSupplier.Parameters.Add("@QMS", DbType.Boolean).Value = checkBoxQMS.Checked;
-                        setSupplier.Parameters.Add("@MaterialQuality", DbType.Int32).Value = Convert.ToInt32(domainUpDownMaterialQuality.Text);
-                        setSupplier.Parameters.Add("@Price", DbType.Int32).Value = Convert.ToInt32(domainUpDownPrice.Text);
-                        setSupplier.Parameters.Add("@TimeOfDelivery", DbType.Int32).Value = Convert.ToInt32(domainUpDownTimeOfDelivery.Text);
-                        setSupplier.Parameters.Add("@LocationRemoteness", DbType.Int32).Value = Convert.ToInt32(domainUpDownLocationRemoteness.Text);
-                        setSupplier.Parameters.Add("@Flexibility", DbType.Int32).Value = Convert.ToInt32(domainUpDownFlexibility.Text);
-                        setSupplier.Parameters.Add("@WarrantyService", DbType.Int32).Value = Convert.ToInt32(domainUpDownWarrantyService.Text);
+                        setSupplier.Parameters.Add("@MaterialQuality", DbType.Int32).Value = Convert.ToInt32(comboBoxMaterialQuality.Text);
+                        setSupplier.Parameters.Add("@Price", DbType.Int32).Value = Convert.ToInt32(comboBoxPrice.Text);
+                        setSupplier.Parameters.Add("@TimeOfDelivery", DbType.Int32).Value = Convert.ToInt32(comboBoxTimeOfDelivery.Text);
+                        setSupplier.Parameters.Add("@LocationRemoteness", DbType.Int32).Value = Convert.ToInt32(comboBoxLocationRemoteness.Text);
+                        setSupplier.Parameters.Add("@Flexibility", DbType.Int32).Value = Convert.ToInt32(comboBoxFlexibility.Text);
+                        setSupplier.Parameters.Add("@WarrantyService", DbType.Int32).Value = Convert.ToInt32(comboBoxWarrantyService.Text);
                     }
                     setSupplier.ExecuteNonQuery();
 
                     textBoxSupplierName.ResetText();
                     comboBoxSupplierType.ResetText();
                     checkBoxQMS.ResetText();
-                    domainUpDownMaterialQuality.ResetText();
-                    domainUpDownPrice.ResetText();
-                    domainUpDownTimeOfDelivery.ResetText();
-                    domainUpDownLocationRemoteness.ResetText();
-                    domainUpDownFlexibility.ResetText();
-                    domainUpDownWarrantyService.ResetText();
+                    comboBoxMaterialQuality.ResetText();
+                    comboBoxPrice.ResetText();
+                    comboBoxTimeOfDelivery.ResetText();
+                    comboBoxLocationRemoteness.ResetText();
+                    comboBoxFlexibility.ResetText();
+                    comboBoxWarrantyService.ResetText();
 
                     Suppliers main = this.Owner as Suppliers;
                     if (main != null)
@@ -109,9 +109,14 @@ namespace DSS
                 }
                 catch (SQLiteException ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Ошибка: \n\n" + ex.Message);
                 }
             }
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
