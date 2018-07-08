@@ -13,5 +13,7 @@
         public double Flexibility { get; set; }
         public double WarrantyService { get; set; }
         public double TotalGrade { get; set; }
+
+
     }
 }

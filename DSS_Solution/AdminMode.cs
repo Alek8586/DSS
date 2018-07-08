@@ -42,12 +42,19 @@ namespace DSS
              * Сделать дефолтной путь к сохранению бэкапа базы
              * Добавить маску для имени файла бэкапа
             */
+            string backupFolder = Application.StartupPath + "\\backup";
+            if (!Directory.Exists(backupFolder))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\backup");
+            }
+
             SaveFileDialog saveDB = new SaveFileDialog();
             string backupFileName = "database_" + DateTime.Now.ToString("yyyy.MM.dd").Replace(".", "") + ".dbbackup";
             string sourceDBFile = Application.StartupPath + "\\database.db";
-            string backupDBFile = Path.Combine(Application.StartupPath + "\\backup", backupFileName);
+            string backupDBFile = Path.Combine(backupFolder, backupFileName);
 
-            saveDB.InitialDirectory = Application.StartupPath + "\\backup";
+
+            saveDB.InitialDirectory = backupFolder;
             saveDB.FileName = backupFileName;
             saveDB.Filter = "Database backup file(*.dbbackup)|*.dbbackup";
 
@@ -62,17 +69,18 @@ namespace DSS
             /*
              * Восстановление базы данных
             */
+            string backupFolder = Application.StartupPath + "\\backup";
             OpenFileDialog restoreDB = new OpenFileDialog();
 
-            string backupPathDBFile = Application.StartupPath + "\\backup";
+            string backupPathDBFile = backupFolder;
 
             restoreDB.InitialDirectory = backupPathDBFile;
             restoreDB.Filter = "Database backup file(*.dbbackup)|*.dbbackup";
 
             if (restoreDB.ShowDialog(this) == DialogResult.OK)
             {
-                string backupFileName = Path.GetFileName(Application.StartupPath + "\\backup\\" + restoreDB.FileName);
-                string backupDBFile = Application.StartupPath + "\\backup\\" + backupFileName;
+                string backupFileName = Path.GetFileName(backupFolder + "\\" + restoreDB.FileName);
+                string backupDBFile = backupFolder + "\\" + backupFileName;
                 string restoreDBFile = Application.StartupPath + "\\database.db";
 
                 File.Copy(backupDBFile, restoreDBFile, true);
